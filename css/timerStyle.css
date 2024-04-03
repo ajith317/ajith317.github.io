@@ -1,0 +1,210 @@
+:root {
+    --background: #2E2D2D;
+    --gray: #424242;
+    --green: #62ABA1;
+    --purple: #9b59b6;
+    --orange: #e67e22;
+    --blue: #014c7e;
+    --liteGreen: #c4df98;
+    --violet: #d2b8cf;
+    --liteBlue: #ced6d5;
+
+     --gray: #384948;
+    --liteGray : #698683;
+    
+   
+    --darkViolet: #724b74;
+    --medViolet: #9b6e98;
+
+    --medBlue: #4c868c;
+    --skyBlue: #8fada8;
+    --liteGreen: #9fb082;
+   
+    --liteBlue: #ced6d5;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Antonio', sans-serif;
+}
+
+#count-down {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    justify-content: center;
+    align-items: center; /* Center the countdown vertically */
+}
+
+#count-down li {
+    position: relative;
+    width: 80px; /* Increase width for better visibility */
+    height: 80px; /* Increase height for better visibility */
+    border-radius: 50%; /* Heart-shaped countdown */
+    background-color: var(--gray);
+    color: var(--green);
+    font-size: 36px; /* Increase font size for better readability */
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
+    animation: pulse 1.5s infinite alternate; /* Add pulsating animation */
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#count-down li:not(:last-child)::before {
+    /*content: ":";*/
+    position: absolute;
+    top: 25%;
+    right: -16px; /* Adjust position for better alignment */
+    transform: translateY(-30%); /* Center vertically */
+    font-size: 40px; /* Adjust size for better visibility */
+    color: var(--purple); /* Use a vibrant color for the separator */
+    animation: bounce 1.5s infinite alternate; /* Add bouncing animation */
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+#count-down li::after {
+    content: attr(data-unit);
+    position: absolute;
+    bottom: -20px; /* Adjust position for better alignment */
+    width: 100%; /* Occupy full width */
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; /* Increase font size for better readability */
+    font-weight: bold;
+    color: var(--blue); /* Use a vibrant color for the unit label */
+    animation: color-change 1s infinite alternate; /* Add color-changing animation */
+}
+
+@keyframes color-change {
+    0% {
+        color: var(--green);
+    }
+    25% {
+        color: var(--orange);
+    }
+    50% {
+        color: var(--liteGreen);
+    }
+    100% {
+        color: var(--medBlue);
+    }
+}
+
+#count-down li::before,
+#count-down li::after {
+    animation: wiggle 1.5s ease infinite alternate;
+}
+
+@keyframes wiggle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+/* Add additional animations and styles for a more colorful countdown */
+
+#count-down li.days::before,
+#count-down li.hours::before,
+#count-down li.minutes::before,
+#count-down li.seconds::before {
+    animation: bounce 1.5s infinite alternate, color-change 1s infinite alternate;
+}
+
+#count-down li.days::after,
+#count-down li.hours::after,
+#count-down li.minutes::after,
+#count-down li.seconds::after {
+    animation: wiggle 1.5s ease infinite alternate, color-change 1s infinite alternate;
+}
+
+#count-down li.days {
+   background-color: var(--purple);
+    color: var(--liteBlue);
+}
+
+#count-down li.hours {
+    background-color: var(--purple);
+    /* background-color: var(--orange); */
+    color: var(--liteBlue);
+}
+
+#count-down li.minutes {
+    background-color: var(--purple);
+    /* background-color: var(--blue); */
+    color: var(--liteBlue);
+}
+
+#count-down li.seconds {
+    background-color: var(--purple);
+    /* background-color: var(--blue); */
+    color: var(--liteBlue);
+}
+
+
+#count-down-completed {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: orange /* Adjust color as needed */
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    50%{transform: rotate(90deg);}
+    100% { transform: rotate(360deg); }
+}
+
+#count-down li.clicked {
+    animation: rotate 3s linear;
+}
+
+@keyframes scale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#count-down li.pulsate {
+    animation: pulsate 2s ease-in-out infinite; 
+    background-color: rgb(229, 87, 87);
+}

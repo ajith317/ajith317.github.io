@@ -1,0 +1,899 @@
+
+@keyframes fall {
+	0% {
+		opacity: 0.9;
+		top: 0
+	}
+	100% {
+		opacity: 0.2;
+		top: 100%
+	}
+}
+
+@-webkit-keyframes blow-soft-left {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: -50%
+	}
+}
+
+@keyframes blow-soft-left {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: -50%
+	}
+}
+
+@-webkit-keyframes blow-medium-left {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: -100%
+	}
+}
+
+@keyframes blow-medium-left {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: -100%
+	}
+}
+
+@-webkit-keyframes blow-soft-right {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: 50%
+	}
+}
+
+@keyframes blow-soft-right {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: 50%
+	}
+}
+
+@-webkit-keyframes blow-medium-right {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: 100%
+	}
+}
+
+@keyframes blow-medium-right {
+	0% {
+		margin-left: 0
+	}
+	100% {
+		margin-left: 100%
+	}
+}
+
+@-webkit-keyframes sway-0 {
+	0% {
+		-webkit-transform: rotate(-5deg)
+	}
+	40% {
+		-webkit-transform: rotate(28deg)
+	}
+	100% {
+		-webkit-transform: rotate(3deg)
+	}
+}
+
+@keyframes sway-0 {
+	0% {
+		-ms-transform: rotate(-5deg);
+		transform: rotate(-5deg)
+	}
+	40% {
+		-ms-transform: rotate(28deg);
+		transform: rotate(28deg)
+	}
+	100% {
+		-ms-transform: rotate(3deg);
+		transform: rotate(3deg)
+	}
+}
+
+@-webkit-keyframes sway-1 {
+	0% {
+		-webkit-transform: rotate(10deg)
+	}
+	40% {
+		-webkit-transform: rotate(43deg)
+	}
+	100% {
+		-webkit-transform: rotate(15deg)
+	}
+}
+
+@keyframes sway-1 {
+	0% {
+		-ms-transform: rotate(10deg);
+		transform: rotate(10deg)
+	}
+	40% {
+		-ms-transform: rotate(43deg);
+		transform: rotate(43deg)
+	}
+	100% {
+		-ms-transform: rotate(15deg);
+		transform: rotate(15deg)
+	}
+}
+
+@-webkit-keyframes sway-2 {
+	0% {
+		-webkit-transform: rotate(15deg)
+	}
+	40% {
+		-webkit-transform: rotate(56deg)
+	}
+	100% {
+		-webkit-transform: rotate(22deg)
+	}
+}
+
+@keyframes sway-2 {
+	0% {
+		-ms-transform: rotate(15deg);
+		transform: rotate(15deg)
+	}
+	40% {
+		-ms-transform: rotate(56deg);
+		transform: rotate(56deg)
+	}
+	100% {
+		-ms-transform: rotate(22deg);
+		transform: rotate(22deg)
+	}
+}
+
+@-webkit-keyframes sway-3 {
+	0% {
+		-webkit-transform: rotate(25deg)
+	}
+	40% {
+		-webkit-transform: rotate(74deg)
+	}
+	100% {
+		-webkit-transform: rotate(37deg)
+	}
+}
+
+@keyframes sway-3 {
+	0% {
+		-ms-transform: rotate(25deg);
+		transform: rotate(25deg)
+	}
+	40% {
+		-ms-transform: rotate(74deg);
+		transform: rotate(74deg)
+	}
+	100% {
+		-ms-transform: rotate(37deg);
+		transform: rotate(37deg)
+	}
+}
+
+@-webkit-keyframes sway-4 {
+	0% {
+		-webkit-transform: rotate(40deg)
+	}
+	40% {
+		-webkit-transform: rotate(68deg)
+	}
+	100% {
+		-webkit-transform: rotate(25deg)
+	}
+}
+
+@keyframes sway-4 {
+	0% {
+		-ms-transform: rotate(40deg);
+		transform: rotate(40deg)
+	}
+	40% {
+		-ms-transform: rotate(68deg);
+		transform: rotate(68deg)
+	}
+	100% {
+		-ms-transform: rotate(25deg);
+		transform: rotate(25deg)
+	}
+}
+
+@-webkit-keyframes sway-5 {
+	0% {
+		-webkit-transform: rotate(50deg)
+	}
+	40% {
+		-webkit-transform: rotate(78deg)
+	}
+	100% {
+		-webkit-transform: rotate(40deg)
+	}
+}
+
+@keyframes sway-5 {
+	0% {
+		-ms-transform: rotate(50deg);
+		transform: rotate(50deg)
+	}
+	40% {
+		-ms-transform: rotate(78deg);
+		transform: rotate(78deg)
+	}
+	100% {
+		-ms-transform: rotate(40deg);
+		transform: rotate(40deg)
+	}
+}
+
+@-webkit-keyframes sway-6 {
+	0% {
+		-webkit-transform: rotate(65deg)
+	}
+	40% {
+		-webkit-transform: rotate(92deg)
+	}
+	100% {
+		-webkit-transform: rotate(58deg)
+	}
+}
+
+@keyframes sway-6 {
+	0% {
+		-ms-transform: rotate(65deg);
+		transform: rotate(65deg)
+	}
+	40% {
+		-ms-transform: rotate(92deg);
+		transform: rotate(92deg)
+	}
+	100% {
+		-ms-transform: rotate(58deg);
+		transform: rotate(58deg)
+	}
+}
+
+@-webkit-keyframes sway-7 {
+	0% {
+		-webkit-transform: rotate(72deg)
+	}
+	40% {
+		-webkit-transform: rotate(118deg)
+	}
+	100% {
+		-webkit-transform: rotate(68deg)
+	}
+}
+
+@keyframes sway-7 {
+	0% {
+		-ms-transform: rotate(72deg);
+		transform: rotate(72deg)
+	}
+	40% {
+		-ms-transform: rotate(118deg);
+		transform: rotate(118deg)
+	}
+	100% {
+		-ms-transform: rotate(68deg);
+		transform: rotate(68deg)
+	}
+}
+
+@-webkit-keyframes sway-8 {
+	0% {
+		-webkit-transform: rotate(94deg)
+	}
+	40% {
+		-webkit-transform: rotate(136deg)
+	}
+	100% {
+		-webkit-transform: rotate(82deg)
+	}
+}
+
+@keyframes sway-8 {
+	0% {
+		-ms-transform: rotate(94deg);
+		transform: rotate(94deg)
+	}
+	40% {
+		-ms-transform: rotate(136deg);
+		transform: rotate(136deg)
+	}
+	100% {
+		-ms-transform: rotate(82deg);
+		transform: rotate(82deg)
+	}
+}
+
+.sakura {
+	/* background: -webkit-linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));*/
+	background: red;
+	pointer-events: none;
+	position: absolute
+}
+
+.sakura {
+	background: #674ea7;
+}
+
+.normalText{
+	
+	font-size: x-small;
+	color: #674ea7;
+
+}
+
+.footerWelMsg{
+	font-size: medium;
+	color: #674ea7;
+	margin-top: 15px;
+	font-family: 'Dancing Script', cursive;
+	font-size: large;
+}
+/*******************************/
+
+body {
+	font-family: Arial, Helvetica, Sans-serif;
+	background-image: url(../assets/img/backdrop3.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+@media (max-width:900px) {
+	img {
+		max-width: 30%;
+	}
+}
+
+.top-right-decoration {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+}
+
+.top-left-decoration {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+}
+
+.title h1 {
+	font-family: 'Dancing Script', cursive;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 60px;
+	margin: 32px 0;
+	color: #674ea7;
+}
+
+.title h2 {
+	font-family: 'Dancing Script', cursive;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	font-size: 24px;
+	color: #e25c67;
+	line-height: 1;
+}
+
+.dance-med {
+	font-family: 'Dancing Script', cursive;
+	font-weight: bolder;
+	font-style: normal;
+	font-size: 32px;
+	color: #674ea7;
+	margin: 16px;
+	text-align: center;
+}
+
+.title h3 {
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-size: 24px;
+	color: #674ea7;
+	margin-top: 5px;
+}
+
+.title p {
+	color: #564861;
+	margin: 20px 0 15px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-size: 16px;
+}
+
+.wrap {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+	/* padding: 20px; */
+	text-align: center;
+	/* min-height:100%; */
+}
+
+
+/** **/
+
+* {
+	/* margin: 0;
+    padding: 0; */
+	font-family: 'Arvo', serif;
+}
+
+
+.landing-page {
+	background-color: #f6ffff;   
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* height: 100vh;
+    width: 100%; */
+	flex-direction: column;
+	background-color: #f6ffff;   
+}
+header, footer, section {
+	background-color: #f6ffff;  
+
+}
+
+
+.title p.godSlogan {
+	color: #a289b5;
+	margin: -30px 0 25px;
+	text-transform: uppercase;
+	letter-spacing: 1.2px;
+	font-size: 10px;
+	font-weight: bolder;
+	
+	
+}
+
+.title p.address {
+	color: #564861;
+	margin: 10px 0 5px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 14px;
+	
+}	
+
+a.place {
+    color: rgb(201, 141, 220); /* Change link color to blue */
+	font-weight: lighter;
+	text-decoration: none; /* Remove underline by default */
+    transition: color 0.1s ease;
+}
+
+a.place:hover {
+    color: #9fb082; /* Change link color on hover */
+	font-weight: bolder;
+}
+
+.title {
+	margin-bottom: 10px;
+}
+
+#time {
+	width: auto;
+	height: auto;
+	padding: 20px;
+	background-color: #eee;
+	border-radius: 20px;
+	font-size: 16px;
+}
+
+.venue {
+	width: auto;
+	height: auto;
+	background-color: #674ea7;
+	border-radius: 16px;
+	text-align: center;
+	color: #fff;
+	padding: 8px;
+	margin-right: 8px;
+}
+
+.venue a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.block {
+	width: 180px;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #fff;
+}
+
+
+.footer {
+	color: #564861;
+	text-align: center;
+	font-size: 16px;
+	margin: 24px;
+}
+
+.phone {
+	color: #874562
+}
+
+.end-msg {
+	width: auto;
+	height: auto;
+	padding: 12px;
+	background: linear-gradient(90deg, #b33a46, #9b313c);
+	border-radius: 20px;
+	font-size: 14px;
+	color: #fff;
+	font-size: 24px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.happiness {
+	color: #874562;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+.twitter {
+	color: #874562;
+}
+
+.instagram {
+	color: #874562;
+}
+
+.music {
+	display: none;
+}
+
+.actions {
+	display: flex;
+	font-size: 12px;
+	letter-spacing: 0pt;
+}
+
+.btn-yes {
+    background-color: #9b6e98 ;
+    color: #f6ffff;
+}
+
+.btn-no {
+    background-color: #9b6e98 ;
+    color: #f6ffff;
+}
+
+.btn-yes:hover {
+	background-color: lightsteelblue;
+}
+
+.btn-no:hover {
+    background-color: lightsteelblue;
+}
+
+
+
+/******************************************/
+
+
+/* TwoImages up&down */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container img:first-child {
+    margin-bottom: 10px; /* Add margin below the first image */
+	margin-top: -15px;
+}
+.image-container img:nth-child(2) {
+	margin-top: 10px; /* Adjust margin to position the second image slightly above */
+}
+
+
+/******************************************/
+
+
+
+/***emoji button  ***/
+.btn-custom {
+    background-color: #9b6e98 ; /* Custom button color */
+    border-color:  #9fb082;/* Optional: border color */
+    color: #ced6d5; /* Optional: text color */
+}
+
+.btn-success{
+
+    background-color: #9b6e98 ; /* Custom button color */
+    border-color:  #9fb082;/* Optional: border color */
+    color: #ced6d5; /* Optional: text color */
+}
+
+.btn-success:hover {
+    background-color: #F44336; /* lighter shade of green */
+    color: #ffffff; /* text color */
+    border-color:   #F44336;
+}
+
+.btn-primary:hover{
+    background-color: #66bb6a; /* lighter shade of green */
+    color: #ffffff; /* text color */
+    border-color:  #66bb6a;
+}
+
+/* Hide the emoji by default */
+
+.emoji {
+    display: none;
+  }
+  
+  /* Show the emoji when hovering over the button */
+  .btn:hover .emoji {
+    display: inline;
+  }
+  
+  /* Define the emoji animation */
+  @keyframes emojiAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Apply the emoji animation when hovering over the button */
+  .btn:hover .emoji {
+    animation: emojiAnimation 1s ease;
+  }
+  /* Define the emoji animation */
+@keyframes emojiAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+/* Apply the emoji animation */
+.emoji {
+  animation: emojiAnimation 1s ease;
+}
+
+		/***emoji button  ***/
+/******************************************/
+
+/* download & open invitationbutton */
+.d-flex.justify-content-center > button {
+   margin-top: -10px;
+	margin-right: 40px; /* Adjust the margin as needed for space between buttons */
+}
+.btn {
+    border-radius: 15px; /* Adjust the border-radius to control the curve of the buttons */
+
+}
+
+  /* download & open invitationbutton */
+/******************************************/
+
+
+/* mapBounce */
+@keyframes MapBounce {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+  #mapHeartLogo {
+	animation: MapBounce 5s forwards;
+  }
+  
+
+
+/* endmapBounce */
+/******************************************/
+
+
+
+/* new functionalites */
+
+
+#onClickGalleryImages {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0c0c;
+    display: none;
+}
+
+.image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+#displayedImage {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.indicators {
+    position: absolute;
+    top: 20px; /* Adjust top position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+/* circle .indicator */
+/* .indicator {  
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: #ff0000; 
+} */
+
+
+
+.indicator {
+    display: inline-block;
+    width: 10px;
+    height: 5px;
+    background-color: #fff;
+    margin: 0 5px;
+    cursor: pointer;	
+}
+
+.indicator.active {
+    background-color: #ff0000; 
+} 
+.indicator.completed {
+    background-color: #ff0000; /* Red color for completed indicators */
+}
+
+
+/* onclick imageGallery end */
+
+.detail-show-popup {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	max-height: 300px;
+	overflow-y: auto;
+	z-index: 9999;
+	width: 300px;
+}
+.detail-show-popup .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	color: #888;
+	font-size: 20px;
+}
+.detail-show-popup-header {
+	margin-bottom: 140px;
+	overflow: hidden; /* Ensures the container wraps around the floated elements */
+}
+
+.detail-show-popup img {
+	width: 75px; /* Adjust image size as needed */
+	height: 75px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	top: -20px; /* Adjust image position as needed */
+	left: -20px;
+}
+.detail-show-popup .text {
+	font-weight: bold;
+	font-size: 18px;	
+	margin-top: auto;
+}
+.detail-show-popup p {
+	margin-top: 50px; /* Adjust as needed */
+	font-size: 16px;
+	line-height: 1.5;
+	color: #555;
+}
