@@ -1,0 +1,124 @@
+:root {
+  /* colors */
+  --bodyBackgroundLite: #dac5c9;
+  --bodyBackgroundMed : #c8a7b5;
+  --bodyBackground: #eceade;
+  --fontTextColor : #674ea7;
+  --gray : #bcbcb4;
+
+  /* fonts */
+  --dancingFont: 'Dancing Script', cursive;
+
+  /* fontSize */
+  --moreSmallerFontSize : 10px;
+  --smallFontSize: 14px;
+  --mediumFontSize: 16px;
+  --largeFontSize: 40px;
+  
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    background-color: var(--bodyBackground)!important;
+  }
+
+  /* Content area style */
+  .content {
+    padding: 20px;
+  }
+
+  /* Custom modal styles for positioning */
+  .modal.right .modal-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0;
+    height: 100%;
+    width: 300px; /* Adjust the width as needed */
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .modal.right .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* Adjust tab styles */
+  .nav-tabs .nav-item {
+    width: 50%;
+    text-align: center;
+  }
+
+  .nav-tabs .nav-link {
+    color: #495057; /* Tab text color */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Display ellipsis for overflowed text */
+  }
+
+  .nav-tabs .nav-link.active {
+    color: #fff; /* Active tab text color */
+    background-color: #c8a7b5; /* Active tab background color */
+    border-color: #c8a7b5; /* Active tab border color */
+  }
+
+ .filter-section {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+.filter-icon {
+  cursor: pointer; /* Set cursor to pointer */
+}
+.filter-section.active {
+  display: block;
+  width: 100%;
+}
+/* Adjust filter button size and position */
+#filterBtn {
+  margin-top: 10px; /* Adjust top margin as needed */
+}
+
+/* Set filter button width to 100% */
+#filterBtn.btn-block {
+  width: 100%;
+}
+
+/* Custom CSS for input box */
+  .custom-input-group {
+    margin-top: 10px;
+  }
+
+  .custom-input-group .input-group-prepend .input-group-text {
+    border-radius: 0;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
+
+  .custom-input-group .input-group-append .input-group-text {
+    border-radius: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+ 
+/* Adjust modal footer styles */
+.modal-footer {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bodyBackground) !important;
+  padding: 10px 20px;
+}
+
+/* Adjust modal content when filter section is active */
+.modal-content.with-filter {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  justify-content: space-between;
+}
