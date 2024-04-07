@@ -1,3 +1,22 @@
+:root {
+
+    /* colors */
+    --bodyBackgroundLite: #dac5c9;
+    --bodyBackgroundMed : #c8a7b5;
+    --fontTextColor : #674ea7;
+    --gray : #bcbcb4;
+
+    /* fonts */
+    --dancingFont: 'Dancing Script', cursive;
+
+    /* fontSize */
+    --moreSmallerFontSize : 10px;
+    --smallFontSize: 14px;
+    --mediumFontSize: 16px;
+    --largeFontSize: 40px;
+    
+}
+
 html {
     scroll-behavior: smooth !important;
 }
@@ -50,7 +69,7 @@ body::-webkit-scrollbar {
     inset: 0 !important;
     width: 100%;
     height: 100%;
-    background-color: #111111;
+    background-color: #eceade;
     z-index: 1056 !important;
 }
 
@@ -119,13 +138,85 @@ body::-webkit-scrollbar {
 }
 
 .dark-section {
-    background-color: #111111 !important;
+    background-color: var(--bodyBackground) !important;
     margin-top: -0.5rem;
     margin-bottom: -0.5rem;
 }
 
 footer {
-    background-color: #111111 !important;
+    background-color: var(--bodyBackground);
     margin-top: -0.5rem;
     padding-bottom: 5rem;
 }
+
+
+h1.titleName {
+    font-family: var(--dancingFont);
+    font-weight: bold;
+    font-style: normal;
+    font-size: 56px;   
+    color: var(--fontTextColor);
+}
+.top-decorations {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.top-right-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.flower-bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.top-left-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+@media (max-width: 768px) {
+    .top-left-decoration,
+    .top-right-decoration {
+        width: 60px; /* Adjust for smaller screens */
+    }
+
+    .custom-section {
+        padding: 20px;
+      }
+      .custom-section .row {
+        display: flex;
+        flex-direction: column;
+      }
+    .arrow-image,
+    .falling-image {
+        max-width: 200px; /* Adjust the maximum width for smaller screens */
+    }
+}
+
+.arrow-image {
+    
+    left: 0; 
+    position:absolute; 
+    width: auto; 
+    height: 200px; 
+    transform: rotate(-10deg);
+}
+
+.falling-image {
+    position: absolute;
+    
+    right: 0; 
+    width: auto; 
+    height: 200px; 
+}
+
