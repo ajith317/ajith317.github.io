@@ -999,3 +999,8 @@ const comment = (() => {
         kirim,
     };
 })();
+
+
+window.onload = function() {
+    document.querySelector("#hide-btn").click();
+}
