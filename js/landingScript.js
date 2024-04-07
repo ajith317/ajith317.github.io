@@ -320,4 +320,32 @@ window.addEventListener("click", function(event) {
         }
     });
 });
-//*********************detailInfromationPopup end********************
+
+// ********************* download invitation strat  *********************
+function downloadFile(button) {
+
+    var fileName = 'WeedingOfAjithAnu.png';
+
+    var rawGitHubUrl = 'https://raw.githubusercontent.com/ajith317/ajith317.github.io/main/invitation/' + fileName;
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', rawGitHubUrl, true);
+
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+        var a = document.createElement('a');
+        a.href = window.URL.createObjectURL(xhr.response);
+        a.download = fileName;
+        a.style.display = 'none';
+
+        document.body.appendChild(a);
+
+        a.click();
+
+        document.body.removeChild(a);
+        button.style.backgroundColor = '#9b6e98'; 
+        button.style.borderColor = '#9b6e98'; 
+    };
+    xhr.send();
+}

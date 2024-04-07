@@ -659,6 +659,13 @@ a {
     color: #ced6d5; /* Optional: text color */
 }
 
+.btn-success:active {
+    background-color: #9b6e98; /* Set the desired color for active state */
+    border-color: #9b6e98; /* Set the border color for active state */
+    color: #ced6d5; /* Optional: text color */
+}
+
+
 .btn-success{
 
     background-color: #9b6e98 ; /* Custom button color */
@@ -667,14 +674,14 @@ a {
 }
 
 .btn-success:hover {
-    background-color: #F44336; /* lighter shade of green */
-    color: #ffffff; /* text color */
+    background-color: #F44336; 
+    color: #ffffff; 
     border-color:   #F44336;
 }
 
 .btn-primary:hover{
-    background-color: #66bb6a; /* lighter shade of green */
-    color: #ffffff; /* text color */
+    background-color: #66bb6a; 
+    color: #ffffff;
     border-color:  #66bb6a;
 }
 
