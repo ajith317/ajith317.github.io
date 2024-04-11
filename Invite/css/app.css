@@ -188,7 +188,8 @@ h1.titleName {
 @media (max-width: 768px) {
     .top-left-decoration,
     .top-right-decoration {
-        width: 60px; /* Adjust for smaller screens */
+        width: 70px; /* Adjust for smaller screens */
+        height: auto; 
     }
 
     .custom-section {
@@ -215,7 +216,7 @@ h1.titleName {
 
 .falling-image {
     position: absolute;
-    
+        
     right: 0; 
     width: auto; 
     height: 200px; 
