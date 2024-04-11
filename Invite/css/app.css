@@ -9,12 +9,14 @@
 
     /* fonts */
     --dancingFont: 'Dancing Script', cursive;
+    --NormalFont: 'Arvo', serif;
 
     /* fontSize */
     --moreSmallerFontSize : 10px;
     --smallFontSize: 14px;
     --mediumFontSize: 16px;
     --largeFontSize: 40px;
+
     
 }
 
@@ -222,3 +224,208 @@ h1.titleName {
     height: 200px; 
 }
 
+
+/* ==========================================================================
+Embed video
+========================================================================== */
+/* #video-bg {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding-bottom: 56.25%; 
+    overflow: hidden;
+    pointer-events: none; 
+}
+#bgndVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#video-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    pointer-events: none; 
+} */
+
+.colored-icon {
+    color: var(--bodyBackgroundMed);
+}
+
+.colored-text {
+    color: var(--fontTextColor);
+    font-size: 0.7rem;  
+}
+
+
+/* events desgin */
+.section-padding {
+padding: 20px 0;
+}
+
+.events {
+background-color: #eceade;
+
+border-top-left-radius: 40px;
+border-top-right-radius: 40px;
+padding: 30px;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.event-box {
+background-color: #e5dbd6;
+border-radius: 10px;
+padding: 20px;
+text-align: left;
+margin-bottom: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.event-title {
+color: #333;
+font-size: 24px;
+margin-bottom: 10px;
+}
+.event-time {
+color: #777;
+}
+.event-description {
+color: #555;
+margin-top: 10px;
+font-size: 16px;
+line-height: 1.5;
+}
+.btn-accent {
+background-color: #6c757d;
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+text-transform: uppercase;
+font-weight: bold;
+transition: background-color 0.3s;
+}
+.btn-accent:hover {
+background-color: #495057;
+}
+
+.event-box {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.event-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles for desktop */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden; 
+}
+
+.popup-content {
+    background-color: var(--bodyBackground);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    font-family: var(--NormalFont);
+    color: var(--fontTextColor);
+}
+
+.popup-header {
+    margin-top: 0;
+    text-align: center;
+    font-family: var(--dancingFont) !important;
+    color: var(--fontTextColor);   
+    font-weight: bold;
+
+}
+
+.popup-scroll {
+    margin-top: 10px;
+    overflow-y: auto; 
+    max-height: 200px; 
+}
+
+.column {
+    position: relative;
+    width: calc(50% - 5px);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.popup-columns {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid #ccc;   
+}
+
+.popup-columns::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: #ccc;
+    transform: translateX(-50%);
+}
+
+.close {
+    color: #aaaaaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* Media query for mobile */
+@media screen and (max-width: 600px) {
+    .popup-content {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .popup-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .popup-columns::before {
+        top: 50%;
+        height: 1px;
+        width: 70%;
+        transform: translateY(-50%);
+    }
+}

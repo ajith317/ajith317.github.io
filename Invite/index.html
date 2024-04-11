@@ -69,57 +69,59 @@
     <script src="./js/app.js" defer></script>
     <script src="./js/sideBar.js" defer></script>
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://unpkg.com/libphonenumber-js/bundle/libphonenumber-js.min.js"></script>
-     
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-V0wTd3HPBPaXTjAVF8Yg7Qx8WvW7v1H1X27o/iYZ2rsccXOosA/q4+rs4mB0vOkB" crossorigin="anonymous">
 
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    
 </head>
 
 <body data-email="user@example.com" data-password="12345678" data-url="https://api.ulems.my.id/" style="overflow-y: hidden;">
 
     <!-- Navbar Bottom -->
-    <nav class="navbar navbar-dark bg-dark navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menus">
+    <nav class="navbar navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menus" style="background-color: #e5dbd6;">
+
         <ul class="navbar-nav nav-justified w-100 align-items-center">
             <li class="nav-item">
                 <a class="nav-link" href="#home">
-                    <i class="fas fa-home"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Home</span>
+                    <i class="fas fa-home colored-icon"></i>
+                    <span class="d-block colored-text">Home</span>                        
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="#mempelai">
-                    <i class="fa-solid fa-user-group"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Bride</span>
+                    <i class="fa-solid fa-calendar-week colored-icon"></i>
+                    <span class="d-block colored-text">Events</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#tanggal">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Date</span>
+                    <i class="fa-solid fa-calendar-check colored-icon"></i>
+                    <span class="d-block colored-text" >Date</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#galeri">
-                    <i class="fa-solid fa-images"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Gallery</span>
+                    <i class="fa-solid fa-images colored-icon"></i>
+                    <span class="d-block colored-text" >Gallery</span>
                 </a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" href="#ucapan">
                     <i class="fa-solid fa-comments"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Greetings</span>
+                    <span class="d-block" >Greetings</span>
                 </a>
             </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="#popupComment" data-toggle="modal" data-target="#popupComment">
-                    <i class="fa-solid fa-comments"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Comments&Attendance</span>
+                    <i class="fa-solid fa-comments colored-icon"></i>
+                    <span class="d-block colored-text" >Comments&Attendance</span>
                 </a>
             </li>            
         </ul>
@@ -199,94 +201,113 @@
                 <p class="m-0">Scroll Down</p>
             </div>            
         </section>
-        <!-- Wave Separator -->
-        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1420 220">
-            <path fill="#e5dbd6" fill-opacity="1" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" transform="rotate(180, 710, 160)"></path>
-        </svg>
+       
     
         <!-- Mempelai -->
-        <section class="dark-section" id="mempelai">
-
-            <div class="text-center">
-                <h1 class="font-arabic py-4 px-2" style="font-size: 2rem">In the name of God, the most gracious, the most merciful</h1>
-
-                <!-- Love animation -->
-                <div class="position-relative">
-                    <div class="position-absolute" style="top: 0%; right: 10%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 500, 'animate-love')" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                        </svg>
+        <section class="events section-padding" id="mempelai">
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3 class="header text-center">Events</h3>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-md-5 col-sm-12 col-xs-12 leftcol" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="event-box" onclick="openPopup('Followed by Lunch', ['Pizza', 'Burger','Pizza', 'Burger'], ['idly','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger'])">
+                      <p><strong>06th July</strong></p>        
+                      <h5 class="event-title">Devgas <span class="event-time">6AM - 9AM</span></h5>
+                      <p class="event-description">Dummy data 
+                        Sourashtra cuisine is a traditional cuisine from the Sourashtra community of Tamil Nadu, India.
+                        Some famous dishes from this cuisine include Kothu Parotta, Kuzhi Paniyaram, Sodhi, and Kadalai Curry. Kothu Parotta is a popular street food in Tamil Nadu made with shredded parotta, vegetables, and spices. To make this dish, you'll need to:
+                      </p>
+                    </div>
+                    <div class="event-box" onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
+                      <h5 class="event-title">Grand Reception<span class="event-time">6PM - 10PM</span></h5>
+                      <p class="event-description">This event is not close to ethnic. The bride & groom would like to have some. 
+                        With booze flowing down the floor and western attire on, everyone would be busy showing off their new moves on stage, which they have finely honed. Expect beer pong matches & karaoke for sure.</p>
+                    </div>                                        
+                  </div>
+                  <div class="col-md-5 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="event-box" onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
+                      <p><strong>07th July</strong></p>              
+                      <h5 class="event-title">Haldi <span class="event-time">10AM-11AM</span></h5>
+                      <p class="event-description">The haldi ceremony is usually held separately for the bride and groom. This one is for the bride. It's a low-key event involving the application of turmeric paste on the hands, legs, and face of the bride. The groom is not allowed to see the bride after this ritual until the final wedding ceremony starts.</p>
+                    </div>
+                    <div class="event-box" onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
+                      <h5 class="event-title">Wedding <span class="event-time">6PM-12AM</span></h5>
+                      <p class="event-description">This is the main event in the entire wedding when the bride and groom tie the knot. The groom comes with the barat and is greeted by the bride side with some dhol, as the maximum number of guests would be attending this event. This is when the couple circle the sacred fire and are finally declared husband and wife.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row section-padding">
+                  <div class="col-md-12 text-center">
+                    <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
+                      <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
+                    </a>
+                  </div>
+                </div>
+            </div>                            
+            
+            <!-- food popup -->            
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <h2 class="popup-header"></h2>
+                <div class="popup-scroll">
+                    <div class="popup-columns">
+                        <div id="brideDishes" class="column left-column"></div>
+                    <div id="groomDishes" class="column"></div>
                     </div>
                 </div>
-
-                <h1 class="font-esthetic py-4 px-2" style="font-size: 2rem">Some text</h1>
-
-                <p class="pb-3 px-3">
-                    With all due respect. We invite you and your relatives
-                    Please also attend our wedding event:
-                </p>
-
-                <!-- Love animation -->
-                <div class="position-relative">
-                    <div class="position-absolute" style="top: 0%; left: 10%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 2000, 'animate-love')" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                        </svg>
-                    </div>
                 </div>
+            </div>     
 
-                <div class="overflow-x-hidden">
-
-                    <div data-aos="fade-right" data-aos-duration="2000">
-                        <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
-                            <img src="./assets/images/cowo.png" alt="cowo" onclick="util.modal(this)">
+             <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="background-color: #e5dbd6;">
+                        <div class="modal-header" style="background-color: #c8a7b5; color: #fff; font-family: 'Arvo', serif;">
+                            <h5 class="modal-title">Ugh... dress codes?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <h1 class="font-esthetic" style="font-size: 3rem;">Ajith Babu</h1>
-                        <p class="mt-3 mb-0" style="font-size: 1.25rem;">Change</p>
-                        <p class="mb-0">Ladies and gentlemen ...</p>
-                    </div>
-
-                    <!-- Love animation -->
-                    <div class="position-relative">
-                        <div class="position-absolute" style="top: 0%; right: 10%;">
-                            <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 3000, 'animate-love')" viewBox="0 0 16 16">
-                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
+                        <div class="modal-body" style="font-family: 'Arvo', serif;">
+                            <h5>Mehndi <span class="event-time">1PM - 5PM</span></h5>
+                            <p style="color: #333;">
+                                <strong>Ethnic Indian wear</strong>
+                                <br>
+                                Ladies can wear something
+                                <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-women/" style="color: #ff69b4;">bright & vivid</a>
+                                and gentlemen can be on
+                                their <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-men/" style="color: #4caf50;">vibrant kurtas</a> with pants or pyjamas along with an optional shawl.
+                            </p>
+                            <h5>Cocktail Night <span class="event-time">7PM - 12AM</span></h5>
+                            <p style="color: #333;">
+                                <strong>Western attire</strong>
+                                <br>
+                                A semi-formal look that is contemporary & fashionable which is not too prim & proper is the best
+                                to pull off this night. You can see some pins for
+                                <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-women/" style="color: #009688;">ladies</a>
+                                & <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-men/" style="color: #3f51b5;">gents</a>.
+                            </p>
+                            <h5>Wedding <span class="event-time">6PM-12AM</span></h5>
+                            <p style="color: #333;">
+                                <strong>Indo-western</strong>
+                                <br>
+                                Ladies can flaunt their unconventional sarees,
+                                <a href="https://www.pinterest.com/ramswarooppatra/indo-western-lehengas/" style="color: #ff5722;">lehengas</a>,
+                                <a href="https://www.pinterest.com/ramswarooppatra/indo-western-anarkalis/" style="color: #f44336;">anarkalis</a>,
+                                dresses and the list
+                                goes on whereas gentlemen can wear any kind of suit or just blazer. If you don't like to wear a
+                                suit/blazer, you can do a <a href="https://www.pinterest.com/ramswarooppatra/high-neck-jackets-for-men/" style="color: #2196f3;">high-neck (band gala) waistcoat & shirt</a> combo.
+                            </p>
                         </div>
-                    </div>
-
-                    <h1 class="font-esthetic my-4" style="font-size: 4rem;">&</h1>
-
-                    <!-- Love animation -->
-                    <div class="position-relative">
-                        <div class="position-absolute" style="top: 0%; left: 10%;">
-                            <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 2000, 'animate-love')" viewBox="0 0 16 16">
-                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div data-aos="fade-left" data-aos-duration="2000">
-                        <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
-                            <img src="./assets/images/cewe.png" alt="cewe" onclick="util.modal(this)">
-                        </div>
-                        <h1 class="font-esthetic" style="font-size: 3rem;">Anupriya</h1>
-                        <p class="mt-3 mb-0" style="font-size: 1.25rem;">Daughter</p>
-                        <p class="mb-0">Ladies and gentlemen ...</p>
-                    </div>
-                </div>
-
-                <!-- Ballon animation -->
-                <div class="position-relative">
-                    <div class="position-absolute" style="top: 0%; right: 5%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 1500, 'animate-love')" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"></path>
-                        </svg>
-                    </div>
-                </div>
-
-            </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+                   
         </section>
+        
 
         <!-- Wave Separator -->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -645,7 +666,7 @@
     </div>
 
     <!-- Audio Button -->
-    <button type="button" id="tombol-musik" style="display: none;" class="btn btn-light btn-sm rounded-circle btn-music" onclick="util.music(this)" data-status="true" data-url="./assets/music/sound.mp3">
+    <button type="button" id="tombol-musik" style="display: none; background-color: #c8a7b5;" class="btn btn-light btn-sm rounded-circle btn-music" onclick="util.music(this)" data-status="true" data-url="./assets/music/sound.mp3">
         <i class="fa-solid fa-circle-pause spin-button"></i>
     </button>
 

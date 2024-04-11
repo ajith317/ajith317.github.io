@@ -204,7 +204,7 @@ const util = (() => {
         button.disabled = true;
         document.querySelector('body').style.overflowY = 'scroll';
         AOS.init();
-        audio.play();
+         audio.play();
         debugger
         if (localStorage.getItem('alertClosed')) {
             document.getElementById('alertDiv').style.display = 'none';
@@ -1004,3 +1004,138 @@ const comment = (() => {
 window.onload = function() {
     document.querySelector("#hide-btn").click();
 }
+
+//  ****************Load YouTube Player API code asynchronously****************
+ 
+//  var tag = document.createElement('script');
+//  tag.src = "https://www.youtube.com/iframe_api";
+//  var firstScriptTag = document.getElementsByTagName('script')[0];
+//  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+//  // YouTube Player API code
+//  var player;
+//  function onYouTubeIframeAPIReady() {
+//      player = new YT.Player('bgndVideo', {
+//          height: '100%', // Set the height to 100% for full width
+//          width: '100%',
+//          videoId: 'eehISH4VfTQ', // Replace with the correct video ID
+//          playerVars: {
+//              'autoplay': 1,
+//              'controls': 0,
+//              'showinfo': 0,
+//              'rel': 0,
+//              'mute': 1,
+//              'loop': 1,
+//              'start': 136 // Start at 136 seconds
+//          },
+//          events: {
+//              'onReady': onPlayerReady
+//          }
+//      });
+//  }
+
+//  function onPlayerReady(event) {
+//      event.target.playVideo();
+//      // Disable player controls
+//      event.target.setPlaybackQuality('hd1080');
+//      event.target.setPlaybackQuality('small');
+//      event.target.setPlaybackQuality('medium');
+//      event.target.setPlaybackQuality('large');
+//  }
+
+
+const effect = document.querySelector(".effect");
+
+const buttons = document.querySelectorAll(".navbar button:not(.plus)");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const x = e.target.offsetLeft;
+
+    buttons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    e.target.classList.add("active");
+
+    anime({
+      targets: ".effect",
+      left: `${x}px`,
+      opacity: 1,
+      duration: 600,
+    });
+  });
+});
+
+
+// Function to open the popup and populate it with content
+function openPopup(title, brideDishes, groomDishes) {
+    // Set the header title
+    var popupHeader = document.querySelector('.popup-header');
+    popupHeader.textContent = title;
+
+    // Add a paragraph element with the text "List of menus" below the title
+    var listParagraph = document.createElement('p');
+    listParagraph.textContent = "List of menus";
+    listParagraph.style.fontSize = "18px";
+    listParagraph.style.textAlign = "center"; 
+    listParagraph.style.marginTop = "5px";
+
+    popupHeader.appendChild(listParagraph);
+
+    // Construct HTML content with lists of food items
+    var brideContent = '<div class="food-item"><strong>Groom Mandapam</strong></div><div><ul>';
+    for (var i = 0; i < brideDishes.length; i++) {
+        brideContent += '<li>' + brideDishes[i] + '</li>';
+    }
+    brideContent += '</ul></div>';
+
+    var groomContent = '<div class="food-item"><strong>Bride Mandapam</strong></div><div><ul>';
+    for (var j = 0; j < groomDishes.length; j++) {
+        groomContent += '<li>' + groomDishes[j] + '</li>';
+    }
+    groomContent += '</ul></div>';
+
+    // Populate bride and groom content in respective columns
+    document.getElementById("brideDishes").innerHTML = brideContent;
+    document.getElementById("groomDishes").innerHTML = groomContent;
+
+    // Display the popup
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+    setVerticalLineHeight();
+
+    // Add event listener to close popup when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target == popup) {
+            closePopup();
+        }
+    });
+}
+
+
+// Function to close the popup
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+
+// Function to set the top position of the vertical line dynamically
+function setVerticalLineHeight() {
+    var popupColumns = document.querySelector('.popup-columns');
+    if (popupColumns) {
+        var brideList = document.querySelector("#brideDishes ul");
+        var groomList = document.querySelector("#groomDishes ul");
+
+        if (brideList && groomList) {
+            // Get the top position of the lists
+            var brideTop = brideList.getBoundingClientRect().top;
+            var groomTop = groomList.getBoundingClientRect().top;
+     
+            var lineStart = Math.min(brideTop, groomTop);
+            var verticalLineTop = brideTop - lineStart - 20;
+            document.querySelector('.popup-columns::before').style.top = verticalLineTop + 'px';
+        }
+    }
+}
+
