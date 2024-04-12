@@ -65,9 +65,10 @@
     <!-- App -->
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/sideBar.css">
+    <link rel="stylesheet" href="./css/QuizGame.css">
 
     <script src="./js/app.js" defer></script>
-    <script src="./js/sideBar.js" defer></script>
+    <script src="./js/sideBar.js" defer></script>    
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -75,6 +76,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-V0wTd3HPBPaXTjAVF8Yg7Qx8WvW7v1H1X27o/iYZ2rsccXOosA/q4+rs4mB0vOkB" crossorigin="anonymous">
 
+    <!-- FontAweome CDN Link for Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
@@ -117,13 +121,21 @@
                     <i class="fa-solid fa-comments"></i>
                     <span class="d-block" >Greetings</span>
                 </a>
-            </li> -->
+            </li> -->          
+
             <li class="nav-item">
                 <a class="nav-link" href="#popupComment" data-toggle="modal" data-target="#popupComment">
                     <i class="fa-solid fa-comments colored-icon"></i>
                     <span class="d-block colored-text" >Comments&Attendance</span>
                 </a>
-            </li>            
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="#gameSection">
+                    <i class="fa-solid fa-gamepad colored-icon"></i>
+                    <span class="d-block colored-text" >Games</span>
+                </a>
+            </li> 
+               
         </ul>
     </nav>
 
@@ -309,46 +321,13 @@
         </section>
         
 
-        <!-- Wave Separator -->
+        <!-- Wave Separator-->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#e5dbd6" fill-opacity="1" d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
         </svg>
-
-        <!-- Firman Allah Subhanahu Wa Ta'ala -->
-        <div class="container">
-            <div class="text-center" data-aos="fade-up" data-aos-duration="2000">
-
-                <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
-                    Some text
-                </h1>
-
-                <p style="font-size: 0.9rem;" class="px-2">
-                    And among His signs (greatness) is that He created pairs for you from
-                    your own kind, so that you may lean and be at peace with it, and He will make it among you
-                    love and affection. Verily, in that there are indeed signs
-                    (God's greatness) for people who think.
-                </p>
-
-                <span class="mb-0"><strong>Something</strong></span>
-            </div>
-        </div>
-
-        <!-- Ballon animation -->
-        <div class="position-relative">
-            <div class="position-absolute" style="top: 0%; left: 5%;">
-                <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 4000, 'animate-love')" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Wave Separator -->
-        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#e5dbd6" fill-opacity="1" d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
-        </svg>
-
-        <!-- Tanggal -->
-        <section class="dark-section" id="tanggal">
+       
+         <!-- Tanggal -->
+         <section class="dark-section" id="tanggal">
 
             <div class="container">
                 <div class="text-center">
@@ -410,6 +389,22 @@
                 </div>
             </div>
         </section>
+
+        <!-- Ballon animation -->
+        <div class="position-relative">
+            <div class="position-absolute" style="top: 0%; left: 5%;">
+                <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 4000, 'animate-love')" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Wave Separator -->
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#e5dbd6" fill-opacity="1" d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+        </svg>
+
+       
 
         <!-- Love animation -->
         <div class="position-relative">
@@ -606,10 +601,98 @@
             </div>
         </section>
 
+       <!-- Wave Separator-->
+       <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#e5dbd6" fill-opacity="1" d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
+        </svg>
+
+         <!--Game Section -->
+        <section class="dark-section" id="gameSection">
+         <div class="container">
+            <div class="text-center" data-aos="fade-up" data-aos-duration="2000">          
+            <!-- start Quiz button -->
+                <div class="start_btn"><button>Start Quiz</button></div>    
+                <!-- Info Box -->
+                <div class="info_box">
+                    <div class="info-title"><span>Some Rules of this Quiz</span></div>
+                    <div class="info-list">
+                        <div class="info">1. You will have only <span>30 seconds</span> per each question.</div>
+                        <div class="info">2. Once you select your answer, it can't be undone.</div>
+                        <div class="info">3. You can't select any option once time goes off.</div>
+                        <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+                        <div class="info">5. You'll getgifts on the basis of your correct answers.</div>
+                    </div>
+                    <div class="buttons">
+                        <button class="quit">Exit Quiz</button>
+                        <button class="restart">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Quiz Box -->
+                <div class="quiz_box">
+                    <header>
+                        <div class="title">About ajith anu quiz</div>
+                        <div class="timer">
+                            <div class="time_left_txt">Time Left</div>
+                            <div class="timer_sec">29</div>
+                        </div>
+                        <div class="time_line"></div>
+                    </header>
+                    <section>
+                        <div class="que_text">
+                            <!-- Here I've inserted question from JavaScript -->
+                        </div>
+                        <div class="option_list">
+                            <!-- Here I've inserted options from JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- footer of Quiz Box -->
+                    <footer class="quizFooter">
+                        <div class="total_que">
+                            <!-- Here I've inserted Question Count Number from JavaScript -->
+                        </div>
+                        <button class="next_btn">Next Que</button>
+                    </footer>
+                </div>
+
+                <!-- Result Box -->
+                <div class="result_box">
+                    <div class="icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="complete_text">You've completed the Quiz!</div>
+                    <div class="score_text">
+                        <!-- Here I've inserted Score Result from JavaScript -->
+                    </div>
+                    <div class="buttons">
+                        <button class="restart">Play Again</button>
+                        <button class="quit">Quit Quiz</button>
+                    </div>
+                </div>
+
+                <script src="./js/gameQuestions.js"></script>
+                <script src="./js/gameScript.js"></script>
+            </div>
+        </div>
+
+        </section>
+
+        <!-- Ballon animation -->
+        <div class="position-relative">
+            <div class="position-absolute" style="top: 0%; left: 5%;">
+                <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50" onload="util.animate(this, 4000, 'animate-love')" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"></path>
+                </svg>
+            </div>
+        </div>
+
         <!-- Wave Separator -->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#e5dbd6" fill-opacity="1" d="M0,224L34.3,234.7C68.6,245,137,267,206,266.7C274.3,267,343,245,411,234.7C480,224,549,224,617,213.3C685.7,203,754,181,823,197.3C891.4,213,960,267,1029,266.7C1097.1,267,1166,213,1234,192C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+            <path fill="#e5dbd6" fill-opacity="1" d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
         </svg>
+
+        
     </main>
 
     <!-- Footer Invitation -->
