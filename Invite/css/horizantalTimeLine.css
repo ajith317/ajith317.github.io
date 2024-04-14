@@ -1,0 +1,548 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+:root {
+  --white: #674ea7;
+  --green : #62e092;
+
+  --bodyBackgroundLite: #dac5c9;
+  --bodyBackgroundMed : #c8a7b5;
+  --bodyBackground: #eceade;
+  --fontTextColor : #674ea7;
+  --gray : #bcbcb4;
+
+  /* fonts */
+  --dancingFont: 'Dancing Script', cursive;
+  --NormalFont: 'Arvo', serif;
+
+  /* fontSize */
+  --moreSmallerFontSize : 10px;
+  --smallFontSize: 14px;
+  --mediumFontSize: 16px;
+  --largeFontSize: 40px;
+
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* .section SECTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.section {
+  padding: 50px 0;
+}
+
+.section .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section h1 {
+  font-size: 2.5rem;
+  line-height: 1.25;
+}
+
+.section h2 {
+  font-size: 1.3rem;
+}
+
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline {
+  position: relative;
+  white-space: nowrap;
+  max-width: 1400px;
+  padding: 0 10px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px auto;
+  grid-gap: 20px;
+}
+
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 30px;
+  width: 100px;
+  z-index: 2;
+}
+
+.timeline::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--timeline-gradient));
+}
+
+.timeline::before {
+  left: 340px;
+  background: linear-gradient(90deg, var(--timeline-gradient));
+}
+
+.timeline .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px;
+  color: var(--fontTextColor);
+  background: var(--bodyBackgroundLite);
+  white-space: normal;
+  border-radius: 10px;
+}
+
+.timeline .info img {
+  border-radius: 0 10px 30px 10px;
+}
+
+.timeline .info p {
+  margin-top: 10px;
+  color: var(--gray)
+}
+
+.timeline .info a {
+  text-decoration: none;
+}
+
+.timeline ol::-webkit-scrollbar {
+  height: 12px;
+}
+
+.timeline ol::-webkit-scrollbar-thumb,
+.timeline ol::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.timeline ol::-webkit-scrollbar-thumb {
+  background: var(--bodyBackgroundMed);
+}
+
+.timeline ol::-webkit-scrollbar-track {
+  background: var(--fontTextColor);
+}
+
+.timeline ol {
+  font-size: 0;
+  padding: 250px 0;
+  transition: all 1s;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--gray) var(--bodyBackgroundMed);
+}
+
+.timeline ol li {
+  position: relative;
+  display: inline-block;
+  list-style-type: none;
+  width: 160px;
+  height: 5px;
+  background: var(--bodyBackgroundLite);
+  scroll-snap-align: start;
+}
+
+.timeline ol li:last-child {
+  width: 340px;
+}
+
+.timeline ol li:not(:first-child) {
+  margin-left: 14px;
+}
+
+.timeline ol li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 1px);
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--fontTextColor);
+  z-index: 1;
+}
+
+.timeline ol li div {
+  position: absolute;
+  left: calc(100% + 7px);
+  width: 280px;
+  padding: 15px;
+  font-size: 1rem;
+  white-space: normal;
+  color: var(--gray);
+  background: var(--bodyBackgroundLite);
+  border-radius: 0 10px 10px 10px;
+}
+.timeline ol li div img {
+  width:100%;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 5px 30px 5px 10px;
+}
+
+.timeline ol li div .visitTitle {
+  font-size: 1.0rem;
+  font-weight: bold;
+  font-family: var(--NormalFont);
+  color: var(--fontTextColor);
+  text-decoration: none;
+}
+
+.timeline ol li div .visitTitle a:hover{
+  color: var(--bodyBackgroundMed); 
+}
+.timeline ol li div .visitTitle a {
+  color: inherit; 
+  text-decoration: none;
+}
+
+.timeline ol li div::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline ol li:nth-child(odd) div {
+  top: -16px;
+  transform: translateY(-100%);
+  border-radius: 10px 10px 10px 0;
+}
+
+.timeline ol li:nth-child(odd) div::before {
+  top: 100%;
+  border-width: 8px 8px 0 0;
+  border-color: var(--bodyBackgroundMed) transparent transparent transparent;
+}
+
+.timeline ol li:nth-child(even) div {
+  top: calc(100% + 16px);
+}
+
+.timeline ol li:nth-child(even) div::before {
+  top: -8px;
+  border-width: 8px 0 0 8px;
+  border-color: transparent transparent transparent var(--bodyBackgroundMed);
+}
+
+
+
+.timeline h1 {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--fontTextColor);
+}
+
+/* GENERAL MEDIA QUERIES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 800px) {
+  .timeline {
+    display: block;
+  }
+
+  .timeline::before,
+  .timeline::after {
+    width: 50px;
+  }
+
+  .timeline::before {
+    left: 0;
+  }
+
+  .timeline .info {
+    display: none;
+  }
+}
+
+
+
+    /********** Slider image ****************/
+
+
+
+    /* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.wrapper {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+.wrapper i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.wrapper i:active{
+  transform: translateY(-50%) scale(0.85);
+}
+.wrapper i:first-child{
+  left: -22px;
+}
+.wrapper i:last-child{
+  right: -22px;
+}
+.wrapper .carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+.carousel :where(.card, .img) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .card {
+  scroll-snap-align: start;
+  height: 342px;
+  list-style: none;
+  background: #fff;
+  cursor: pointer;
+  padding-bottom: 15px;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.card {
+    position: relative;
+    width: 300px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.carousel .card h2 {
+  font-size: 1.00rem; 
+}
+.carousel .card span {
+  color: #6A6D78;
+  font-size: 0.80rem;
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
+  }
+}
+
+
+.timeline-steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.timeline-steps .timeline-step {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1rem
+}
+
+@media (min-width:768px) {
+    .timeline-steps .timeline-step:not(:last-child):after {
+        content: "";
+        display: block;
+        border-top: .25rem dotted #3b82f6;
+        width: 3.46rem;
+        position: absolute;
+        left: 7.5rem;
+        top: .3125rem
+    }
+    .timeline-steps .timeline-step:not(:first-child):before {
+        content: "";
+        display: block;
+        border-top: .25rem dotted #3b82f6;
+        width: 3.8125rem;
+        position: absolute;
+        right: 7.5rem;
+        top: .3125rem
+    }
+}
+
+.timeline-steps .timeline-content {
+    width: 10rem;
+    text-align: center
+}
+
+.timeline-steps .timeline-content .inner-circle {
+    border-radius: 1.5rem;
+    height: 1rem;
+    width: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3b82f6
+}
+
+.timeline-steps .timeline-content .inner-circle:before {
+    content: "";
+    background-color: #3b82f6;
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    min-width: 3rem;
+    border-radius: 6.25rem;
+    opacity: .5
+}
+
+
+
+.card .img {
+    width: 100%;
+    height: 100%;
+   overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire container */
+  
+}
+
+.card .visit-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    display: none; /* Initially hide the button */
+}
+
+.card:hover .visit-button {
+    display: block; /* Show the button on hover */
+}
+
+.card .time {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+    margin: 0;
+}
+
+
+
+.card .job-title-container:hover block {
+    display: block; /* Show the content when hovering over the job-title-container */
+}
+
+
+
+
+
+/* 
+.card .job-title {
+    color: #6A6D78;
+    font-size: 0.80rem;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 20; 
+    -webkit-box-orient: vertical;
+	 --animation-duration: 2;
+    white-space: pre-wrap; 
+    animation: scrollText linear infinite; 
+    animation-duration: calc(65s * var(--animation-duration)); 
+    animation-timing-function: linear;
+}
+
+.card .job-title-container {
+    max-height: 10px; 
+    overflow: hidden; 
+    position: relative;
+    word-wrap: break-word; 
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(calc(-100% - 1.2em)); 
+    }
+}
+
+.card .job-title::after {
+    content: attr(data-text); 
+    display: block; 
+    color: rgb(186, 186, 186); 
+} */
+
+
+

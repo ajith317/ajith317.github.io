@@ -14,12 +14,12 @@ let questions = [
     {
     numb: 2,
     question: "What food will provide on devgas?",
-    answer: "No giving anything",
+    answer: "Not giving anything",
     options: [
       "Parotta",
       "Chapptathi",
       "Rice",
-      "No giving anything"
+      "Not giving anything"
     ]
   },
     {
@@ -52,62 +52,62 @@ let questions = [
       "Parotta",
       "Chapptathi",
       "Rice",
-      "No giving anything"
+      "Not giving anything"
     ]
   },
     {
       numb: 6,
       question: "What food will provide on devgas?",
-      answer: "No giving anything",
+      answer: "Not giving anything",
       options: [
         "Parotta",
         "Chapptathi",
         "Rice",
-        "No giving anything"
+        "Not giving anything"
       ]
     },
       {
       numb: 7,
       question: "What food will provide on devgas?",
-      answer: "No giving anything",
+      answer: "Not giving anything",
       options: [
         "Parotta",
         "Chapptathi",
         "Rice",
-        "No giving anything"
+        "Not giving anything"
       ]
     },
       {
       numb: 8,
       question: "What food will provide on devgas?",
-      answer: "No giving anything",
+      answer: "Not giving anything",
       options: [
         "Parotta",
         "Chapptathi",
         "Rice",
-        "No giving anything"
+        "Not giving anything"
       ]
     },
       {
       numb: 9,
       question: "What food will provide on devgas?",
-      answer: "No giving anything",
+      answer: "Not giving anything",
       options: [
         "Parotta",
         "Chapptathi",
         "Rice",
-        "No giving anything"
+        "Not giving anything"
       ]
     },
       {
       numb: 10,
       question: "What food will provide on devgas?",
-      answer: "No giving anything",
+      answer: "Not giving anything",
       options: [
         "Parotta",
         "Chapptathi",
         "Rice",
-        "No giving anything"
+        "Not giving anything"
     ]
     },
   // you can uncomment the below codes and make duplicate as more as you want to add question
