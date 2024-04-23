@@ -402,3 +402,126 @@ section .option_list .option .icon{
     color: #fff;
     background: #f13444;
 }
+
+
+/* tableData design */
+
+.table-container {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .table-header {
+    background-color: #f8f9fa;
+  }
+
+  .filter-input {
+    width: calc(100% - 20px);
+    margin-right: 10px;
+  }
+
+  .sort-icon {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+
+  .sort-icon.up {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid;
+  }
+
+  .sort-icon.down {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid;
+  }
+
+  .dropdown-item.active {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+
+  /* Adjustments for table cells */
+  .table th,
+  .table td {
+    
+    padding-right :-20rem;
+    font-size: 14px; /* Adjust font size */
+  }
+
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .table th,
+    .table td {
+      padding: 0.25rem; /* Reduce padding for smaller screens */
+      font-size: 12px; /* Reduce font size for smaller screens */
+    }
+  }
+
+/* GameRules */
+
+
+.GameContainer {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color:var(--bodyBackground);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+gameH1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--dancingFont);
+    animation: slideIn 1s ease-out;
+}
+@keyframes slideIn {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+.rules-list {
+    padding-left: 20px;
+    list-style: none;    
+}
+.rules-list li {
+    margin-top: 10px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 16px;
+    font-family: serif;
+    animation: fadeInDelay 1s ease-out forwards;
+}
+.rules-list li::before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    color: var(--fontTextColor);
+    font-size: 16px;
+    animation: bounce 1s ease-out infinite;
+}
+@keyframes fadeInDelay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+

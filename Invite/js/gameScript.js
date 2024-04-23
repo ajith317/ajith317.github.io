@@ -216,3 +216,118 @@ function queCounter(index){
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
     bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
+
+
+//table data
+
+  let currentPage = 1;
+  const pageSize = 10;
+  let usersData = [];
+  let isUsernameAscending = false;
+  let isScoreAscending = false;
+
+  // Function to remove special characters from a string
+  function removeSpecialChars(str) {
+    return str.replace(/[^\w\s]/gi, '');
+  }
+
+  function displayUsers(startIndex, endIndex) {
+    const tableBody = $('#userTable tbody');
+    tableBody.empty();
+    for (let i = startIndex; i < endIndex; i++) {
+      const user = usersData[i];
+      const row = `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${user.name}</td>
+          <td>${user.phone}</td>
+          <td>${i+1}</td>
+          <td>${user.email}</td>        
+        </tr>
+      `;
+      tableBody.append(row);
+    }
+  }
+
+  function updatePaginationButtons() {
+    const prevBtn = $('#prevBtn');
+    const nextBtn = $('#nextBtn');
+    const pageInfo = $('#pageInfo');
+
+    prevBtn.prop('disabled', currentPage === 1);
+    nextBtn.prop('disabled', currentPage * pageSize >= usersData.length);
+
+    const totalPages = Math.ceil(usersData.length / pageSize);
+    pageInfo.text(`Page ${currentPage} of ${totalPages}`);
+  }
+
+  function paginateUsers() {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = Math.min(currentPage * pageSize, usersData.length);
+    displayUsers(startIndex, endIndex);
+    updatePaginationButtons();
+  }
+
+  function applyUsernameSorting() {
+    // Sort by username in ascending order
+    usersData.sort((a, b) => a.name.localeCompare(b.name));
+
+    // If username sorting is ascending, reverse the array to make it descending
+    if (isUsernameAscending) {
+      usersData.reverse();
+    }
+
+    currentPage = 1;
+    paginateUsers();
+  }
+
+  function applyScoreSorting() {
+    // Sort by score in ascending order
+    usersData.sort((a, b) => a.phone.localeCompare(b.phone));
+
+    // If score sorting is ascending, reverse the array to make it descending
+    if (isScoreAscending) {
+      usersData.reverse();
+    }
+
+    currentPage = 1;
+    paginateUsers();
+  }
+
+  $(document).ready(function () {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        usersData = data;
+        // Sort data by score in descending order initially
+        usersData.sort((a, b) => b.phone.localeCompare(a.phone));
+        paginateUsers();
+      })
+      .catch(error => console.error('Error fetching data:', error));
+
+    $('#prevBtn').click(function () {
+      currentPage--;
+      paginateUsers();
+    });
+
+    $('#nextBtn').click(function () {
+      currentPage++;
+      paginateUsers();
+    });
+
+    // Add event listener to username sort icon
+    $('#usernameSortIcon').click(function () {
+      // Toggle the sorting order
+      isUsernameAscending = !isUsernameAscending;
+      // Apply username sorting
+      applyUsernameSorting();
+    });
+
+    // Add event listener to score sort icon
+    $('#scoreSortIcon').click(function () {
+      // Toggle the sorting order
+      isScoreAscending = !isScoreAscending;
+      // Apply score sorting
+      applyScoreSorting();
+    });
+  });
