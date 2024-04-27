@@ -1139,3 +1139,198 @@ function setVerticalLineHeight() {
     }
 }
 
+const apiUrl = "http://106.51.20.114:8101/api/v1";
+
+/**
+ * 
+ * @returns {string | null};
+ */
+function getAccessToken(){
+    return localStorage.getItem('accessToken');
+}
+
+/**
+ * 
+ * @param {string} accessToken 
+ */
+function setAccessToken(accessToken){
+    localStorage.setItem('accessToken', accessToken);
+}
+
+/**
+ * 
+ * @returns {Headers}
+ */
+function getHeaders(){
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const accessToken = getAccessToken();
+    if (accessToken) {
+        myHeaders.append("Authorization", `Bearer ${accessToken}`)
+    }
+    return myHeaders;
+}
+
+/**
+ * 
+ * @param {string} mobileNumber 
+ * @returns 
+ */
+async function sendOtp(mobileNumber){
+    if (getAccessToken()) {
+        alert('Already initialized');
+        return;
+    }
+
+    const resp = await fetch(`${apiUrl}/auth/send-otp`, {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            mobileNumber
+        })
+    });
+    if (resp.ok) {
+        alert('OTP Sent');
+    } else {
+        alert(await resp.text());
+    }
+}
+
+/**
+ * 
+ * @param {string} mobileNumber 
+ * @param {string} otp 
+ * @param {string} name 
+ * @param {boolean} isAttend 
+ * @param {string} relationType 
+ * @param {string} colleagueRef 
+ * @param {string} message 
+ * @returns 
+ */
+async function initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef = "", message = ""){
+    if (getAccessToken()) {
+        alert('Already initialized');
+        return;
+    }
+    const resp = await fetch(`${apiUrl}/auth/init`, {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            mobileNumber,
+            otp,
+            message,
+            name,
+            isAttend,
+            relationType,
+            colleagueRef
+        })
+    });
+    if (resp.ok) {
+        const { accessToken } = await resp.json();
+        if (accessToken) setAccessToken(accessToken);
+        alert('Done');
+    } else {
+        alert(await resp.text());
+    }
+}
+
+/**
+ * 
+ * @param {number} offset 
+ * @returns {Array<object>}
+ */
+async function getComments(offset = 0){
+    // if (!getAccessToken()) {
+    //     alert('Please initialize first');
+    //     return;
+    // }
+    const queryParams = new URLSearchParams();
+    queryParams.append("limit", 100);
+    queryParams.append("offset", offset);
+    const resp = await fetch(`${apiUrl}/comments?${queryParams.toString()}`, {
+        headers: getHeaders()
+    });
+    if (resp.ok) {
+        return await resp.json();
+    } else {
+        return [];
+    }
+}
+
+
+/**
+ * 
+ * @param {string} commentId 
+ * @param {number} offset 
+ * @returns 
+ */
+async function getReplies(commentId, offset = 0){
+    const queryParams = new URLSearchParams();
+    queryParams.append("limit", 100);
+    queryParams.append("offset", offset);
+    const resp = await fetch(`${apiUrl}/comments/${commentId}/replies?${queryParams.toString()}`, {
+        headers: getHeaders()
+    });
+    if (resp.ok) {
+        return await resp.json();
+    } else {
+        return [];
+    }
+}
+
+/**
+ * 
+ * @param {string} message 
+ * @param {string} parentCommentId 
+ */
+async function addComment(message, parentCommentId = ""){
+    const resp = await fetch(`${apiUrl}/comments`, {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            message,
+            commentId: parentCommentId || undefined
+        })
+    })
+    if (resp.ok) {
+        alert('Done');
+    } else {
+        alert(await resp.text());
+    }
+}
+
+/**
+ * 
+ * @param {string} message 
+ * @param {string} commentId 
+ */
+async function editComment(message, commentId){
+    const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
+        method: "PUT",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            message
+        })
+    })
+    if (resp.ok) {
+        alert('Done');
+    } else {
+        alert(await resp.text());
+    }
+}
+
+/**
+ * 
+ * @param {string} commentId 
+ */
+async function deleteComment(commentId){
+    const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
+        method: "DELETE",
+        headers: getHeaders()
+    })
+    if (resp.ok) {
+        alert('Done');
+    } else {
+        alert(await resp.text());
+    }
+}
