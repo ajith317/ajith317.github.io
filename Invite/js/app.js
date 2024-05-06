@@ -1139,7 +1139,7 @@ function setVerticalLineHeight() {
     }
 }
 
-const apiUrl = "http://106.51.20.114:8101/api/v1";
+const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
 
 /**
  * 
