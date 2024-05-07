@@ -1236,7 +1236,7 @@ async function initialize(mobileNumber, otp, name, isAttend, relationType, colle
 /**
  * 
  * @param {number} offset 
- * @returns {Array<object>}
+ * @returns {object}
  */
 async function getComments(offset = 0){
     // if (!getAccessToken()) {
@@ -1261,7 +1261,7 @@ async function getComments(offset = 0){
  * 
  * @param {string} commentId 
  * @param {number} offset 
- * @returns 
+ * @returns {object}
  */
 async function getReplies(commentId, offset = 0){
     const queryParams = new URLSearchParams();
@@ -1335,8 +1335,8 @@ async function deleteComment(commentId){
 }
 
 $(document).ready(async function(){
-    const { comments, total } = await getComments();
-    comments.forEach(cmt => {
+    const commentResponse = await getComments();
+    commentResponse.comments.forEach(cmt => {
         console.log(cmt.message)
     })
 })
