@@ -204,8 +204,7 @@ const util = (() => {
         button.disabled = true;
         document.querySelector('body').style.overflowY = 'scroll';
         AOS.init();
-         audio.play();
-        debugger
+        audio.play();
         if (localStorage.getItem('alertClosed')) {
             document.getElementById('alertDiv').style.display = 'none';
         }
@@ -1334,3 +1333,10 @@ async function deleteComment(commentId){
         alert(await resp.text());
     }
 }
+
+$(document).ready(async function(){
+    const { comments, total } = await getComments();
+    comments.forEach(cmt => {
+        console.log(cmt.message)
+    })
+})
