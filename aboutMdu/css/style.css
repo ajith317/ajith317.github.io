@@ -105,7 +105,7 @@
     background-size: 300%;
   }
 }
-
+/* 
 .screen > .sinulog {
   background-image: url("../img/Festivals/Sinulog-Festival.jpg");
 	filter: hue-rotate(21deg);
@@ -147,7 +147,7 @@
   background-position: 0% 0%;
   opacity: 0.6;
   animation: pan-image 15s linear infinite;
-}
+} */
 
 @media(max-width: 700px) {
   .screen {
@@ -155,59 +155,6 @@
   }
 }
 
-html,
-body {
-	height: 100%;
-	font-family: "Mulish", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	background: #0b0c2a;
-	background-image: url("../img/bg.svg");
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0;
-	color: #111111;
-	font-weight: 400;
-	font-family: "Mulish", sans-serif;
-}
-
-h1 {
-	font-size: 70px;
-}
-
-h2 {
-	font-size: 36px;
-}
-
-h3 {
-	font-size: 30px;
-}
-
-h4 {
-	font-size: 24px;
-}
-
-h5 {
-	font-size: 18px;
-}
-
-h6 {
-	font-size: 16px;
-}
-
-p {
-	font-size: 15px;
-	font-family: "Mulish", sans-serif;
-	color: #dddddd;
-	font-weight: 400;
-	line-height: 25px;
-	margin: 0 0 15px 0;
-}
 
 img {
 	max-width: 100%;
@@ -272,293 +219,9 @@ ol {
 	padding-top: 100px;
 }
 
-.text-white h1,
-.text-white h2,
-.text-white h3,
-.text-white h4,
-.text-white h5,
-.text-white h6,
-.text-white p,
-.text-white span,
-.text-white li,
-.text-white a {
-	color: #fff;
-}
 
-/* buttons */
 
-.primary-btn {
-	display: inline-block;
-	font-size: 13px;
-	font-weight: 700;
-	text-transform: uppercase;
-	color: #ffffff;
-	letter-spacing: 2px;
-}
 
-.primary-btn span {
-	font-size: 18px;
-	margin-left: 5px;
-	position: relative;
-	top: 3px;
-}
-
-.site-btn {
-	font-size: 13px;
-	color: #ffffff;
-	background: #e53637;
-	font-weight: 700;
-	border: none;
-	border-radius: 2px;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	display: inline-block;
-	padding: 12px 30px;
-}
-
-/* Preloder */
-
-#preloder {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 999999;
-	background: #000;
-}
-
-.loader {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -13px;
-	margin-left: -13px;
-	border-radius: 60px;
-	animation: loader 0.8s linear infinite;
-	-webkit-animation: loader 0.8s linear infinite;
-}
-
-@keyframes loader {
-	0% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-	50% {
-		-webkit-transform: rotate(180deg);
-		transform: rotate(180deg);
-		border: 4px solid #673ab7;
-		border-left-color: transparent;
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-}
-
-@-webkit-keyframes loader {
-	0% {
-		-webkit-transform: rotate(0deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-	50% {
-		-webkit-transform: rotate(180deg);
-		border: 4px solid #673ab7;
-		border-left-color: transparent;
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-}
-
-.spacial-controls {
-	position: fixed;
-	width: 111px;
-	height: 91px;
-	top: 0;
-	right: 0;
-	z-index: 999;
-}
-
-.spacial-controls .search-switch {
-	display: block;
-	height: 100%;
-	padding-top: 30px;
-	background: #323232;
-	text-align: center;
-	cursor: pointer;
-}
-
-.search-model {
-	display: none;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	background: #000;
-	z-index: 99999;
-}
-
-.search-model-form {
-	padding: 0 15px;
-}
-
-.search-model-form input {
-	width: 500px;
-	font-size: 40px;
-	border: none;
-	border-bottom: 2px solid #333;
-	background: 0 0;
-	color: #999;
-}
-
-.search-close-switch {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	background: #333;
-	color: #fff;
-	text-align: center;
-	border-radius: 50%;
-	font-size: 28px;
-	line-height: 28px;
-	top: 30px;
-	cursor: pointer;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-}
-
-/*---------------------
-  Header
------------------------*/
-
-.header {
-	background: #000000;
-}
-
-.header__logo {
-	padding: 5px 0;
-}
-
-.header__logo a {
-	display: inline-block;
-}
-
-.header__menu {
-	text-align: center;
-}
-
-.header__menu ul li {
-	list-style: none;
-	display: inline-block;
-	position: relative;
-	margin-right: 16px;
-}
-
-.header__menu ul li.active a {
-	background: #e53637;
-	color: #ffffff;
-}
-
-.header__menu ul li:hover a {
-	color: #ffffff;
-}
-
-.header__menu ul li:hover .dropdown {
-	top: 62px;
-	opacity: 1;
-	visibility: visible;
-}
-
-.header__menu ul li:hover .dropdown li a {
-	background: transparent;
-}
-
-.header__menu ul li:last-child {
-	margin-right: 0;
-}
-
-.header__menu ul li .dropdown {
-	position: absolute;
-	left: 0;
-	top: 82px;
-	width: 150px;
-	background: #ffffff;
-	text-align: left;
-	padding: 5px 0;
-	z-index: 9;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
-}
-
-.header__menu ul li .dropdown li {
-	display: block;
-	margin-right: 0;
-}
-
-.header__menu ul li .dropdown li a {
-	font-size: 14px;
-	color: #111111;
-	font-weight: 500;
-	padding: 5px 20px;
-}
-
-.header__menu ul li a {
-	font-size: 15px;
-	color: #b7b7b7;
-	display: block;
-	font-weight: 700;
-	-webkit-transition: all, 0.5s;
-	-o-transition: all, 0.5s;
-	transition: all, 0.5s;
-	padding: 20px;
-}
-
-.header__menu ul li a span {
-	position: relative;
-	font-size: 17px;
-	top: 2px;
-}
-
-.header__right {
-	text-align: right;
-	padding: 20px 0 15px;
-}
-
-.header__right a {
-	display: inline-block;
-	font-size: 18px;
-	color: #ffffff;
-	margin-right: 30px;
-}
-
-.header__right a:last-child {
-	margin-right: 0;
-}
-
-.slicknav_menu {
-	display: none;
-}
 
 /*---------------------
   Hero
@@ -1049,7 +712,7 @@ ol {
 /*---------------------
   Anime Details
 -----------------------*/
-
+/* 
 .anime-details {
 	padding-top: 60px;
 }
@@ -1281,122 +944,12 @@ ol {
 	border: none;
 	padding: 10px 15px;
 	border-radius: 2px;
-}
-
-/*---------------------
-  Anime Watching
------------------------*/
-
-.anime__video__player {
-	margin-bottom: 70px;
-}
-
-.anime__video__player .plyr--video {
-	border-radius: 5px;
-	background: transparent;
-}
-
-.anime__video__player .plyr audio,
-.anime__video__player .plyr iframe,
-.anime__video__player .plyr video {
-	width: 102%;
-}
-
-.anime__video__player .plyr--full-ui.plyr--video .plyr__control--overlaid {
-	display: block;
-}
-
-.anime__video__player .plyr--video .plyr__control.plyr__tab-focus,
-.anime__video__player .plyr--video .plyr__control:hover,
-.anime__video__player .plyr--video .plyr__control[aria-expanded=true] {
-	background: transparent;
-}
-
-.anime__video__player .plyr--video .plyr__controls {
-	background: transparent;
-}
-
-.anime__video__player .plyr--video .plyr__progress__buffer {
-	color: transparent;
-}
-
-.anime__video__player .plyr--full-ui input[type=range] {
-	color: #ffffff;
-}
-
-.anime__video__player .plyr__controls .plyr__controls__item.plyr__progress__container {
-	position: absolute;
-	left: 26px;
-	bottom: 45px;
-	width: calc(100% - 60px);
-}
-
-.anime__video__player .plyr__menu {
-	margin-right: 70px;
-}
-
-.anime__video__player .plyr__controls .plyr__controls__item:first-child {
-	position: absolute;
-	left: 32px;
-	bottom: 8px;
-}
-
-.anime__video__player .plyr__controls .plyr__controls__item:last-child {
-	position: absolute;
-	right: 32px;
-	bottom: 8px;
-}
-
-.anime__video__player .plyr__volume {
-	position: absolute;
-	width: auto;
-	left: 76px;
-	bottom: 8px;
-}
-
-.anime__video__player .plyr__controls .plyr__controls__item.plyr__time {
-	position: absolute;
-	left: 106px;
-	bottom: 12px;
-}
-
-.anime__video__player .plyr__control--overlaid {
-	background: transparent;
-	background: var(--plyr-video-control-background-hover, var(--plyr-color-main, var(--plyr-color-main, transparent)));
-}
-
-.anime__video__player .plyr__control--overlaid svg {
-	height: 60px;
-	width: 50px;
-}
-
-.anime__details__episodes {
-	margin-bottom: 35px;
-}
-
-.anime__details__episodes a {
-	display: inline-block;
-	font-size: 15px;
-	color: #ffffff;
-	background: rgba(255, 255, 255, 0.2);
-	padding: 10px 20px;
-	border-radius: 4px;
-	margin-right: 15px;
-	margin-bottom: 20px;
-	-webkit-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
-}
-
-.anime__details__episodes a:hover {
-	color: #000000;
-	background: #ffffff;
-}
+} */
 
 /*---------------------
   Breadcrumb
 -----------------------*/
-
+/* 
 .breadcrumb-option {
 	padding-top: 35px;
 }
@@ -1426,12 +979,12 @@ ol {
 	font-size: 15px;
 	color: #b7b7b7;
 	display: inline-block;
-}
+} */
 
 /*---------------------
     Normal Breadcrumb
 -----------------------*/
-
+/* 
 .normal-breadcrumb {
 	filter: brightness(70%);
 	height: 300px;
@@ -1458,12 +1011,12 @@ ol {
 	color: #ffffff;
 	font-size: 24px;
 	margin-bottom: 0;
-}
+} */
 
 /*---------------------
     Blog
 -----------------------*/
-
+/* 
 .blog {
 	padding-top: 70px;
 	padding-bottom: 90px;
@@ -1516,12 +1069,12 @@ ol {
 .blog__item__text h4 a {
 	color: #ffffff;
 	line-height: 34px;
-}
+} */
 
 /*---------------------
   Blog Details
 -----------------------*/
-
+/* 
 .blog-details {
 	padding-top: 70px;
 }
@@ -1816,227 +1369,14 @@ ol {
 
 .blog__details__form form textarea::placeholder {
 	color: #a6a6a6;
-}
+} */
 
-/*---------------------
-  Login
------------------------*/
 
-.login {
-	padding-top: 130px;
-	padding-bottom: 120px;
-}
-
-.login__form {
-	position: relative;
-	padding-left: 145px;
-}
-
-.login__form:after {
-	position: absolute;
-	right: -14px;
-	top: -40px;
-	height: 330px;
-	width: 1px;
-	background: rgba(255, 255, 255, 0.2);
-	content: "";
-}
-
-.login__form h3 {
-	color: #ffffff;
-	font-weight: 700;
-	font-family: "Oswald", sans-serif;
-	margin-bottom: 30px;
-}
-
-.login__form form .input__item {
-	position: relative;
-	width: 370px;
-	margin-bottom: 20px;
-}
-
-.login__form form .input__item:before {
-	position: absolute;
-	left: 50px;
-	top: 10px;
-	height: 30px;
-	width: 1px;
-	background: #b7b7b7;
-	content: "";
-}
-
-.login__form form .input__item input {
-	height: 50px;
-	width: 100%;
-	font-size: 15px;
-	color: #b7b7b7;
-	background: #ffffff;
-	border: none;
-	padding-left: 76px;
-}
-
-.login__form form .input__item input::-webkit-input-placeholder {
-	color: #b7b7b7;
-}
-
-.login__form form .input__item input::-moz-placeholder {
-	color: #b7b7b7;
-}
-
-.login__form form .input__item input:-ms-input-placeholder {
-	color: #b7b7b7;
-}
-
-.login__form form .input__item input::-ms-input-placeholder {
-	color: #b7b7b7;
-}
-
-.login__form form .input__item input::placeholder {
-	color: #b7b7b7;
-}
-
-.login__form form .input__item span {
-	color: #b7b7b7;
-	font-size: 20px;
-	position: absolute;
-	left: 15px;
-	top: 13px;
-}
-
-.login__form form button {
-	border-radius: 0;
-	margin-top: 10px;
-}
-
-.login__form .forget_pass {
-	font-size: 15px;
-	color: #ffffff;
-	display: inline-block;
-	position: absolute;
-	right: 60px;
-	bottom: 12px;
-}
-
-.login__register {
-	padding-left: 30px;
-}
-
-.login__register h3 {
-	color: #ffffff;
-	font-weight: 700;
-	font-family: "Oswald", sans-serif;
-	margin-bottom: 30px;
-}
-
-.login__register .primary-btn {
-	background: #e53637;
-	padding: 12px 42px;
-}
-
-.login__social {
-	padding-top: 52px;
-}
-
-.login__social__links {
-	text-align: center;
-}
-
-.login__social__links span {
-	color: #ffffff;
-	display: block;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	margin-bottom: 30px;
-}
-
-.login__social__links ul li {
-	list-style: none;
-	margin-bottom: 15px;
-}
-
-.login__social__links ul li:last-child {
-	margin-bottom: 0;
-}
-
-.login__social__links ul li a {
-	color: #ffffff;
-	display: block;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	width: 460px;
-	padding: 14px 0;
-	position: relative;
-	margin: 0 auto;
-}
-
-.login__social__links ul li a.facebook {
-	background: #4267b2;
-}
-
-.login__social__links ul li a.google {
-	background: #ff4343;
-}
-
-.login__social__links ul li a.twitter {
-	background: #1da1f2;
-}
-
-.login__social__links ul li a i {
-	font-size: 20px;
-	position: absolute;
-	left: 32px;
-	top: 14px;
-}
-
-/*---------------------
-  Sign Up
------------------------*/
-
-.signup {
-	padding-top: 130px;
-	padding-bottom: 150px;
-}
-
-.signup .login__form:after {
-	height: 450px;
-}
-
-.signup .login__form h5 {
-	font-size: 15px;
-	color: #ffffff;
-	margin-top: 36px;
-}
-
-.signup .login__form h5 a {
-	color: #e53637;
-	font-weight: 700;
-}
-
-.signup .login__social__links {
-	text-align: left;
-	padding-left: 40px;
-}
-
-.signup .login__social__links h3 {
-	color: #ffffff;
-	font-weight: 700;
-	font-family: "Oswald", sans-serif;
-	margin-bottom: 30px;
-}
-
-.signup .login__social__links ul li a {
-	margin: 0;
-	text-align: center;
-}
 
 /*---------------------
   Footer
 -----------------------*/
-
+/* 
 .footer {
 	background: #000000;
 	padding-top: 40px;
@@ -2112,7 +1452,7 @@ ol {
 
 .footer__copyright__text a {
 	color: #e53637;
-}
+} */
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
@@ -2214,13 +1554,7 @@ ol {
 	.product__sidebar {
 		padding-top: 50px;
 	}
-	.footer__logo {
-		text-align: center;
-		margin-bottom: 20px;
-	}
-	.footer__nav {
-		margin-bottom: 15px;
-	}
+	
 	.footer__copyright__text {
 		text-align: center;
 	}
@@ -2461,17 +1795,17 @@ ol {
 }
 
 
-
+/* 
 .about-us {
 	box-sizing: border-box;
-}
-
+} */
+/* 
 .column {
 	float: left;
 	width: 20%;
 	margin-bottom: 16px;
 	padding: 0 50px;
-}
+} */
 
 @media screen and (max-width: 650px) {
 	.column {
@@ -2528,32 +1862,6 @@ ol {
 	box-shadow: 0px 0px 50px red;
 }
 
-.profile{
-	width: 400px;
-	height: 350px;
-	border-radius: 15px;
-	padding: 10px;
-	margin: 0;
-}
-
-.name{
-	margin-top: 80px;
-	padding: 0px 15px;
-	text-align: left;
-	font-size: 50px;
-}
-
-.status{
-	padding: 0px 20px;
-	text-align: left;
-	margin: 0;
-}
-
-.about{
-	height: 240px;
-	padding: 0px 20px;
-	color: black;
-}
 
 .logo img {
 	position: relative;
@@ -2580,6 +1888,8 @@ ol {
 	position: relative;
 }
 
+
+/* 
 .title {
 	background-color: rgb(0, 47, 255);
 	margin: 0 auto;
@@ -2597,8 +1907,8 @@ ol {
 	font-size: 40px;
 	font-family: "Oswald", sans-serif;
 	text-transform: uppercase;
-}
-
+} */
+/* 
 .divename {
 	background-color: rgb(0, 110, 255);
 	margin: 0 auto;
@@ -3465,8 +2775,8 @@ ol {
 	color: rgb(255, 255, 255);
 	margin-bottom: 15px;
 	font-family: "Oswald", sans-serif;
-}
-
+} */
+/* 
 .eventsandculture {
 	height: 61.7vh;
 	width: 100%;
@@ -3639,4 +2949,4 @@ ol {
 	color: rgb(255, 255, 255);
 	margin-bottom: 15px;
 	font-family: "Oswald", sans-serif;
-}
+} */
