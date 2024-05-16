@@ -323,29 +323,30 @@ window.addEventListener("click", function(event) {
 
 // ********************* download invitation strat  *********************
 function downloadFile(button) {
-
-    var fileName = 'WeedingOfAjithAnu.png';
-
+    var fileName = 'WeedingOfAjithAnuInvitation.png';
     var rawGitHubUrl = 'https://raw.githubusercontent.com/ajith317/ajith317.github.io/main/invitation/' + fileName;
 
-    var xhr = new XMLHttpRequest();
+    fetch(rawGitHubUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(blob);
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
 
-    xhr.open('GET', rawGitHubUrl, true);
-
-    xhr.responseType = 'blob';
-    xhr.onload = function () {
-        var a = document.createElement('a');
-        a.href = window.URL.createObjectURL(xhr.response);
-        a.download = fileName;
-        a.style.display = 'none';
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        document.body.removeChild(a);
-        button.style.backgroundColor = '#9b6e98'; 
-        button.style.borderColor = '#9b6e98'; 
-    };
-    xhr.send();
+            button.style.backgroundColor = '#9b6e98';
+            button.style.borderColor = '#9b6e98';
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 }
