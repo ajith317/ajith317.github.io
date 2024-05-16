@@ -496,6 +496,7 @@ header, footer, section {
 	letter-spacing: 1px;
 	font-size: 14px;
 	
+	
 }	
 
 a.place {
@@ -503,6 +504,7 @@ a.place {
 	font-weight: lighter;
 	text-decoration: none; /* Remove underline by default */
     transition: color 0.1s ease;
+	font-weight: bolder;
 }
 
 a.place:hover {
@@ -853,54 +855,50 @@ a {
 }
 
 
-/* onclick imageGallery end */
+/* profileContent */
 
-.detail-show-popup {
-	display: none;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #f9f9f9;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	max-height: 300px;
-	overflow-y: auto;
-	z-index: 9999;
-	width: 300px;
-}
-.detail-show-popup .close {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
-	color: #888;
-	font-size: 20px;
-}
-.detail-show-popup-header {
-	margin-bottom: 140px;
-	overflow: hidden; /* Ensures the container wraps around the floated elements */
+.card-img-top {   
+    height: 200px; 
+  }
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .contentBlock {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+  }
+  .tab-content {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+  }
+
+
+  /* For WebKit browsers (such as Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; 
 }
 
-.detail-show-popup img {
-	width: 75px; /* Adjust image size as needed */
-	height: 75px;
-	border-radius: 50%;
-	border: 2px solid #fff;
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-	position: absolute;
-	top: -20px; /* Adjust image position as needed */
-	left: -20px;
+::-webkit-scrollbar-thumb {
+    background-color: #dac5c9; 
+    border-radius: 6px;
 }
-.detail-show-popup .text {
-	font-weight: bold;
-	font-size: 18px;	
-	margin-top: auto;
-}
-.detail-show-popup p {
-	margin-top: 50px; /* Adjust as needed */
-	font-size: 16px;
-	line-height: 1.5;
-	color: #555;
+
+::-webkit-scrollbar-track {
+    background-color: #eceade; 
 }

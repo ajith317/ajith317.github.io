@@ -350,3 +350,24 @@ function downloadFile(button) {
             console.error('There was a problem with the fetch operation:', error);
         });
 }
+
+
+// // ********************* profile content  ********************* 
+$(document).ready(function(){
+    $('.popup-trigger').click(function(){
+        var contentBlockId = $(this).attr('data-target');
+        if ($(contentBlockId).is(':visible')) {
+            $(contentBlockId).fadeOut(); // Hide the content block if it's already visible
+        } else {
+            $('.contentBlock').fadeOut(); // Hide any other visible content blocks
+            $(contentBlockId).fadeIn(); // Show the clicked content block
+        }
+    });
+
+    // Hide popup when clicking outside of it
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.contentBlock, .popup-trigger').length) {
+            $('.contentBlock').fadeOut();
+        }
+    });
+});

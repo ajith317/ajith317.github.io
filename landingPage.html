@@ -66,7 +66,11 @@
                 <p class="godSlogan">॥ விவாக சுப முகூர்த்த ॥</p>
             </div>
              
-            <h1 class="popup-trigger" data-popup-id="popup1">Ajith</h1>
+
+            <h1 class="popup-trigger" id="profileContentAjith" data-target="#contentBlockAjith">Ajith</h1>
+
+           
+
             <div id="count-down-container">
                 <ul id="count-down">
                     <li class="days" data-unit="days"></li>
@@ -79,26 +83,153 @@
                     <br><span class="normalText">Their journey began on July 7th, 2024, at 9:00 AM</span>
                 </p>                
             </div>
-            <h1 class="popup-trigger" data-popup-id="popup2">Anu</h1>
+            <h1 class="popup-trigger" id="profileContentAnu" data-target="#contentBlockAnu">Anu</h1>
 
-            <!-- The popups -->
-            <div class="detail-show-popup" id="popup1">
-                <div class="detail-show-popup-header">
-                    <img src="https://via.placeholder.com/60" alt="Small Image">
-                    <span class="text"> V M Ajith Babu  MCA</span>
-                    <span class="close">&times;</span>
+           
+            <!-- Content block for Ajith -->
+    
+            <div id="contentBlockAjith" class="contentBlock" style="background-color: #eceade;">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/200/150/?random" alt="Card image cap" class="card-img-top">
+                        <figure class="profile">
+                            <img src="https://picsum.photos/50/50/?random" class="profile-avatar rounded-circle" alt="Profile image">
+                        </figure>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title mt-3">Ajith</h4>
+                        <div class="meta">
+                            <p>Software developer</p>
+                        </div>
+                        <div class="card-text">
+                            Something need to write
+                        </div>
+                    </div>
+                    <div class="card-footer tab-card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTabAjith" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="one-tab-ajith" data-toggle="tab" href="#oneAjith" role="tab" aria-controls="oneAjith" aria-selected="true">More About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="two-tab-ajith" data-toggle="tab" href="#twoAjith" role="tab" aria-controls="twoAjith" aria-selected="false">Memories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="three-tab-ajith" data-toggle="tab" href="#threeAjith" role="tab" aria-controls="threeAjith" aria-selected="false">His love story</a>
+                            </li>
+                            <!-- Add more tabs if needed -->
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="myTabContentAjith">
+                        <div class="tab-pane fade show active p-3" id="oneAjith" role="tabpanel" aria-labelledby="one-tab-ajith">
+                            <h5 class="card-title">Personal Information</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content for Ajith.</p>
+                        </div>
+                        <div class="tab-pane fade p-3" id="twoAjith" role="tabpanel" aria-labelledby="two-tab-ajith">
+                            <h5 class="card-title">Memories</h5>
+                            <div class="row">
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/200') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/201') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/202') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/200') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/201') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/202') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <!-- Add more images if needed -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade p-3" id="threeAjith" role="tabpanel" aria-labelledby="three-tab-ajith">
+                            <h5 class="card-title">His love story</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
                 </div>
-                <p>Content for Ajith popup.</p>
             </div>
+
+            <!-- Content block for Anu -->
+            <div id="contentBlockAnu" class="contentBlock" style="background-color: #eceade;">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/200/150/?random" alt="Card image cap" class="card-img-top">
+                        <figure class="profile">
+                            <img src="https://picsum.photos/50/50/?random" class="profile-avatar rounded-circle" alt="Profile image">
+                        </figure>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title mt-3">Anu</h4>
+                        <div class="meta">
+                            <p>QA test engineer at Atos - Chennai</p>
+                        </div>
+                        <div class="card-text">
+                            Currently staying with her parents and living in Madurai
+                        </div>
+                    </div>
+                    <div class="card-footer tab-card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTabAnu" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="one-tab-anu" data-toggle="tab" href="#oneAnu" role="tab" aria-controls="oneAnu" aria-selected="true">More About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="two-tab-anu" data-toggle="tab" href="#twoAnu" role="tab" aria-controls="twoAnu" aria-selected="false">Memories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="three-tab-anu" data-toggle="tab" href="#threeAnu" role="tab" aria-controls="threeAnu" aria-selected="false">Her love story</a>
+                            </li>
+                            <!-- Add more tabs if needed -->
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="myTabContentAnu">
+                        <div class="tab-pane fade show active p-3" id="oneAnu" role="tabpanel" aria-labelledby="one-tab-anu">
+                            <h5 class="card-title">Personal Information</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="tab-pane fade p-3" id="twoAnu" role="tabpanel" aria-labelledby="two-tab-anu">
+                            <h5 class="card-title">Memories</h5>
+                            <div class="row">
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/200') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/201') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/202') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/200') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/201') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/202') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="tab-pane fade p-3" id="threeAnu" role="tabpanel" aria-labelledby="three-tab-anu">
+                            <h5 class="card-title">Her love story</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             
-            <div class="detail-show-popup" id="popup2">
-                <div class="detail-show-popup-header">
-                    <img src="https://via.placeholder.com/60" alt="Small Image">
-                    <span class="text"> T S Anupriya M.sc(CS)</span>
-                    <span class="close">&times;</span>
-                </div>
-                <p>Content for Ajith1 popup.</p>
-            </div>
+  
+            
+
             <!-- <h1>Anu</h1> -->
             <!-- <h3>Are getting married</h3> -->
             <p>Embarking on a new module in their journey of love</p>          
