@@ -1139,6 +1139,7 @@ function setVerticalLineHeight() {
 }
 
 const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
+// const apiUrl = "http://localhost:8080/api/v1";
 
 /**
  * 
@@ -1331,6 +1332,36 @@ async function deleteComment(commentId){
         alert('Done');
     } else {
         alert(await resp.text());
+    }
+}
+
+/**
+ * 
+ * @param {number} score 
+ */
+async function saveScore(score){
+    const resp = await fetch(`${apiUrl}/auth/save-score`, {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            score
+        })
+    })
+    if (resp.ok) {
+        alert('Score saved');
+    } else {
+        alert(await resp.text());
+    }
+}
+
+async function getScoreBoard(){
+    const resp = await fetch(`${apiUrl}/auth/score-board`, {
+        headers: getHeaders()
+    });
+    if (resp.ok) {
+        return await resp.json();
+    } else {
+        return [];
     }
 }
 
