@@ -902,3 +902,64 @@ a {
 ::-webkit-scrollbar-track {
     background-color: #eceade; 
 }
+
+
+/* profile content data */
+
+.profImg-container{
+	margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    max-width: 1140px;
+}
+
+.profImg-container .col-md-4,
+.profImg-container .col-sm-6 {
+    padding: 5px 5px; 
+}
+
+/* CSS for Memories section */
+.profile_Memories {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+	border-radius: 10%;
+}
+
+.profile_Memories img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+}
+
+.profile_Memories:hover img {
+    transform: rotate(3deg);
+}
+
+.profile_Memories .profile__details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+	transform: rotate(3deg);
+	border-radius: 10%;
+}
+
+.profile_Memories:hover .profile__details {
+    opacity: 1;
+    transform: translateY(0%);
+}
