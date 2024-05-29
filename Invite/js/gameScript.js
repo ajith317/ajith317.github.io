@@ -12,7 +12,9 @@ const timeCount = document.querySelector(".timer .timer_sec");
 
 // if startQuiz button clicked
 start_btn.onclick = ()=>{
-    info_box.classList.add("activeInfo"); //show info box
+  const hasAccessToken = !!getAccessToken();
+  if (hasAccessToken) info_box.classList.add("activeInfo"); //show info box
+  else $('#addCommentsBtn').click();
 }
 
 // if exitQuiz button clicked
@@ -70,7 +72,9 @@ const next_btn = document.querySelector("footer .next_btn");
 const bottom_ques_counter = document.querySelector("footer .total_que");
 
 // if Next Que button clicked
-next_btn.onclick = ()=>{
+next_btn.onclick = async () => {
+  const hasAccessToken = !!getAccessToken();
+  if (hasAccessToken) {
     if(que_count < questions.length - 1){ //if question count is less than total question length
         que_count++; //increment the que_count value
         que_numb++; //increment the que_numb value
@@ -83,10 +87,14 @@ next_btn.onclick = ()=>{
         timeText.textContent = "Time Left"; //change the timeText to Time Left
         next_btn.classList.remove("show"); //hide the next button
     }else{
+        await saveScore(userScore);
         clearInterval(counter); //clear counter
         clearInterval(counterLine); //clear counterLine
         showResult(); //calling showResult function
     }
+  } else {
+    $('#addCommentsBtn').click();
+  }
 }
 
 // getting questions and options from array
@@ -232,21 +240,21 @@ function queCounter(index){
   }
 
   function displayUsers(startIndex, endIndex) {
-    const tableBody = $('#userTable tbody');
-    tableBody.empty();
-    for (let i = startIndex; i < endIndex; i++) {
-      const user = usersData[i];
-      const row = `
-        <tr>
-          <td>${i + 1}</td>
-          <td>${user.name}</td>
-          <td>${user.phone}</td>
-          <td>${i+1}</td>
-          <td>${user.email}</td>        
-        </tr>
-      `;
-      tableBody.append(row);
-    }
+    // const tableBody = $('#userTable tbody');
+    // tableBody.empty();
+    // for (let i = startIndex; i < endIndex; i++) {
+    //   const user = usersData[i];
+    //   const row = `
+    //     <tr>
+    //       <td>${i + 1}</td>
+    //       <td>${user.name}</td>
+    //       <td>${user.phone}</td>
+    //       <td>${i+1}</td>
+    //       <td>${user.email}</td>        
+    //     </tr>
+    //   `;
+    //   tableBody.append(row);
+    // }
   }
 
   function updatePaginationButtons() {

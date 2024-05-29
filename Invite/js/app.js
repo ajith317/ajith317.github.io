@@ -1000,12 +1000,12 @@ const comment = (() => {
 })();
 
 
-window.onload = function() {
+window.onload = function () {
     document.querySelector("#hide-btn").click();
 }
 
 //  ****************Load YouTube Player API code asynchronously****************
- 
+
 //  var tag = document.createElement('script');
 //  tag.src = "https://www.youtube.com/iframe_api";
 //  var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -1048,22 +1048,22 @@ const effect = document.querySelector(".effect");
 const buttons = document.querySelectorAll(".navbar button:not(.plus)");
 
 buttons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    const x = e.target.offsetLeft;
+    button.addEventListener("click", (e) => {
+        const x = e.target.offsetLeft;
 
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
+        buttons.forEach((btn) => {
+            btn.classList.remove("active");
+        });
+
+        e.target.classList.add("active");
+
+        anime({
+            targets: ".effect",
+            left: `${x}px`,
+            opacity: 1,
+            duration: 600,
+        });
     });
-
-    e.target.classList.add("active");
-
-    anime({
-      targets: ".effect",
-      left: `${x}px`,
-      opacity: 1,
-      duration: 600,
-    });
-  });
 });
 
 
@@ -1077,7 +1077,7 @@ function openPopup(title, brideDishes, groomDishes) {
     var listParagraph = document.createElement('p');
     listParagraph.textContent = "List of menus";
     listParagraph.style.fontSize = "18px";
-    listParagraph.style.textAlign = "center"; 
+    listParagraph.style.textAlign = "center";
     listParagraph.style.marginTop = "5px";
 
     popupHeader.appendChild(listParagraph);
@@ -1105,7 +1105,7 @@ function openPopup(title, brideDishes, groomDishes) {
     setVerticalLineHeight();
 
     // Add event listener to close popup when clicking outside
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target == popup) {
             closePopup();
         }
@@ -1130,7 +1130,7 @@ function setVerticalLineHeight() {
             // Get the top position of the lists
             var brideTop = brideList.getBoundingClientRect().top;
             var groomTop = groomList.getBoundingClientRect().top;
-     
+
             var lineStart = Math.min(brideTop, groomTop);
             var verticalLineTop = brideTop - lineStart - 20;
             document.querySelector('.popup-columns::before').style.top = verticalLineTop + 'px';
@@ -1138,14 +1138,20 @@ function setVerticalLineHeight() {
     }
 }
 
-const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
-// const apiUrl = "http://localhost:8080/api/v1";
+// const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
+const apiUrl = "http://localhost:8080/api/v1";
+
+async function showApiErr(resp) {
+    const errTxt = await resp.text();
+    const err = JSON.parse(errTxt);
+    alert((err.message || err.error) || errTxt);
+}
 
 /**
  * 
  * @returns {string | null};
  */
-function getAccessToken(){
+function getAccessToken() {
     return localStorage.getItem('accessToken');
 }
 
@@ -1153,7 +1159,7 @@ function getAccessToken(){
  * 
  * @param {string} accessToken 
  */
-function setAccessToken(accessToken){
+function setAccessToken(accessToken) {
     localStorage.setItem('accessToken', accessToken);
 }
 
@@ -1161,7 +1167,7 @@ function setAccessToken(accessToken){
  * 
  * @returns {Headers}
  */
-function getHeaders(){
+function getHeaders() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const accessToken = getAccessToken();
@@ -1176,7 +1182,7 @@ function getHeaders(){
  * @param {string} mobileNumber 
  * @returns 
  */
-async function sendOtp(mobileNumber){
+async function sendOtp(mobileNumber) {
     if (getAccessToken()) {
         alert('Already initialized');
         return;
@@ -1192,7 +1198,29 @@ async function sendOtp(mobileNumber){
     if (resp.ok) {
         alert('OTP Sent');
     } else {
-        alert(await resp.text());
+        await showApiErr(resp);
+    }
+}
+
+/**
+ * 
+ * @param {string} mobileNumber 
+ * @param {string} otp 
+ * @returns 
+ */
+async function verifyOtp(mobileNumber, otp, callBack) {
+    const resp = await fetch(`${apiUrl}/auth/verify-otp`, {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            mobileNumber,
+            otp
+        })
+    });
+    if (resp.ok && typeof callBack === 'function') {
+        callBack();
+    } else {
+        await showApiErr(resp);
     }
 }
 
@@ -1207,7 +1235,7 @@ async function sendOtp(mobileNumber){
  * @param {string} message 
  * @returns 
  */
-async function initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef = "", message = ""){
+async function initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef = "", message = "") {
     if (getAccessToken()) {
         alert('Already initialized');
         return;
@@ -1239,7 +1267,7 @@ async function initialize(mobileNumber, otp, name, isAttend, relationType, colle
  * @param {number} offset 
  * @returns {object}
  */
-async function getComments(offset = 0){
+async function getComments(offset = 0) {
     // if (!getAccessToken()) {
     //     alert('Please initialize first');
     //     return;
@@ -1264,7 +1292,7 @@ async function getComments(offset = 0){
  * @param {number} offset 
  * @returns {object}
  */
-async function getReplies(commentId, offset = 0){
+async function getReplies(commentId, offset = 0) {
     const queryParams = new URLSearchParams();
     queryParams.append("limit", 100);
     queryParams.append("offset", offset);
@@ -1283,7 +1311,7 @@ async function getReplies(commentId, offset = 0){
  * @param {string} message 
  * @param {string} parentCommentId 
  */
-async function addComment(message, parentCommentId = ""){
+async function addComment(message, parentCommentId = "") {
     const resp = await fetch(`${apiUrl}/comments`, {
         method: "POST",
         headers: getHeaders(),
@@ -1304,7 +1332,7 @@ async function addComment(message, parentCommentId = ""){
  * @param {string} message 
  * @param {string} commentId 
  */
-async function editComment(message, commentId){
+async function editComment(message, commentId) {
     const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
         method: "PUT",
         headers: getHeaders(),
@@ -1323,7 +1351,7 @@ async function editComment(message, commentId){
  * 
  * @param {string} commentId 
  */
-async function deleteComment(commentId){
+async function deleteComment(commentId) {
     const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
         method: "DELETE",
         headers: getHeaders()
@@ -1339,7 +1367,7 @@ async function deleteComment(commentId){
  * 
  * @param {number} score 
  */
-async function saveScore(score){
+async function saveScore(score) {
     const resp = await fetch(`${apiUrl}/auth/save-score`, {
         method: "POST",
         headers: getHeaders(),
@@ -1354,7 +1382,7 @@ async function saveScore(score){
     }
 }
 
-async function getScoreBoard(){
+async function getScoreBoard() {
     const resp = await fetch(`${apiUrl}/auth/score-board`, {
         headers: getHeaders()
     });
@@ -1365,9 +1393,137 @@ async function getScoreBoard(){
     }
 }
 
-$(document).ready(async function(){
-    const commentResponse = await getComments();
-    commentResponse.comments.forEach(cmt => {
-        console.log(cmt.message)
+async function getAttendees() {
+    const resp = await fetch(`${apiUrl}/auth/attendees`, {
+        headers: getHeaders()
+    });
+    if (resp.ok) {
+        return await resp.json();
+    } else {
+        return [];
+    }
+}
+
+function resetFormInput() {
+    $('#phoneNumber').val('');
+    $('#otp').val('');
+    $('#relationType').val('').change();
+    $('#uname').val('');
+    $('#colleagueRef').val('');
+    $('#comments').val('');
+    $('#isAttend').prop('checked'), false;
+}
+
+$(document).ready(async function () {
+    const renderComment = async () => {
+        const cmtList = $('#cmt-list');
+        const commentResponse = await getComments(cmtList.children().length);
+        commentResponse.comments.forEach(cmt => {
+            const li = `
+                <li>
+                    <div>${cmt.user.name}:</div>
+                    <div>${cmt.message}</div>
+                </li>
+            `;
+            cmtList.append(li);
+        });
+    }
+    const reloadComments = () => {
+        $('#cmt-list').empty()
+        renderComment();
+    }
+    renderComment();
+    const { users } = await getScoreBoard();
+    const tableBody = $('#userTable tbody');
+    tableBody.empty();
+    users.forEach((user, i) => {
+        const row = `
+            <tr>
+                <td>${i + 1}</td>
+                <td>${user.name}</td>
+                <td>${user.score}</td>
+                <td>${user.noOfTry}</td>
+                <td>${user.relationType}</td>        
+            </tr>
+        `;
+        tableBody.append(row);
+    });
+
+    $('#submitCmnds').click(async () => {
+        const mobileNumber = $('#phoneNumber').val().trim();
+        const otp = $('#otp').val().trim();
+        const relationType = $('#relationType').val().trim();
+        const name = $('#uname').val().trim();
+        const colleagueRef = $('#colleagueRef').val().trim();
+        const message = $('#comments').val().trim();
+        const isAttend = $('#isAttend').prop('checked');
+        const hasAccessToken = !!getAccessToken();
+        const error = []
+
+        if (!message) {
+            error.push('Message is required');
+        }
+
+        if (!hasAccessToken) {
+            if (!mobileNumber || !otp) {
+                location.reload();
+                return;
+            }
+
+            if (!name) {
+                error.push('Name is required');
+            }
+
+            if (!relationType) {
+                error.push('Choose Relation Type');
+            }
+
+            if (relationType === 'COLLEAGUE' && !colleagueRef) {
+                error.push('Emp Ref is required');
+            }
+
+            if (error.length > 0) {
+                alert(error.join(', '));
+                return;
+            }
+
+            await initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef, message);
+            $('#phoneModal').modal('toggle');
+            resetFormInput();
+            reloadComments();
+            location.reload();
+        } else {
+            if (error.length > 0) {
+                alert(error.join(', '));
+                return;
+            }
+            await addComment(message);
+            $('#phoneModal').modal('toggle');
+            resetFormInput();
+            reloadComments();
+        }
     })
+    const { users: atList } = await getAttendees();
+    const attendees = atList.filter(at => at.isAttend);
+    const nattendees = atList.filter(at => !at.isAttend);
+    const attendeesList = $('.attendeesList');
+   if (attendees.length > 0) attendeesList.empty();
+    attendees.forEach(at => {
+        const li = `
+            <li>
+                <div>${at.name}: ${at.relationType}</div>
+            </li>
+        `;
+        attendeesList.append(li);
+    });
+    const nattendeesList = $('.nattendeesList');
+    if (nattendees.length > 0) nattendeesList.empty();
+    nattendees.filter(at => !at.isAttend).forEach(at => {
+        const li = `
+            <li>
+                <div>${at.name}: ${at.relationType}</div>
+            </li>
+        `;
+        nattendeesList.append(li);
+    });
 })
