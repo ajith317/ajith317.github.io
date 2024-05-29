@@ -31,6 +31,7 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Dancing+Script&amp;display=swap'>
     <link rel="stylesheet" href="./css/landingPageStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     
      <!-- Bootstrap JS -->
@@ -42,9 +43,6 @@
 
      <script src="./js/app.js" defer></script>
      <script src="./js/timer.js" defer></script>    
-
-    
-
 
 </head>
 <body>
@@ -85,27 +83,10 @@
             </div>
             <h1 class="popup-trigger" id="profileContentAnu" data-target="#contentBlockAnu">Anu</h1>
 
-           
             <!-- Content block for Ajith -->
-    
-            <div id="contentBlockAjith" class="contentBlock" style="background-color: #eceade;">
-                <div class="card">
-                    <div class="position-relative">
-                        <img src="https://picsum.photos/200/150/?random" alt="Card image cap" class="card-img-top">
-                        <figure class="profile">
-                            <img src="https://picsum.photos/50/50/?random" class="profile-avatar rounded-circle" alt="Profile image">
-                        </figure>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title mt-3">Ajith</h4>
-                        <div class="meta">
-                            <p>Software developer</p>
-                        </div>
-                        <div class="card-text">
-                            Something need to write
-                        </div>
-                    </div>
-                    <div class="card-footer tab-card-header">
+            <div id="contentBlockAjith" class="contentBlock">               
+                <div class="profile-card">
+                    <div class="card-header tab-card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTabAjith" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="one-tab-ajith" data-toggle="tab" href="#oneAjith" role="tab" aria-controls="oneAjith" aria-selected="true">More About</a>
@@ -116,20 +97,67 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="three-tab-ajith" data-toggle="tab" href="#threeAjith" role="tab" aria-controls="threeAjith" aria-selected="false">His love story</a>
                             </li>
-                       
                         </ul>
                     </div>
                     <div class="tab-content" id="myTabContentAjith">
+                        <!-- Personal Information Tab -->
                         <div class="tab-pane fade show active p-3" id="oneAjith" role="tabpanel" aria-labelledby="one-tab-ajith">
-                            <h5 class="card-title">Personal Information</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content for Ajith.</p>
+                            <div class="text-center">
+                                <img src="https://picsum.photos/150/150/?random" class="rounded-circle img-fluid mb-3 profile-image" alt="Profile Image">
+                                <div class="text-center-profile">
+                                    <h5 class="profile-personal-card-title mt-0 mb-0">V M Ajith Babu</h5>
+                                    <p class="designation mb-1">Software developer</p>
+                                </div>
+                                <!-- Social Media Icons -->
+                                <div class="social-media-icons">
+                                    <a href="https://www.instagram.com/ajith_ab/"><i class="fab fa-instagram"></i></a>                                   
+                                    <a href="https://www.linkedin.com/in/ajith-babu?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "><i class="fab fa-linkedin"></i></a>                                    
+                                </div>
+                                <hr>
+                                <div class="personal-info">
+                                    <div class="info-item">
+                                        <i class="fa fa-graduation-cap"></i>
+                                        <p>Obtained my Master's in Computer Applications from the legendary K.L.N. College of Engineering (where we debugged more than we slept).</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-briefcase"></i>
+                                        <p>Currently on a mission as a Bug Exterminator at Eurofins IT Solutions Pvt. Ltd. (Yes, I'm the one you call when bugs invade your code).</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-home"></i>
+                                        <p>Residence: Proudly representing Madurai, the land of temples, traditions, and tantalizing food.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-map-marker"></i>
+                                        <p>Currently stationed in Chennai, fighting daily battles against traffic and deadlines.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-user-friends"></i>
+                                        <p>Parents: My dad, the legendary threadwinder, and my mom, the ultimate homemaker extraordinaire.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-users"></i>
+                                        <p>Siblings: Proudly claim one brother who's happily married and outsmarted me with one child.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-info-circle"></i>
+                                        <p>My brother Vijay, the Market Analyst, and his wife, the Data Analyst, are on a mission to decode the mysteries of the market.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-heart"></i>
+                                        <p>Interests: When I'm not slaying bugs, I'm off exploring new horizons through travel or conquering digital realms in mobile games!</p>
+                                    </div>
+                                </div>                                                                
+                            </div>
                         </div>
+
+                        <!-- Memories Tab -->
                         <div class="tab-pane fade p-3" id="twoAjith" role="tabpanel" aria-labelledby="two-tab-ajith">
                             <div class="profImg-container">
-                                <div class="team row justify-content-center">
+                                <div class="team row justify-content-center mb-3">
                                     <div class="col-md-4 col-sm-6">
                                         <div class="profile_Memories">
-                                            <img alt="Anita Simmons" src="https://source.unsplash.com/pQyIutdScOY/800x800" />
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
                                             <div class="profile__details">
                                                 <h2 class="profile__name">Anita Simmons</h2>
                                                 <p>Founder</p>
@@ -138,7 +166,7 @@
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="profile_Memories">
-                                            <img alt="Anita Simmons" src="https://source.unsplash.com/pQyIutdScOY/800x800" />
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
                                             <div class="profile__details">
                                                 <h2 class="profile__name">Anita Simmons</h2>
                                                 <p>Founder</p>
@@ -147,70 +175,72 @@
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="profile_Memories">
-                                            <img alt="Anita Simmons" src="https://source.unsplash.com/pQyIutdScOY/800x800" />
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
                                             <div class="profile__details">
                                                 <h2 class="profile__name">Anita Simmons</h2>
                                                 <p>Founder</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="profile_Memories">
-                                            <img alt="Anita Simmons" src="https://source.unsplash.com/pQyIutdScOY/800x800" />
-                                            <div class="profile__details">
-                                                <h2 class="profile__name">Anita Simmons</h2>
-                                                <p>Founder</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="profile_Memories">
-                                            <img alt="Anita Simmons" src="https://source.unsplash.com/pQyIutdScOY/800x800" />
-                                            <div class="profile__details">
-                                                <h2 class="profile__name">Anita Simmons</h2>
-                                                <p>Founder</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="profile_Memories">
-                                            <img alt="Anita Simmons" src="https://source.unsplash.com/pQyIutdScOY/800x800" />
-                                            <div class="profile__details">
-                                                <h2 class="profile__name">Anita Simmons</h2>
-                                                <p>Founder</p>
-                                            </div>
-                                        </div>
-                                    </div>                                  
                                 </div>
-                            </div> 
+                                <div class="team row justify-content-center mb-3">
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Anita Simmons</h2>
+                                                <p>Founder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Anita Simmons</h2>
+                                                <p>Founder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Anita Simmons</h2>
+                                                <p>Founder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Love Story Tab -->
                         <div class="tab-pane fade p-3" id="threeAjith" role="tabpanel" aria-labelledby="three-tab-ajith">
-                            <h5 class="card-title">His love story</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        
+                            <div class="love-story">
+                                    <h6>Chapter 1: The First Meeting</h6>
+                                    <p>It all began on a sunny day...</p>
+                                    
+                                    <h6>Chapter 2: Building a Connection</h6>
+                                    <p>As they spent more time together...</p>
+                                    
+                                    <h6>Chapter 3: Challenges and Triumphs</h6>
+                                    <p>Despite the obstacles they faced...</p>
+                                    
+                                    <!-- Add more chapters and content as needed -->
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
+  
+
             <!-- Content block for Anu -->
-            <div id="contentBlockAnu" class="contentBlock" style="background-color: #eceade;">
-                <div class="card">
-                    <div class="position-relative">
-                        <img src="https://picsum.photos/200/150/?random" alt="Card image cap" class="card-img-top">
-                        <figure class="profile">
-                            <img src="https://picsum.photos/50/50/?random" class="profile-avatar rounded-circle" alt="Profile image">
-                        </figure>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title mt-3">Anu</h4>
-                        <div class="meta">
-                            <p>QA test engineer at Atos - Chennai</p>
-                        </div>
-                        <div class="card-text">
-                            Currently staying with her parents and living in Madurai
-                        </div>
-                    </div>
-                    <div class="card-footer tab-card-header">
+            <div id="contentBlockAnu" class="contentBlock">
+                <div class="profile-card">
+                    <div class="card-header tab-card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTabAnu" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="one-tab-anu" data-toggle="tab" href="#oneAnu" role="tab" aria-controls="oneAnu" aria-selected="true">More About</a>
@@ -221,50 +251,139 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="three-tab-anu" data-toggle="tab" href="#threeAnu" role="tab" aria-controls="threeAnu" aria-selected="false">Her love story</a>
                             </li>
-                            <!-- Add more tabs if needed -->
                         </ul>
                     </div>
                     <div class="tab-content" id="myTabContentAnu">
+                        <!-- Personal Information Tab -->
                         <div class="tab-pane fade show active p-3" id="oneAnu" role="tabpanel" aria-labelledby="one-tab-anu">
-                            <h5 class="card-title">Personal Information</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="tab-pane fade p-3" id="twoAnu" role="tabpanel" aria-labelledby="two-tab-anu">
-                            <h5 class="card-title">Memories</h5>
-                            <div class="row">
-                                <div class="col-4 mb-3">
-                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/200') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                            <div class="text-center">
+                                <img src="https://picsum.photos/150/150/?random" class="rounded-circle img-fluid mb-3 profile-image" alt="Profile Image">
+                                <div class="text-center-profile">
+                                    <h5 class="profile-personal-card-title mt-0 mb-0">T S Anupriya</h5>
+                                    <p class="designation mb-1">QA Test Engineer</p>
                                 </div>
-                                <div class="col-4 mb-3">
-                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/201') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                <div class="social-media-icons">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
                                 </div>
-                                <div class="col-4 mb-3">
-                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/202') no-repeat center / cover; height: 100px; width: 100px;"></div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/200') no-repeat center / cover; height: 100px; width: 100px;"></div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/201') no-repeat center / cover; height: 100px; width: 100px;"></div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="rounded-circle img-thumbnail" style="background: url('https://picsum.photos/200/202') no-repeat center / cover; height: 100px; width: 100px;"></div>
+                                <hr>
+                                <div class="personal-info">
+                                    <div class="info-item">
+                                        <i class="fa fa-briefcase"></i>
+                                        <p>Chief Bug Hunter at Atos - Chennai (a.k.a. QA Test Engineer)</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-home"></i>
+                                        <p>Resides in Madurai, the heart of Tamil Nadu, but often daydreaming about a beach house in Maldives.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-map-marker"></i>
+                                        <p>Currently navigating through the bustling streets of Chennai, Tamil Nadu.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-graduation-cap"></i>
+                                        <p>Obtained a degree in M.sc(Computer Science) from Thiagarajar College, where debugging was a major.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-users"></i>
+                                        <p>Parents: Father is a businessman who excels in negotiations (especially during family dinners), while mother is a homemaker and a master chef of comfort food.</p>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa fa-heart"></i>
+                                        <p>Interests: Jamming to music while debugging, and crushing candies on the mobile - a pro multitasker!</p>
+                                    </div>
                                 </div>
                                 
                             </div>
                         </div>
+                        <!-- Memories Tab -->
+                        <div class="tab-pane fade p-3" id="twoAnu" role="tabpanel" aria-labelledby="two-tab-anu">
+                            <div class="profImg-container">
+                                <div class="team row justify-content-center mb-3">
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Memory 1</h2>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Memory 2</h2>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Memory 3</h2>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team row justify-content-center mb-3">
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Memory 4</h2>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Memory 5</h2>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="profile_Memories">
+                                            <img alt="Memory Image" src="https://picsum.photos/200/150/?random" />
+                                            <div class="profile__details">
+                                                <h2 class="profile__name">Memory 6</h2>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Love Story Tab -->
                         <div class="tab-pane fade p-3" id="threeAnu" role="tabpanel" aria-labelledby="three-tab-anu">
-                            <h5 class="card-title">Her love story</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <!-- <h5 class="card-title">Her love story</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                            <div class="love-story">
+                                <h6>Chapter 1: The First Meeting</h6>
+                                <p>It all began on a sunny day...</p>
+                                
+                                <h6>Chapter 2: Building a Connection</h6>
+                                <p>As they spent more time together...</p>
+                                
+                                <h6>Chapter 3: Challenges and Triumphs</h6>
+                                <p>Despite the obstacles they faced...</p>
+                                
+                                <!-- Add more chapters and content as needed -->
+                            </div>
+                        
+                        
                         </div>
                     </div>
                 </div>
             </div>
 
-
-            
-  
-            
 
             <!-- <h1>Anu</h1> -->
             <!-- <h3>Are getting married</h3> -->
@@ -277,7 +396,6 @@
                 </a>
             </p>
                       
-           
 
             <!-- Popup container bootstrap --> 
             <div class="modal fade" id="smallPopupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -324,7 +442,7 @@
 
     <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/lXbrJhRNbqM?autoplay=1&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
     
-    <p class="happiness">Join us in our happiness!<br><a href="https://www.instagram.com/ajith_ab/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></p>
+    <p class="happiness">Join us in our happiness!<br><a href="https://www.instagram.com/ajith_ab/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></p>
 
     <!-- <div class="tile__img" id = "showImageBtn">
         <img class="tile__img" src="./assets/img/ggg.gif" alt="" />
