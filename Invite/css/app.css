@@ -765,4 +765,81 @@ footer .widget ul {
 
 
  
+  /* Custom Styles for food Popup */
+.modal-dialog {
+    max-width: 600px; 
+}
+
+.modal-header .modal-title {
+    display: inline-block;
+    font-size: 28px; 
+}
+
+.modal-header .close {
+    margin-left: auto;
+}
+
+.popup-scroll {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+.popup-scroll::-webkit-scrollbar {
+    width: 6px; 
+}
+
+.popup-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+.popup-scroll::-webkit-scrollbar-thumb {
+    background: var(--bodyBackgroundMed) 
+}
+
+.popup-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--bodyBackgroundLite); 
+}
+
+.menu-title {
+    font-size: 24px; 
+    margin-bottom: 10px;
+}
+
+.food-item {
+    margin-bottom: 10px;
+    font-size: 20px; 
+    text-align: center;
+    margin-top: 10px;
+}
+
+.bride-mandapam {
+    color: #ff69b4;
+}
+
+.groom-mandapam {
+    color: #1e90ff; 
+}
+
+.col-4 {
+    padding: 5px; 
+    display: flex;
+    align-items: center;
+}
+
+.col-4 i {
+    margin-right: 4px; 
+    color: #685b87;
+    font-size: 8px; 
+    font: weight 10px;
+}
+
+
+.food-icon {
+    font-size: 20px; 
+    color: #907cc0;
+    font: weight 10px;
+}
+
+
  

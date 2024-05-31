@@ -1067,56 +1067,36 @@ buttons.forEach((button) => {
 });
 
 
-// Function to open the popup and populate it with content
+// Function to open the food popup and populate it with content
 function openPopup(title, brideDishes, groomDishes) {
-    // Set the header title
+    // Set the header title with a food icon
     var popupHeader = document.querySelector('.popup-header');
-    popupHeader.textContent = title;
+    // Choose the appropriate food icon class from Font Awesome
+    var foodIconClass = 'fas fa-utensils'; // Example: 'fas fa-utensils' for utensils icon
+    popupHeader.innerHTML = '<i class="' + foodIconClass + ' food-icon"></i> ' + title;
 
-    // Add a paragraph element with the text "List of menus" below the title
-    var listParagraph = document.createElement('p');
-    listParagraph.textContent = "List of menus";
-    listParagraph.style.fontSize = "18px";
-    listParagraph.style.textAlign = "center";
-    listParagraph.style.marginTop = "5px";
-
-    popupHeader.appendChild(listParagraph);
-
-    // Construct HTML content with lists of food items
-    var brideContent = '<div class="food-item"><strong>Groom Mandapam</strong></div><div><ul>';
-    for (var i = 0; i < brideDishes.length; i++) {
-        brideContent += '<li>' + brideDishes[i] + '</li>';
-    }
-    brideContent += '</ul></div>';
-
-    var groomContent = '<div class="food-item"><strong>Bride Mandapam</strong></div><div><ul>';
-    for (var j = 0; j < groomDishes.length; j++) {
-        groomContent += '<li>' + groomDishes[j] + '</li>';
-    }
-    groomContent += '</ul></div>';
-
-    // Populate bride and groom content in respective columns
-    document.getElementById("brideDishes").innerHTML = brideContent;
-    document.getElementById("groomDishes").innerHTML = groomContent;
-
-    // Display the popup
-    var popup = document.getElementById("popup");
-    popup.style.display = "block";
-    setVerticalLineHeight();
-
-    // Add event listener to close popup when clicking outside
-    window.addEventListener('click', function (event) {
-        if (event.target == popup) {
-            closePopup();
+    // Helper function to format dishes into list items with circle icons
+    function formatDishesWithColumns(dishes) {
+        var formattedContent = '';
+        for (var i = 0; i < dishes.length; i++) {
+            if (i % 3 === 0 && i !== 0) {
+                formattedContent += '</ul><ul class="list-unstyled row">';
+            }
+            formattedContent += '<li class="col-4"><i class="fas fa-circle"></i> ' + dishes[i] + '</li>';
         }
-    });
+        return formattedContent;
+    }
+
+    var brideContent = '<ul class="list-unstyled row">' + formatDishesWithColumns(brideDishes) + '</ul>';
+    var groomContent = '<ul class="list-unstyled row">' + formatDishesWithColumns(groomDishes) + '</ul>';
+   
+    document.querySelector("#brideItems").innerHTML = brideContent;
+    document.querySelector("#groomItems").innerHTML = groomContent;
+ 
+    $('#popup').modal('show');
 }
-
-
-// Function to close the popup
 function closePopup() {
-    var popup = document.getElementById("popup");
-    popup.style.display = "none";
+    $('#popup').modal('hide');
 }
 
 // Function to set the top position of the vertical line dynamically

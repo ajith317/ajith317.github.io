@@ -292,7 +292,7 @@
                     </div>
                     <div class="col-md-5 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1000">
                         <div class="event-box"
-                            onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
+                            onclick="openPopup('Followed by Dinner', ['Parotta', 'Parotta'], ['idly'])">
                             <p><strong>07th July</strong></p>
                             <h5 class="event-title">Haldi <span class="event-time">10AM-11AM</span></h5>
                             <p class="event-description">The haldi ceremony is usually held separately for the bride and
@@ -301,7 +301,7 @@
                                 see the bride after this ritual until the final wedding ceremony starts.</p>
                         </div>
                         <div class="event-box"
-                            onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
+                            onclick="openPopup('Followed by Breakfast', ['Parotta', 'Parotta'], ['idly'])">
                             <h5 class="event-title">Wedding <span class="event-time">6PM-12AM</span></h5>
                             <p class="event-description">This is the main event in the entire wedding when the bride and
                                 groom tie the knot. The groom comes with the barat and is greeted by the bride side with
@@ -319,15 +319,29 @@
                 </div>
             </div>
 
-            <!-- food popup -->
-            <div id="popup" class="popup">
-                <div class="popup-content">
-                    <span class="close" onclick="closePopup()">&times;</span>
-                    <h2 class="popup-header"></h2>
-                    <div class="popup-scroll">
-                        <div class="popup-columns">
-                            <div id="brideDishes" class="column left-column"></div>
-                            <div id="groomDishes" class="column"></div>
+            <!-- Bootstrap Popup -->
+            <div id="popup" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title popup-header"></h5>
+                            <button type="button" class="close" onclick="closePopup()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body popup-scroll">                            
+                            <div class="container">
+                                <div class="row">
+                                    <div id="brideDishes" class="col-12 mb-3">
+                                        <div class="food-item bride-mandapam"><strong>Bride Mandapam</strong></div>
+                                        <ul class="list-unstyled row" id="brideItems"></ul>
+                                    </div>
+                                    <div id="groomDishes" class="col-12">
+                                        <div class="food-item groom-mandapam"><strong>Groom Mandapam</strong></div>
+                                        <ul class="list-unstyled row" id="groomItems"></ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
