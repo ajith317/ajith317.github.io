@@ -1118,8 +1118,8 @@ function setVerticalLineHeight() {
     }
 }
 
-// const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
-const apiUrl = "http://localhost:8080/api/v1";
+const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
+// const apiUrl = "http://localhost:8080/api/v1";
 
 async function showApiErr(resp) {
     const errTxt = await resp.text();
