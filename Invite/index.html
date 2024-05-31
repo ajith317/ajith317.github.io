@@ -83,6 +83,25 @@
     <link rel="stylesheet" href="./css/sideBar.css">
     <link rel="stylesheet" href="./css/QuizGame.css">
     <link rel="stylesheet" href="./css/horizantalTimeLine.css">
+    <script type="text/javascript">
+        const originalFetch = fetch;
+        window.fetch = function (url, options) {
+            const method = options.method || 'GET';
+            if (method !== 'GET' && !url.includes('api.ulems.my.id')) $('#loader').show();
+            return originalFetch(url, options)
+                .then(response => {
+                    $('#loader').hide();
+                    return response;
+                })
+                .catch(error => {
+                    $('#loader').hide();
+                    throw error;
+                })
+                .finally(() => {
+                    $('#loader').hide();
+                });
+        };
+    </script>
 
     <script src="./js/app.js" defer></script>
     <script src="./js/sideBar.js" defer></script>
@@ -120,6 +139,11 @@
 
 <body data-email="user@example.com" data-password="12345678" data-url="https://api.ulems.my.id/"
     style="overflow-y: hidden;">
+    <div id="loader" style="display: none;">
+        <div class="moverlay">
+            <div class="mloader"></div>
+        </div>
+    </div>
 
     <!-- Navbar Bottom -->
     <nav class="navbar navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menus"
@@ -329,7 +353,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body popup-scroll">                            
+                        <div class="modal-body popup-scroll">
                             <div class="container">
                                 <div class="row">
                                     <div id="brideDishes" class="col-12 mb-3">
@@ -1522,7 +1546,7 @@
                         <label for="uname">Enter Name:</label>
                         <input type="text" class="form-control" id="uname" placeholder="Enter Name" />
                     </div>
-                    
+
                     <div class="form-group" id="relationType-group" style="display: none;">
                         <select id="relationType" class="form-control">
                             <option value="" hidden>Relation Type</option>
@@ -1621,7 +1645,7 @@
                                 <div>No Records</div>
                             </ul>
 
-                            <br/>
+                            <br />
 
                             <h4>Those who not attend</h4>
                             <ul class="nattendeesList">
