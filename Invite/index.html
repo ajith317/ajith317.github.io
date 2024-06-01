@@ -1600,7 +1600,7 @@
                     <!-- Tabs -->
                     <ul class="nav nav-tabs" id="popupTabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Add your wishes</a>
+                            <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Wishes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="tab2" data-toggle="tab" href="#content2">Attendees</a>
@@ -1612,22 +1612,24 @@
                         <span aria-hidden="true">&times;</span>
                     </button> -->
                 </div>
-                <!-- Filter section -->
+
+                <!-- Filter section -->                
                 <div class="modal-header filter-section" style="display: none;">
                     <!-- Filter elements go here -->
                     <div class="form-group">
-                        <label for="nameFilter">Search by name:</label>
-                        <input type="text" class="form-control" id="nameFilter" placeholder="Enter name">
+                        
+                        <input type="text" class="form-control" id="nameFilter" placeholder="search by name">
                     </div>
                     <div class="form-group">
-                        <label for="dropdownFilter">Dropdown filter:</label>
+                       
                         <select class="form-control" id="dropdownFilter">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                            <option value="">search by RelationType</option>
+                            <option value="Colleagues">Colleague</option>
+                            <option value="Friends">Friend</option>
+                            <option value="Relatives">Relative</option>
                         </select>
                     </div>
-
+                
                     <!-- Filter button -->
                     <button class="btn btn-primary btn-sm btn-block" id="filterBtn">Filter</button>
                 </div>

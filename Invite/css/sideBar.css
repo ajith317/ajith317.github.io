@@ -121,3 +121,17 @@
   height: calc(100vh - 200px);
   justify-content: space-between;
 }
+
+  /* For WebKit browsers*/
+  ::-webkit-scrollbar {
+    width: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dac5c9; 
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eceade; 
+}
