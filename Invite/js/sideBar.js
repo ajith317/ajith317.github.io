@@ -11,10 +11,11 @@ $(document).ready(function () {
     return otp.trim().length > 0;
   }
   function updateButtonText(tabId) {
+    $('#input-comment').css('opacity', tabId === "content1" ? '1' : '0');
     if (tabId === "content1") {
-      $('#addCommentsBtn').text('Add your comments');
+      $('#addCommentsBtn').html('<i class="fas fa-arrow-up"></i>');
     } else if (tabId === "content2") {
-      $('#addCommentsBtn').text('Make my availability');
+      $('#addCommentsBtn').html('Make my availability');
     }
   }
 
@@ -25,9 +26,18 @@ $(document).ready(function () {
   });
 
   // Show phone modal when addCommentsBtn is clicked
-  $('#addCommentsBtn').click(function () {
+  $('#addCommentsBtn').click(async function () {
     const hasAccessToken = !!getAccessToken();
+    const isClickActionForMakeMyAvailabilty = $('#addCommentsBtn').text().includes('Make my availability');
     if (hasAccessToken) {
+
+      if (isClickActionForMakeMyAvailabilty) {
+        const isAttend = confirm('Will you attend the event?');
+        await makeMyAvailability(isAttend);
+        renderAttendeesContent();
+        return
+      }
+
       // Hide phone number input, label, and OTP group
       $('#phoneNumber, label[for="phoneNumber"]').hide();
       $('#otpGroup').hide();
@@ -45,9 +55,23 @@ $(document).ready(function () {
       $('#textEditor').show();
       $('#submitCmnds').show();
       $('#submitAndDropdownRow').show();
+
+      $('#phoneModal').modal('hide');
+
+      const message = $('#input-comment').val().trim();
+      if (!message) {
+        $('#input-comment').focus();
+        return;
+      }
+      await addComment(message);
+      $('#input-comment').val('');
+      reloadComments();
+      
+    } else {
+      $('#comments').val($('#input-comment').val());
+      $('#phoneModal').modal('show');
+      $('#popupComment').modal('hide');
     }
-    $('#phoneModal').modal('toggle');
-    $('#popupComment').modal('hide');
   });
 
 

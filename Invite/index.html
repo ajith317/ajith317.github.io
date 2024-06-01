@@ -1593,7 +1593,7 @@
     <!-- sideBar Popup -->
     <div class="modal right fade" id="popupComment" tabindex="-1" role="dialog" aria-labelledby="popupLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document" style="width: 500px;">
             <div class="modal-content">
                 <!-- Modal Header with Tabs -->
                 <div class="modal-header">
@@ -1608,9 +1608,9 @@
                     </ul>
                     <!-- Close Button -->
                     <span class="filter-icon">&#x1F50D;</span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> -->
                 </div>
                 <!-- Filter section -->
                 <div class="modal-header filter-section" style="display: none;">
@@ -1637,27 +1637,30 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="content1">
                             <h4>Comments</h4>
-                            <ul id="cmt-list"></ul>
+                            <div class="mcomments" id="cmt-list">
+                            </div>
+
+                            <button class="btn btn-default" id="load-cmt" style="float: right; display: none;">
+                                Load More...
+                            </button>
+                            
                         </div>
                         <div class="tab-pane fade" id="content2">
-                            <h4>Attendees</h4>
-                            <ul class="attendeesList">
-                                <div>No Records</div>
-                            </ul>
-
-                            <br />
-
-                            <h4>Those who not attend</h4>
-                            <ul class="nattendeesList">
-                                <div>No Records</div>
-                            </ul>
+                            <temp id="attendees-content"></temp>
                         </div>
                     </div>
                 </div>
                 <!-- Modal Footer -->
 
+                <!-- <div class="modal-footer">
+                    <div class="comment-input-container">
+                        <input type="text" class="comment-input" placeholder="Write a comment...">
+                        <button class="send-button">Send</button>
+                    </div>
+                </div> -->
+
                 <div class="input-group">
-                    <!-- <input type="text" class="form-control" placeholder="Add your comments" aria-label="Add your comments" aria-describedby="add-comments-icon"> -->
+                    <input type="text" class="form-control" id="input-comment" placeholder="Add your comments" aria-label="Add your comments" aria-describedby="add-comments-icon">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="addCommentsBtn"><i
                                 class="fas fa-arrow-up"></i></button>
@@ -1679,6 +1682,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/moment.js"></script>
 
 </body>
 

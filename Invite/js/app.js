@@ -1242,6 +1242,7 @@ async function initialize(mobileNumber, otp, name, isAttend, relationType, colle
     }
 }
 
+window.totalComments = 0;
 /**
  * 
  * @param {number} offset 
@@ -1253,13 +1254,15 @@ async function getComments(offset = 0) {
     //     return;
     // }
     const queryParams = new URLSearchParams();
-    queryParams.append("limit", 100);
+    queryParams.append("limit", 30);
     queryParams.append("offset", offset);
     const resp = await fetch(`${apiUrl}/comments?${queryParams.toString()}`, {
         headers: getHeaders()
     });
     if (resp.ok) {
-        return await resp.json();
+        const respData = await resp.json();
+        window.totalComments = respData.total;
+        return respData;
     } else {
         return [];
     }
@@ -1300,9 +1303,7 @@ async function addComment(message, parentCommentId = "") {
             commentId: parentCommentId || undefined
         })
     })
-    if (resp.ok) {
-        alert('Done');
-    } else {
+    if (!resp.ok) {
         alert(await resp.text());
     }
 }
@@ -1384,6 +1385,20 @@ async function getAttendees() {
     }
 }
 
+/**
+ * 
+ * @param {boolean} isAttend 
+ */
+async function makeMyAvailability(isAttend) {
+    await fetch(`${apiUrl}/auth/make-my-availability`, {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({
+            isAttend
+        })
+    });
+}
+
 function resetFormInput() {
     $('#phoneNumber').val('');
     $('#otp').val('');
@@ -1391,28 +1406,87 @@ function resetFormInput() {
     $('#uname').val('');
     $('#colleagueRef').val('');
     $('#comments').val('');
-    $('#isAttend').prop('checked'), false;
+    $('#isAttend').prop('checked', false);
+}
+
+const renderComment = async (reload = false) => {
+    const cmtList = $('#cmt-list');
+    const commentResponse = await getComments(reload ? 0 : cmtList.children().length);
+    commentResponse.comments.forEach(cmt => {
+        const li = `
+            <div class="mcomment">
+                <div class="mcomment-header">
+                    <span class="musername">${cmt.user.name}</span>
+                    <span class="mdate">${moment(cmt.updatedAt).fromNow()}</span>
+                </div>
+                <div class="mcomment-body">
+                    ${cmt.message}
+                </div>
+            </div>
+        `;
+        cmtList.append(li);
+    });
+    if (cmtList.children().length < window.totalComments) {
+        $('#load-cmt').show();
+    } else {
+        $('#load-cmt').hide();
+    }
+}
+const reloadComments = () => {
+    $('#cmt-list').empty();
+    renderComment(true);
+}
+
+window.attendeesContent = `
+<h4>Attendees</h4>
+<ul class="attendeesList mcomments">
+    <div>No Records</div>
+</ul>
+
+<br />
+
+<h4>Those who not attend</h4>
+<ul class="nattendeesList mcomments">
+    <div>No Records</div>
+</ul>
+`;
+
+async function renderAttendeesContent(){
+    $('#attendees-content').html(window.attendeesContent);
+    const { users: atList } = await getAttendees();
+    const attendeesAndNot = [
+        {
+            $e: $('.attendeesList'),
+            list: atList.filter(at => at.isAttend)
+        },
+        {
+            $e: $('.nattendeesList'),
+            list: atList.filter(at => !at.isAttend)
+        }
+    ];
+    attendeesAndNot.forEach(({$e, list}) => {
+        if (list.length > 0) $e.empty();
+        list.forEach(at => {
+            const li = `
+                <div class="mcomment">
+                    <div class="mcomment-header">
+                        <span class="musername">${at.name}: ${at.relationType}</span>
+                    </div>
+                </div>
+            `;
+            $e.append(li);
+        });
+    });
 }
 
 $(document).ready(async function () {
-    const renderComment = async () => {
-        const cmtList = $('#cmt-list');
-        const commentResponse = await getComments(cmtList.children().length);
-        commentResponse.comments.forEach(cmt => {
-            const li = `
-                <li>
-                    <div>${cmt.user.name}:</div>
-                    <div>${cmt.message}</div>
-                </li>
-            `;
-            cmtList.append(li);
-        });
-    }
-    const reloadComments = () => {
-        $('#cmt-list').empty()
-        renderComment();
-    }
     renderComment();
+
+    $('#load-cmt').click(function(){
+        const cmtList = $('#cmt-list');
+        if (cmtList.children().length < window.totalComments) renderComment();
+    })
+
     const { users } = await getScoreBoard();
     const tableBody = $('#userTable tbody');
     tableBody.empty();
@@ -1482,28 +1556,6 @@ $(document).ready(async function () {
             resetFormInput();
             reloadComments();
         }
-    })
-    const { users: atList } = await getAttendees();
-    const attendees = atList.filter(at => at.isAttend);
-    const nattendees = atList.filter(at => !at.isAttend);
-    const attendeesList = $('.attendeesList');
-   if (attendees.length > 0) attendeesList.empty();
-    attendees.forEach(at => {
-        const li = `
-            <li>
-                <div>${at.name}: ${at.relationType}</div>
-            </li>
-        `;
-        attendeesList.append(li);
     });
-    const nattendeesList = $('.nattendeesList');
-    if (nattendees.length > 0) nattendeesList.empty();
-    nattendees.filter(at => !at.isAttend).forEach(at => {
-        const li = `
-            <li>
-                <div>${at.name}: ${at.relationType}</div>
-            </li>
-        `;
-        nattendeesList.append(li);
-    });
+    renderAttendeesContent();
 })
