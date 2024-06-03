@@ -204,7 +204,7 @@ const util = (() => {
         button.disabled = true;
         document.querySelector('body').style.overflowY = 'scroll';
         AOS.init();
-         audio.play();
+        audio.play();
         if (localStorage.getItem('alertClosed')) {
             document.getElementById('alertDiv').style.display = 'none';
         }
@@ -1423,7 +1423,7 @@ const getCachedData = (key) => {
 };
 
 const showLoader = (selector) => {
-    $(selector).html('<div class="loader">Loading...</div>');
+    $(selector).append('<div class="loader">Loading...</div>');
 };
 
 const hideLoader = (selector) => {
@@ -1441,11 +1441,40 @@ const fetchComments = async (offset = 0) => {
 
 const fetchAttendees = async () => {
     if (cachedAttendees.length === 0) {
-        const attendeeResponse = await getAttendees();
+        const attendeeResponse = await getAttendees();        
         cachedAttendees = attendeeResponse.users;
         cacheData('attendees', cachedAttendees);
     }
     return cachedAttendees;
+};
+
+const filterData = (data, filters) => {
+    return data.filter(item => {
+        const { name, relationType, colleagueRef } = filters;
+        const user = item.user || item;
+
+        if (name && !user.name.toLowerCase().includes(name.toLowerCase())) {
+            return false;
+        }
+
+        if (relationType && user.relationType.toLowerCase() !== relationType.toLowerCase()) {
+            return false;
+        }
+
+        if (relationType === 'colleague' && colleagueRef) {
+            if (colleagueRef === 'eits' && !user.colleagueRef.toLowerCase().startsWith('eits')) {
+                return false;
+            }
+            if (colleagueRef === 'atos' && !user.colleagueRef.toLowerCase().startsWith('a')) {
+                return false;
+            }
+            if (colleagueRef === 'others' && (user.colleagueRef.toLowerCase().startsWith('eits') || user.colleagueRef.toLowerCase().startsWith('a'))) {
+                return false;
+            }
+        }
+
+        return true;
+    });
 };
 
 const renderComment = async (reload = false, filters = {}) => {
@@ -1461,10 +1490,7 @@ const renderComment = async (reload = false, filters = {}) => {
     await fetchComments(reload ? 0 : cmtList.children().length);
     hideLoader('#cmt-list');
 
-    const filteredComments = cachedComments.filter(cmt =>
-        (!filters.name || cmt.user.name.toLowerCase().includes(filters.name)) &&
-        (!filters.relationType || cmt.user.relationType.toLowerCase() === filters.relationType)
-    );
+    const filteredComments = filterData(cachedComments, filters);
 
     if (filteredComments.length === 0) {
         cmtList.html('<div>No comments found</div>');
@@ -1490,7 +1516,7 @@ const renderComment = async (reload = false, filters = {}) => {
                 </div>
             `;
         }).join('');
-        
+
         cmtList.append(commentHtml);
 
         if (cmtList.children().length < window.totalComments) {
@@ -1504,13 +1530,18 @@ const renderComment = async (reload = false, filters = {}) => {
 const reloadComments = (filters = {}) => {
     $('#cmt-list').empty();
     renderComment(true, filters);
-    renderAttendeesContent(filters);
 };
+
+const reloadAttendees = (filters = {}) => {
+    renderAttendeesContent(true, filters);
+};
+
 
 const applyFilters = debounce(() => {
     const nameFilter = $('#nameFilter').val().toLowerCase();
     let relationTypeFilter = $('#dropdownFilter').val().toLowerCase(); 
-
+    let colleagueTypeFilter = $('#colleagueType').val().toLowerCase();  
+    
     if (relationTypeFilter && relationTypeFilter.endsWith("s")) {
         relationTypeFilter = relationTypeFilter.slice(0, -1);
     }
@@ -1522,8 +1553,12 @@ const applyFilters = debounce(() => {
     if (relationTypeFilter) {
         filters.relationType = relationTypeFilter;
     }
+    if (relationTypeFilter === 'colleague' && colleagueTypeFilter) { 
+        filters.colleagueRef = colleagueTypeFilter;
+    }
 
     reloadComments(filters);
+    reloadAttendees(filters);
     $('#filter-section').hide();
 }, 300);
 
@@ -1535,16 +1570,17 @@ window.attendeesContent = `
 
 <br />
 
-<h4>Those who not attend</h4>
+<h5>Regretfully declined but sent best wishes.
+</h5>
 <ul class="nattendeesList mcomments">
     <div class="no-records">No records found</div>
 </ul>
 `;
 
-const renderAttendeesContent = async (filters = {}) => {
+const renderAttendeesContent = async (reload = false, filters = {}) => {
     $('#attendees-content').html(window.attendeesContent);
-
-    if (cachedAttendees.length === 0) {
+   
+    if (cachedAttendees.length === 0 || reload) {
         showLoader('.attendeesList');
         showLoader('.nattendeesList');
     }
@@ -1554,10 +1590,10 @@ const renderAttendeesContent = async (filters = {}) => {
     hideLoader('.attendeesList');
     hideLoader('.nattendeesList');
 
-    const filteredAttendees = cachedAttendees.filter(at =>
-        (!filters.name || at.name.toLowerCase().includes(filters.name)) &&
-        (!filters.relationType || at.relationType.toLowerCase() === filters.relationType)
-    );
+    console.log('Rendering attendees with filters:', filters); // Debugging line
+
+    const filteredAttendees = filterData(cachedAttendees, filters);
+    console.log('Filtered Attendees:', filteredAttendees); // Debugging line
 
     const attendeesAndNot = [
         {
@@ -1570,10 +1606,10 @@ const renderAttendeesContent = async (filters = {}) => {
         }
     ];
 
-    attendeesAndNot.forEach(({ $e, list }) => {
+    attendeesAndNot.forEach(({ $e, list }) => {      
         if (list.length === 0) {
             $e.html('<div class="no-records">No records found</div>');
-        } else {
+        } else { 
             $e.empty();
             const attendeesHtml = list.map(at => {
                 const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(at.name)}&background=random&color=fff&size=40&font-size=0.6`;
@@ -1591,7 +1627,7 @@ const renderAttendeesContent = async (filters = {}) => {
                         </div>                
                     </div>
                 `;
-            }).join('');
+            }).join('');           
             $e.append(attendeesHtml);
         }
     });
@@ -1605,11 +1641,20 @@ function debounce(func, wait) {
     };
 }
 
+document.getElementById("dropdownFilter").addEventListener("change", function() {
+    var selectedValue = this.value;
+    if (selectedValue.toLowerCase() === "colleagues") {
+        document.getElementById("colleagueOptions").style.display = "block";
+    } else {
+        document.getElementById("colleagueOptions").style.display = "none";
+    }
+});
+
 $(document).ready(async function () {
     showLoader('#cmt-list');
     showLoader('.attendeesList');
     showLoader('.nattendeesList');
-
+    
     await renderComment();
     await renderAttendeesContent();
 
@@ -1618,19 +1663,23 @@ $(document).ready(async function () {
     hideLoader('.nattendeesList');
 
     $('#filterBtn').click(function() {
+        const nameFilterVal = $('#nameFilter').val();
+        const dropdownFilterVal = $('#dropdownFilter').val();
         if ($(this).text() === 'Filter') {
-            applyFilters();
-            $(this).text('Remove Filter');
-            $('#filter-section').hide(); // Hide filter section after applying filters
+            if (nameFilterVal !== '' || dropdownFilterVal !== '') {
+                applyFilters();
+                $(this).text('Remove Filter');
+                $('#filter-section').hide();
+            }
         } else {
-            $('#nameFilter').val('');
-            $('#dropdownFilter').val('');
-            reloadComments(); 
+            resetFilterSection();
+            reloadComments();
+            reloadAttendees();
             $(this).text('Filter');
-            $('#filter-section').show(); // Show filter section when removing filters
+            $('#filter-section').show();
         }
     });
-
+    
     $('#load-cmt').click(function(){
         const cmtList = $('#cmt-list');
         if (cmtList.children().length < window.totalComments) renderComment();
@@ -1693,6 +1742,7 @@ $(document).ready(async function () {
             $('#phoneModal').modal('toggle');
             resetFormInput();
             reloadComments();
+            reloadAttendees();
             location.reload();
         } else {
             if (error.length > 0) {
@@ -1703,6 +1753,15 @@ $(document).ready(async function () {
             $('#phoneModal').modal('toggle');
             resetFormInput();
             reloadComments();
+            reloadAttendees();
         }
     });
 });
+
+function resetFilterSection() {
+    $('#nameFilter').val('');
+    $('#dropdownFilter').val('');
+    $('#colleagueType').val('');
+    $('#colleagueOptions').hide();
+    $('#filter-section').hide();
+}
