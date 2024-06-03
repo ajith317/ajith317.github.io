@@ -20,7 +20,7 @@
 .sidebar {
     height: 100%;
     width: 250px;
-    background-color: var(--bodyBackground)!important;
+    color: var(--bodyBackground)!important;
   }
 
   
@@ -35,10 +35,11 @@
     right: 0;
     margin: 0;
     height: 100%;
-    width: 300px; /* Adjust the width as needed */
+    width: 300px; 
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    color: #674ea7;
   }
 
   .modal.right .modal-content {
@@ -51,6 +52,7 @@
   .nav-tabs .nav-item {
     width: 50%;
     text-align: center;
+    font-family: var(--dancingFont);
   }
 
   .nav-tabs .nav-link {
@@ -80,6 +82,7 @@
 
 #filterBtn {
   margin-top: 10px;
+  background-color: #674ea7;
 }
 
 #filterBtn.btn-block {
@@ -87,21 +90,21 @@
 }
 
 
-  .custom-input-group {
-    margin-top: 10px;
-  }
+.custom-input-group {
+  margin-top: 10px;
+}
 
-  .custom-input-group .input-group-prepend .input-group-text {
-    border-radius: 0;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-  }
+.custom-input-group .input-group-prepend .input-group-text {
+  border-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
 
-  .custom-input-group .input-group-append .input-group-text {
-    border-radius: 0;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-  }
+.custom-input-group .input-group-append .input-group-text {
+  border-radius: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
  
 
 .modal-footer {
@@ -120,4 +123,18 @@
   flex-direction: column;
   height: calc(100vh - 200px);
   justify-content: space-between;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dac5c9; 
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eceade; 
 }

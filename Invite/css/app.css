@@ -871,7 +871,7 @@ footer .widget ul {
     100% { transform: rotate(360deg); }
   }
 
-  .comments {
+.comments {
     max-width: 600px;
     margin: 0 auto;
     padding: 0;
@@ -891,15 +891,33 @@ footer .widget ul {
     margin-bottom: 10px;
     font-size: 0.9em;
     color: #555;
+    display: flex;
+    align-items: flex-start; 
+}
+
+.mcomment-header-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.mavatar {
+    border-radius: 50%;
+    width: 30px;
 }
 
 .musername {
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 20px;
+    font-size: 1.3em;
 }
 
+
 .mdate {
-    color: #999;
+    color: #999;   
+    font-size: 1.0em;
+    margin-top: 5px; 
 }
 
 .mcomment-body {

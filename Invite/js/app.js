@@ -1409,83 +1409,281 @@ function resetFormInput() {
     $('#isAttend').prop('checked', false);
 }
 
-const renderComment = async (reload = false) => {
-    const cmtList = $('#cmt-list');
-    const commentResponse = await getComments(reload ? 0 : cmtList.children().length);
-    commentResponse.comments.forEach(cmt => {
-        const li = `
-            <div class="mcomment">
-                <div class="mcomment-header">
-                    <span class="musername">${cmt.user.name}</span>
-                    <span class="mdate">${moment(cmt.updatedAt).fromNow()}</span>
-                </div>
-                <div class="mcomment-body">
-                    ${cmt.message}
-                </div>
-            </div>
-        `;
-        cmtList.append(li);
-    });
-    if (cmtList.children().length < window.totalComments) {
-        $('#load-cmt').show();
-    } else {
-        $('#load-cmt').hide();
+
+let cachedComments = [];
+let cachedAttendees = [];
+
+const cacheData = (key, data) => {
+    localStorage.setItem(key, JSON.stringify(data));
+};
+
+const getCachedData = (key) => {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+};
+
+const showLoader = (selector) => {
+    $(selector).append('<div class="loader">Loading...</div>');
+};
+
+const hideLoader = (selector) => {
+    $(selector).find('.loader').remove();
+};
+
+const fetchComments = async (offset = 0) => {
+    if (cachedComments.length === 0 || offset === 0) {
+        const commentResponse = await getComments(offset);
+        cachedComments = offset === 0 ? commentResponse.comments : cachedComments.concat(commentResponse.comments);
+        cacheData('comments', cachedComments);
     }
-}
-const reloadComments = () => {
+    return cachedComments;
+};
+
+const fetchAttendees = async () => {
+    if (cachedAttendees.length === 0) {
+        const attendeeResponse = await getAttendees();        
+        cachedAttendees = attendeeResponse.users;
+        cacheData('attendees', cachedAttendees);
+    }
+    return cachedAttendees;
+};
+
+const filterData = (data, filters) => {
+    return data.filter(item => {
+        const { name, relationType, colleagueRef } = filters;
+        const user = item.user || item;
+
+        if (name && !user.name.toLowerCase().includes(name.toLowerCase())) {
+            return false;
+        }
+
+        if (relationType && user.relationType.toLowerCase() !== relationType.toLowerCase()) {
+            return false;
+        }
+
+        if (relationType === 'colleague' && colleagueRef) {
+            if (colleagueRef === 'eits' && !user.colleagueRef.toLowerCase().startsWith('eits')) {
+                return false;
+            }
+            if (colleagueRef === 'atos' && !user.colleagueRef.toLowerCase().startsWith('a')) {
+                return false;
+            }
+            if (colleagueRef === 'others' && (user.colleagueRef.toLowerCase().startsWith('eits') || user.colleagueRef.toLowerCase().startsWith('a'))) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+};
+
+const renderComment = async (reload = false, filters = {}) => {
+    const cmtList = $('#cmt-list');
+    if (reload) {
+        cmtList.empty();
+    }
+
+    if (cachedComments.length === 0 || reload) {
+        showLoader('#cmt-list');
+    }
+
+    await fetchComments(reload ? 0 : cmtList.children().length);
+    hideLoader('#cmt-list');
+
+    const filteredComments = filterData(cachedComments, filters);
+
+    if (filteredComments.length === 0) {
+        cmtList.html('<div>No comments found</div>');
+        $('#load-cmt').hide();
+    } else {
+        const commentHtml = filteredComments.map(cmt => {
+            const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(cmt.user.name)}&background=random&color=fff&size=40&font-size=0.6`;
+            return `
+                <div class="mcomment">
+                    <div class="mcomment-header">
+                        <img src="${avatarUrl}" alt="Avatar" class="mavatar">
+                        <div class="mcomment-header-text">
+                            <div class="muser-info">
+                                <span class="musername">${cmt.user.name}</span>
+                                <span class="mdate">${moment(cmt.updatedAt).fromNow()}</span>
+                            </div>
+                            <span class="mrelationType">${cmt.user.relationType}</span>
+                        </div>
+                    </div>
+                    <div class="mcomment-body">
+                        ${cmt.message}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        cmtList.append(commentHtml);
+
+        if (cmtList.children().length < window.totalComments) {
+            $('#load-cmt').show();
+        } else {
+            $('#load-cmt').hide();
+        }
+    }
+};
+
+const reloadComments = (filters = {}) => {
     $('#cmt-list').empty();
-    renderComment(true);
-}
+    renderComment(true, filters);
+};
+
+const reloadAttendees = (filters = {}) => {
+    renderAttendeesContent(true, filters);
+};
+
+
+const applyFilters = debounce(() => {
+    const nameFilter = $('#nameFilter').val().toLowerCase();
+    let relationTypeFilter = $('#dropdownFilter').val().toLowerCase(); 
+    let colleagueTypeFilter = $('#colleagueType').val().toLowerCase();  
+    
+    if (relationTypeFilter && relationTypeFilter.endsWith("s")) {
+        relationTypeFilter = relationTypeFilter.slice(0, -1);
+    }
+
+    const filters = {};
+    if (nameFilter) {
+        filters.name = nameFilter;
+    }
+    if (relationTypeFilter) {
+        filters.relationType = relationTypeFilter;
+    }
+    if (relationTypeFilter === 'colleague' && colleagueTypeFilter) { 
+        filters.colleagueRef = colleagueTypeFilter;
+    }
+
+    reloadComments(filters);
+    reloadAttendees(filters);
+    $('#filter-section').hide();
+}, 300);
 
 window.attendeesContent = `
 <h4>Attendees</h4>
 <ul class="attendeesList mcomments">
-    <div>No Records</div>
+    <div class="no-records">No records found</div>
 </ul>
 
 <br />
 
-<h4>Those who not attend</h4>
+<h5>Regretfully declined but sent best wishes.
+</h5>
 <ul class="nattendeesList mcomments">
-    <div>No Records</div>
+    <div class="no-records">No records found</div>
 </ul>
 `;
 
-async function renderAttendeesContent(){
+const renderAttendeesContent = async (reload = false, filters = {}) => {
     $('#attendees-content').html(window.attendeesContent);
-    const { users: atList } = await getAttendees();
+   
+    if (cachedAttendees.length === 0 || reload) {
+        showLoader('.attendeesList');
+        showLoader('.nattendeesList');
+    }
+
+    await fetchAttendees();
+
+    hideLoader('.attendeesList');
+    hideLoader('.nattendeesList');
+
+    console.log('Rendering attendees with filters:', filters); // Debugging line
+
+    const filteredAttendees = filterData(cachedAttendees, filters);
+    console.log('Filtered Attendees:', filteredAttendees); // Debugging line
+
     const attendeesAndNot = [
         {
             $e: $('.attendeesList'),
-            list: atList.filter(at => at.isAttend)
+            list: filteredAttendees.filter(at => at.isAttend)
         },
         {
             $e: $('.nattendeesList'),
-            list: atList.filter(at => !at.isAttend)
+            list: filteredAttendees.filter(at => !at.isAttend)
         }
     ];
-    attendeesAndNot.forEach(({$e, list}) => {
-        if (list.length > 0) $e.empty();
-        list.forEach(at => {
-            const li = `
-                <div class="mcomment">
-                    <div class="mcomment-header">
-                        <span class="musername">${at.name}: ${at.relationType}</span>
+
+    attendeesAndNot.forEach(({ $e, list }) => {      
+        if (list.length === 0) {
+            $e.html('<div class="no-records">No records found</div>');
+        } else { 
+            $e.empty();
+            const attendeesHtml = list.map(at => {
+                const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(at.name)}&background=random&color=fff&size=40&font-size=0.6`;
+                return `
+                    <div class="mcomment">
+                        <div class="mcomment-header">
+                            <img src="${avatarUrl}" alt="Avatar" class="mavatar">
+                            <div class="mcomment-header-text">
+                                <div class="muser-info">
+                                    <span class="musername">${at.name}</span>
+                                    <span class="mrelationType">${at.relationType}</span>
+                                </div>    
+                                <div class="mattend-status">${at.isAttend ? 'Participating' : 'Going to Miss'}</div>                            
+                            </div>
+                        </div>                
                     </div>
-                </div>
-            `;
-            $e.append(li);
-        });
+                `;
+            }).join('');           
+            $e.append(attendeesHtml);
+        }
     });
+};
+
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
 }
 
-$(document).ready(async function () {
-    renderComment();
+document.getElementById("dropdownFilter").addEventListener("change", function() {
+    var selectedValue = this.value;
+    if (selectedValue.toLowerCase() === "colleagues") {
+        document.getElementById("colleagueOptions").style.display = "block";
+    } else {
+        document.getElementById("colleagueOptions").style.display = "none";
+    }
+});
 
+$(document).ready(async function () {
+    showLoader('#cmt-list');
+    showLoader('.attendeesList');
+    showLoader('.nattendeesList');
+    
+    await renderComment();
+    await renderAttendeesContent();
+
+    hideLoader('#cmt-list');
+    hideLoader('.attendeesList');
+    hideLoader('.nattendeesList');
+
+    $('#filterBtn').click(function() {
+        const nameFilterVal = $('#nameFilter').val();
+        const dropdownFilterVal = $('#dropdownFilter').val();
+        if ($(this).text() === 'Filter') {
+            if (nameFilterVal !== '' || dropdownFilterVal !== '') {
+                applyFilters();
+                $(this).text('Remove Filter');
+                $('#filter-section').hide();
+            }
+        } else {
+            resetFilterSection();
+            reloadComments();
+            reloadAttendees();
+            $(this).text('Filter');
+            $('#filter-section').show();
+        }
+    });
+    
     $('#load-cmt').click(function(){
         const cmtList = $('#cmt-list');
         if (cmtList.children().length < window.totalComments) renderComment();
-    })
+    });
 
     const { users } = await getScoreBoard();
     const tableBody = $('#userTable tbody');
@@ -1512,7 +1710,7 @@ $(document).ready(async function () {
         const message = $('#comments').val().trim();
         const isAttend = $('#isAttend').prop('checked');
         const hasAccessToken = !!getAccessToken();
-        const error = []
+        const error = [];
 
         if (!message) {
             error.push('Message is required');
@@ -1540,11 +1738,11 @@ $(document).ready(async function () {
                 alert(error.join(', '));
                 return;
             }
-
             await initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef, message);
             $('#phoneModal').modal('toggle');
             resetFormInput();
             reloadComments();
+            reloadAttendees();
             location.reload();
         } else {
             if (error.length > 0) {
@@ -1555,7 +1753,15 @@ $(document).ready(async function () {
             $('#phoneModal').modal('toggle');
             resetFormInput();
             reloadComments();
+            reloadAttendees();
         }
     });
-    renderAttendeesContent();
-})
+});
+
+function resetFilterSection() {
+    $('#nameFilter').val('');
+    $('#dropdownFilter').val('');
+    $('#colleagueType').val('');
+    $('#colleagueOptions').hide();
+    $('#filter-section').hide();
+}
