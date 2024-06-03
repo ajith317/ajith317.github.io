@@ -1487,7 +1487,7 @@ const renderComment = async (reload = false, filters = {}) => {
         showLoader('#cmt-list');
     }
 
-    await fetchComments(reload ? 0 : cmtList.children().length);
+    await fetchComments(reload ? 0 : cmtList.children('.mcomment').length);
     hideLoader('#cmt-list');
 
     const filteredComments = filterData(cachedComments, filters);
@@ -1519,7 +1519,7 @@ const renderComment = async (reload = false, filters = {}) => {
 
         cmtList.append(commentHtml);
 
-        if (cmtList.children().length < window.totalComments) {
+        if (cmtList.children('.mcomment').length < window.totalComments) {
             $('#load-cmt').show();
         } else {
             $('#load-cmt').hide();
@@ -1682,7 +1682,7 @@ $(document).ready(async function () {
     
     $('#load-cmt').click(function(){
         const cmtList = $('#cmt-list');
-        if (cmtList.children().length < window.totalComments) renderComment();
+        if (cmtList.children('.mcomment').length < window.totalComments) renderComment();
     });
 
     const { users } = await getScoreBoard();
