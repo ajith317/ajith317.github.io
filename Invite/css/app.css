@@ -904,7 +904,7 @@ footer .widget ul {
 
 .mavatar {
     border-radius: 50%;
-    size: 120;
+    width: 30px;
 }
 
 .musername {
