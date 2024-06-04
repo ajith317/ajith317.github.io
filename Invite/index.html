@@ -262,7 +262,7 @@
                         <h1 class="titleName" style="font-size: 3rem;">Anupriya</h1>
                         <h1 class="titleName" style="font-size: 1rem;font-family: 'Arvo', serif;">D/O Mr.T S
                             SathyaMoorthi</h1>
-                        <p class="mb-0">Ladies and gentlemen ...</p>
+                        <p class="mb-0 event-title" style="margin-left: 15px;">Ladies and gentlemen ...</p>
                     </div>
                 </div>
 
@@ -281,56 +281,155 @@
             </div>
         </section>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const timers = document.querySelectorAll('.timer');
+
+                timers.forEach(timer => {
+                    const targetDate = new Date(timer.getAttribute('data-date')).getTime();
+
+                    const updateTimer = () => {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+
+                    if (distance < 0) {
+                    const completedDate = new Date(targetDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                    });
+                    timer.textContent = `Completed on ${completedDate}`;
+                    timer.classList.remove('timer');
+                    timer.classList.add('highlight-completed');
+                } else {
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    timer.textContent = `Time remaining: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
+            };
+
+            updateTimer();
+            setInterval(updateTimer, 1000);});
+            });
+        </script>
 
         <!-- Mempelai -->
         <section class="events section-padding" id="mempelai">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="header text-center">Events</h3>
+                        <h2 class="events-header text-center" id="MrgEventTitle">Rituals and Traditional Ceremonies</h2>
                     </div>
                 </div>
+                <div class="container">
+                    <div class="aboutRituals my-4">
+                       
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="ritual-list-box text-center">
+                                    <ul class="ritual-list">
+                                        <li>Nowra Nowri Seelariya
+                                            <span class="subRitual-list">(First family meetup)</span>
+                                             <span class="highlight-completed">Completed on 16th Nov 2023</span>
+                                            </li>
+                                        <li>Phool Function or Vida Paan Machulariya
+                                            <span class="subRitual-list">(Engagement)</span>
+                                             <span class="highlight-completed">Completed on 25th Jan 2024</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ritual-list-box text-center">
+                                    <ul class="ritual-list">
+                                        <li>Ghetti Kellariyo & Boulas
+                                            <span class="subRitual-list">(Engagement)</span>
+                                            <span class="highlight-completed">Completed on 25th Jan 2024</span></li>
+                                        <li>Muhurtu Ghallariyo 
+                                            <span class="subRitual-list">(Muhurtham time fixing)</span>
+                                            <span class="highlight-completed">Completed on 02th June 2024</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ritual-list-box text-center">
+                                    <ul class="ritual-list">
+                                        <li>Reception   
+                                            <span class="subRitual-list">(6th July)</span>                                        
+                                             <span class="timer" data-date="2024-07-06T22:00:00">Will be on 6th July 2024</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ritual-list-box text-center">
+                                    <ul class="ritual-list">
+                                        <li>Horad 
+                                            <span class="subRitual-list">(The Grand Wedding - 7th July)</span>
+                                            <span class="timer" data-date="2024-07-07T10:30:00">Will be on 7th July 2024</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Usually, the nowra(Groom) sits on a three-legged stool and ties the bottu (Thaali) around the nowri's(Bride) neck, and they will be facing each other. 
+                            Following the wedding, the nowra and nowri eat in their respective halls. This is why most of the Sourashtrians rent two halls for the wedding.
+                        </p> 
+                    </div>
+                </div>
+
                 <div class="row justify-content-center">
                     <div class="col-md-5 col-sm-12 col-xs-12 leftcol" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="event-box"
-                            onclick="openPopup('Followed by Lunch', ['Pizza', 'Burger','Pizza', 'Burger'], ['idly','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger'])">
-                            <p><strong>06th July</strong></p>
+                        
+                        <div class="event-box" onclick="openPopup('Followed by Lunch', ['Pizza', 'Burger','Pizza', 'Burger'], ['idly','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger'])">
+                            <p class="event-date"><strong>06th July</strong></p>
                             <h5 class="event-title">Devgas <span class="event-time">6AM - 9AM</span></h5>
-                            <p class="event-description">Dummy data
-                                Sourashtra cuisine is a traditional cuisine from the Sourashtra community of Tamil Nadu,
-                                India.
-                                Some famous dishes from this cuisine include Kothu Parotta, Kuzhi Paniyaram, Sodhi, and
-                                Kadalai Curry. Kothu Parotta is a popular street food in Tamil Nadu made with shredded
-                                parotta, vegetables, and spices. To make this dish, you'll need to:
-                            </p>
+                            <p class="event-description">
+                                Gather 'round, folks! We're kicking off the day with a pooja and Pongal bash fit for the gods themselves! After filling our hearts with blessings, it's time to fill our bellies with a breakfast spread that'll make your taste buds sing. And just when you thought it couldn't get any better, brace yourselves for a lunch feast that'll have you loosening those belt buckles!
+                            </p> 
+                            <div class="event-food-wrapper">
+                                <p class="event-food">Followed by Breakfast & Lunch...!</p>
+                                <p class="event-food">Click for menu</p>  
+                            </div>                  
                         </div>
                         <div class="event-box"
                             onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
-                            <h5 class="event-title">Grand Reception<span class="event-time">6PM - 10PM</span></h5>
+                            <h5 class="event-title">Grand Reception<span class="event-time">5PM - 10PM</span></h5>
                             <p class="event-description">This event is not close to ethnic. The bride & groom would like
                                 to have some.
                                 With booze flowing down the floor and western attire on, everyone would be busy showing
                                 off their new moves on stage, which they have finely honed. Expect beer pong matches &
                                 karaoke for sure.</p>
+                            <div class="event-food-wrapper">
+                                <p class="event-food">Followed by lunch...!</p>
+                                <p class="event-food">Click for menu</p>  
+                            </div>  
                         </div>
                     </div>
-                    <div class="col-md-5 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1000">
-                        <div class="event-box"
-                            onclick="openPopup('Followed by Dinner', ['Parotta', 'Parotta'], ['idly'])">
-                            <p><strong>07th July</strong></p>
-                            <h5 class="event-title">Haldi <span class="event-time">10AM-11AM</span></h5>
-                            <p class="event-description">The haldi ceremony is usually held separately for the bride and
-                                groom. This one is for the bride. It's a low-key event involving the application of
-                                turmeric paste on the hands, legs, and face of the bride. The groom is not allowed to
-                                see the bride after this ritual until the final wedding ceremony starts.</p>
-                        </div>
+                    <div class="col-md-5 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1000">                        
                         <div class="event-box"
                             onclick="openPopup('Followed by Breakfast', ['Parotta', 'Parotta'], ['idly'])">
-                            <h5 class="event-title">Wedding <span class="event-time">6PM-12AM</span></h5>
+                            <p><strong>07th July</strong></p>
+                            <h5 class="event-title">Wedding <span class="event-time">9AM-3PM</span></h5>
                             <p class="event-description">This is the main event in the entire wedding when the bride and
                                 groom tie the knot. The groom comes with the barat and is greeted by the bride side with
                                 some dhol, as the maximum number of guests would be attending this event. This is when
                                 the couple circle the sacred fire and are finally declared husband and wife.</p>
+                            <div class="event-food-wrapper">
+                                <p class="event-food">Followed by Breakfast & Lunch...!</p>
+                                <p class="event-food">Click for menu</p>  
+                            </div>  
+                        </div>
+                        <div class="event-box"
+                            onclick="openPopup('Followed by Dinner', ['Parotta', 'Parotta'], ['idly'])">                           
+                            <h5 class="event-title">Blissful Farewell<span class="event-time">5PM-11PM</span></h5>
+                            <p class="event-description">
+                                The bride's sendoff will take place at the Bride Mahal, where all the groom's families and relatives will gather. During this time, various rituals will be performed. Afterwards, everyone will return home, and the bride and groom will embark on their journey together, starting a happy life.</p>
+                            <div class="event-food-wrapper">
+                                <p class="event-food">Followed by Dinner...!</p>
+                                <p class="event-food">Click for menu</p>  
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -382,33 +481,22 @@
                             </button>
                         </div>
                         <div class="modal-body" style="font-family: 'Arvo', serif;">
-                            <h5>Mehndi <span class="event-time">1PM - 5PM</span></h5>
+                            <h5>Reception<span class="event-time">5PM - 10PM</span></h5>
                             <p style="color: #333;">
                                 <strong>Ethnic Indian wear</strong>
                                 <br>
                                 Ladies can wear something
-                                <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-women/"
+                                <a href="https://in.pinterest.com/search/pins/?q=guest%20reception%20dress%20indian%20simple&rs=guide&sourceModuleId=OB_guest_reception_dress_indian_simple_ce01d766-8781-48df-8bd6-383ce39b5383&journeyDepth=1&add_refine=Simple%7Cguide%7Cword%7C1"
                                     style="color: #ff69b4;">bright & vivid</a>
                                 and gentlemen can be on
                                 their <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-men/"
                                     style="color: #4caf50;">vibrant kurtas</a> with pants or pyjamas along with an
                                 optional shawl.
                             </p>
-                            <h5>Cocktail Night <span class="event-time">7PM - 12AM</span></h5>
+                            
+                            <h5>Wedding <span class="event-time">9AM-10.30AM</span></h5>
                             <p style="color: #333;">
-                                <strong>Western attire</strong>
-                                <br>
-                                A semi-formal look that is contemporary & fashionable which is not too prim & proper is
-                                the best
-                                to pull off this night. You can see some pins for
-                                <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-women/"
-                                    style="color: #009688;">ladies</a>
-                                & <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-men/"
-                                    style="color: #3f51b5;">gents</a>.
-                            </p>
-                            <h5>Wedding <span class="event-time">6PM-12AM</span></h5>
-                            <p style="color: #333;">
-                                <strong>Indo-western</strong>
+                                <strong>Southern style</strong>
                                 <br>
                                 Ladies can flaunt their unconventional sarees,
                                 <a href="https://www.pinterest.com/ramswarooppatra/indo-western-lehengas/"
@@ -424,6 +512,7 @@
                             </p>
                         </div>
                     </div><!-- /.modal-content -->
+                    <p style="font-size: 80%;">Note:Please wear something and be there, it's fine.</p>
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
 

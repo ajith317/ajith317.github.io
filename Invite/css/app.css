@@ -293,6 +293,10 @@ box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 background-color: #e5dbd6;
 border-radius: 10px;
 padding: 20px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
 text-align: left;
 margin-bottom: 20px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -302,15 +306,94 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 color: #333;
 font-size: 24px;
 margin-bottom: 10px;
+font-family:cursive;
+font-weight: bold;
+font-style: normal;
+font-size: 1em;   
+color:#e744bf
 }
 .event-time {
-color: #777;
+color: #26bbe8;
+margin-left: 8px;
+}
+.event-date{
+color: #4b0957;
+font-style: italic;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .event-description {
-color: #555;
+color: #4e36467d;
 margin-top: 10px;
-font-size: 16px;
+font-size: 14px;
 line-height: 1.5;
+}
+.event-food-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.event-food{
+    font-size: 0.8em;
+    font-family:cursive;
+    color:#4f4f4f7d;
+    margin-top: auto;
+}
+
+
+.aboutRituals {
+    text-align: center;
+}
+
+.ritual-list-box {
+    border: 1px solid #e901af81;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.ritual-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    color: #3a2a47;  
+  
+}
+
+.ritual-list li {
+    margin: 10px 0;
+    font-family:monospace;
+}
+
+.highlight-completed {
+    color: #e744bf;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.highlight-upcoming {
+    color: #e744bf;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.subRitual-list{
+    color: #8b8b8b;
+    font-size: 0.8em;
+    font-variant: normal;  
+}
+
+.timer {
+    color: #26bbe8;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
 }
 .btn-accent {
 background-color: #6c757d;
@@ -333,6 +416,13 @@ background-color: #495057;
 .event-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.events-header{
+    font-family: var(--dancingFont);
+    font-weight: bold;
+    font-style: normal;
+    font-size: 56px;   
+    color: var(--fontTextColor);
 }
 
 /* Styles for desktop */
@@ -764,7 +854,7 @@ footer .widget ul {
   }
 
 
- 
+  
   /* Custom Styles for food Popup */
 .modal-dialog {
     max-width: 600px; 
