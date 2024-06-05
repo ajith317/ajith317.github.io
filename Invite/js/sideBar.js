@@ -97,14 +97,6 @@ $(document).ready(function () {
     }
   });
 
-  // Handle Get OTP button click
-  $('#getOTPBtn').click(function () {
-    sendOtp($('#phoneNumber').val())
-    $('#otpGroup').show(); // Show OTP input field
-    $('#getOTPBtn').hide(); // Hide Get OTP button
-    $('#submitBtn').hide(); // Hide Submit button until OTP is entered
-  });
-
   // Handle Submit button click
   $('#submitBtn').click(function () {
     var phoneNumber = $('#phoneNumber').val().trim();
@@ -126,7 +118,7 @@ $(document).ready(function () {
       return;
     }
 
-    verifyOtp(phoneNumber ,otp, () => {
+    confirmationResult.confirm(otp).then(result => {
       // Hide phone number input, label, and OTP group
       $('#phoneNumber, label[for="phoneNumber"]').hide();
       $('#otpGroup').hide();
@@ -149,7 +141,9 @@ $(document).ready(function () {
       $('#submitAndDropdownRow').show(); // Show dropdown container
 
       $('#phoneModalLabel').text('Post your whises');
-      populateDropdown();
+    }).catch(otpVerifyErr => {
+      console.log(otpVerifyErr);
+      alert('Invalid otp');
     })
 
   });

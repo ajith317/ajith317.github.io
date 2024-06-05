@@ -94,6 +94,9 @@
                     return response;
                 })
                 .catch(error => {
+                    if (typeof error.message === "string" && error.message.includes('jwt expired')) {
+                        localStorage.removeItem('accessToken');
+                    }
                     $('#loader').hide();
                     throw error;
                 })
@@ -104,6 +107,7 @@
     </script>
 
     <script src="./js/app.js" defer></script>
+    <script type="module" src="./js/auth.js"></script>
     <script src="./js/sideBar.js" defer></script>
 
     <!-- jQuery -->
@@ -1676,6 +1680,8 @@
         </div>
     </div>
     </div>
+
+    <div id="sign-in-button"></div>
 
 
     <!-- Dependencies JS -->
