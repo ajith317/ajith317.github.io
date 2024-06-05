@@ -1207,7 +1207,7 @@ async function verifyOtp(mobileNumber, otp, callBack) {
 /**
  * 
  * @param {string} mobileNumber 
- * @param {string} otp 
+ * @param {string} idToken 
  * @param {string} name 
  * @param {boolean} isAttend 
  * @param {string} relationType 
@@ -1215,7 +1215,7 @@ async function verifyOtp(mobileNumber, otp, callBack) {
  * @param {string} message 
  * @returns 
  */
-async function initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef = "", message = "") {
+async function initialize(mobileNumber, idToken, name, isAttend, relationType, colleagueRef = "", message = "") {
     if (getAccessToken()) {
         alert('Already initialized');
         return;
@@ -1225,7 +1225,7 @@ async function initialize(mobileNumber, otp, name, isAttend, relationType, colle
         headers: getHeaders(),
         body: JSON.stringify({
             mobileNumber,
-            otp,
+            idToken,
             message,
             name,
             isAttend,
@@ -1699,62 +1699,6 @@ $(document).ready(async function () {
             </tr>
         `;
         tableBody.append(row);
-    });
-
-    $('#submitCmnds').click(async () => {
-        const mobileNumber = $('#phoneNumber').val().trim();
-        const otp = $('#otp').val().trim();
-        const relationType = $('#relationType').val().trim();
-        const name = $('#uname').val().trim();
-        const colleagueRef = $('#colleagueRef').val().trim();
-        const message = $('#comments').val().trim();
-        const isAttend = $('#isAttend').prop('checked');
-        const hasAccessToken = !!getAccessToken();
-        const error = [];
-
-        if (!message) {
-            error.push('Message is required');
-        }
-
-        if (!hasAccessToken) {
-            if (!mobileNumber || !otp) {
-                location.reload();
-                return;
-            }
-
-            if (!name) {
-                error.push('Name is required');
-            }
-
-            if (!relationType) {
-                error.push('Choose Relation Type');
-            }
-
-            if (relationType === 'COLLEAGUE' && !colleagueRef) {
-                error.push('Emp Ref is required');
-            }
-
-            if (error.length > 0) {
-                alert(error.join(', '));
-                return;
-            }
-            await initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef, message);
-            $('#phoneModal').modal('toggle');
-            resetFormInput();
-            reloadComments();
-            reloadAttendees();
-            location.reload();
-        } else {
-            if (error.length > 0) {
-                alert(error.join(', '));
-                return;
-            }
-            await addComment(message);
-            $('#phoneModal').modal('toggle');
-            resetFormInput();
-            reloadComments();
-            reloadAttendees();
-        }
     });
 });
 
