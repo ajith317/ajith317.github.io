@@ -2,35 +2,28 @@ const wrapper = document.querySelector(".timeLine-wrapper");
 const carousel = document.querySelector(".TimeLine-carousel");
 const firstCardWidth = carousel.querySelector(".timeLine-card").offsetWidth;
 const arrowBtns = document.querySelectorAll(".timeLine-wrapper i");
-const carouselChildrens = [...carousel.children];
+const carouselChildren = [...carousel.children];
 
-let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+let isDragging = false, startX, startScrollLeft;
 
 // Get the number of cards that can fit in the carousel at once
 let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
-// Ensure there are enough cards to enable infinite scrolling
-if (carouselChildrens.length > cardPerView) {
-    // Insert copies of the last few cards to beginning of carousel for infinite scrolling
-    carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-        carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-    });
-
-    // Insert copies of the first few cards to end of carousel for infinite scrolling
-    carouselChildrens.slice(0, cardPerView).forEach(card => {
-        carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-    });
-}
-
-// Scroll the carousel at the appropriate position to hide the first few duplicate cards on Firefox
-carousel.classList.add("no-transition");
-carousel.scrollLeft = carousel.offsetWidth;
-carousel.classList.remove("no-transition");
+// Update arrow button states
+const updateArrowButtonState = () => {
+    arrowBtns[0].style.display = carousel.scrollLeft <= 0 ? 'none' : 'block'; // Hide left arrow if at start
+    arrowBtns[1].style.display = carousel.scrollLeft >= (carousel.scrollWidth - carousel.offsetWidth) ? 'none' : 'block'; // Hide right arrow if at end
+};
 
 // Add event listeners for the arrow buttons to scroll the carousel left and right
 arrowBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-        carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+        if (btn.id === "left") {
+            carousel.scrollLeft -= firstCardWidth;
+        } else {
+            carousel.scrollLeft += firstCardWidth;
+        }
+        setTimeout(updateArrowButtonState, 300); // Update button state after scrolling animation
     });
 });
 
@@ -51,41 +44,20 @@ const dragging = (e) => {
 const dragStop = () => {
     isDragging = false;
     carousel.classList.remove("dragging");
+    updateArrowButtonState();
 }
 
-const infiniteScroll = () => {
-    // If the carousel is at the beginning, scroll to the end
-    if (carousel.scrollLeft === 0) {
-        carousel.classList.add("no-transition");
-        carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
-        carousel.classList.remove("no-transition");
-    }
-    // If the carousel is at the end, scroll to the beginning
-    else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-        carousel.classList.add("no-transition");
-        carousel.scrollLeft = carousel.offsetWidth;
-        carousel.classList.remove("no-transition");
-    }
-
+const checkEndOfScroll = () => {
     // Clear existing timeout & start autoplay if mouse is not hovering over carousel
-    clearTimeout(timeoutId);
-    if (!wrapper.matches(":hover")) autoPlay();
+    updateArrowButtonState();
 }
-
-const autoPlay = () => {
-    if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
-    // Autoplay the carousel after every 2500 ms
-    timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
-}
-autoPlay();
 
 carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
-carousel.addEventListener("scroll", infiniteScroll);
+carousel.addEventListener("scroll", checkEndOfScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
-wrapper.addEventListener("mouseleave", autoPlay);
-
+wrapper.addEventListener("mouseleave", checkEndOfScroll);
 
 document.addEventListener("DOMContentLoaded", function() {
     var timePicker = flatpickr("#timePicker", {
@@ -114,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Check if current time is between 12 AM and 5 AM
         if (currentHours >= 0 && currentHours < 5) {
-            alert("During this time, nothing will be open");
+            alert("During this time, nothing will be open, so please change time");
             disableButtons();
         }
     });
@@ -143,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Calculate the visit time by adding data-time hours to the selected time
                 var visitTime = new Date(selectedTime.getTime() + dataTime * 60 * 60 * 1000);
 				
-				// Generate a unique ID for this visit
+                // Generate a unique ID for this visit
                 var visitId = 'visit-' + visitTime.getTime();
 
                 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -201,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-
+   
     function disableButtons() {
         var visitButtons = document.querySelectorAll('.visit-button');
         visitButtons.forEach(function(button) {

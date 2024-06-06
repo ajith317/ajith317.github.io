@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 :root {
   --white: #674ea7;
@@ -23,8 +24,6 @@
 
 /********** Slider image ****************/
 
-/* Import Google font - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +35,8 @@
   max-width: 1100px;
   width: 100%;
   position: relative;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .timeLine-wrapper i {
@@ -47,11 +48,12 @@
   position: absolute;
   text-align: center;
   line-height: 50px;
-  background: #fff;
+  background: var(--white);
   border-radius: 50%;
   box-shadow: 0 3px 6px rgba(0,0,0,0.23);
   transform: translateY(-50%);
   transition: transform 0.1s linear;
+  z-index: 1;
 }
 
 .timeLine-wrapper i:active {
@@ -59,17 +61,20 @@
 }
 
 .timeLine-wrapper i:first-child {
-  left: -50px;
+  left: 10px;
 }
 
 .timeLine-wrapper i:last-child {
-  right: -22px;
+  right: 10px;
 }
+
 .container.city-container {
-  margin-left: 50px;
-  align-self: center;
-  max-width: 100%; 
-  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  width: 100%;
+  padding: 0 10px;
 }
 
 .timeLine-wrapper .TimeLine-carousel {
@@ -112,7 +117,7 @@
   scroll-snap-align: start;
   height: 342px;
   list-style: none;
-  background: #fff;
+  background: var(--white);
   cursor: pointer;
   padding-bottom: 15px;
   flex-direction: column;
@@ -128,23 +133,49 @@
 }
 
 .TimeLine-carousel .timeLine-card h2 {
-  font-size: 1.00rem;
+  font-size: 1rem;
 }
 
 .TimeLine-carousel .timeLine-card span {
   color: #6A6D78;
-  font-size: 0.80rem;
+  font-size: 0.8rem;
 }
 
 @media screen and (max-width: 900px) {
   .timeLine-wrapper .TimeLine-carousel {
     grid-auto-columns: calc((100% / 2) - 9px);
   }
+
+  .timeLine-wrapper i:first-child {
+    left: -30px;
+  }
+
+  .timeLine-wrapper i:last-child {
+    right: -10px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .timeLine-wrapper .TimeLine-carousel {
     grid-auto-columns: 100%;
+  }
+
+  .timeLine-wrapper i:first-child {
+    left: -20px;
+  }
+
+  .timeLine-wrapper i:last-child {
+    right: -5px;
+  }
+
+  .container.city-container {
+    padding: 0 5px;
+    margin-top: 20px;
+  }
+
+  .row-container {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -162,100 +193,148 @@
   margin: 1rem;
 }
 
+@media (min-width: 768px) {
+  .timeline-steps .timeline-step:not(:last-child):after {
+    content: "";
+    display: block;
+    border-top: 0.25rem dotted #3b82f6;
+    width: 3.46rem;
+    position: absolute;
+    left: 7.5rem;
+    top: 0.3125rem;
+  }
 
-@media (min-width:768px) {
-    .timeline-steps .timeline-step:not(:last-child):after {
-        content: "";
-        display: block;
-        border-top: .25rem dotted #3b82f6;
-        width: 3.46rem;
-        position: absolute;
-        left: 7.5rem;
-        top: .3125rem
-    }
-    .timeline-steps .timeline-step:not(:first-child):before {
-        content: "";
-        display: block;
-        border-top: .25rem dotted #3b82f6;
-        width: 3.8125rem;
-        position: absolute;
-        right: 7.5rem;
-        top: .3125rem
-    }
+  .timeline-steps .timeline-step:not(:first-child):before {
+    content: "";
+    display: block;
+    border-top: 0.25rem dotted #3b82f6;
+    width: 3.8125rem;
+    position: absolute;
+    right: 7.5rem;
+    top: 0.3125rem;
+  }
 }
 
 .timeline-steps .timeline-content {
-    width: 10rem;
-    text-align: center
+  width: 10rem;
+  text-align: center;
 }
 
 .timeline-steps .timeline-content .inner-circle {
-    border-radius: 1.5rem;
-    height: 1rem;
-    width: 1rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #3b82f6
+  border-radius: 1.5rem;
+  height: 1rem;
+  width: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fontTextColor);
 }
 
 .timeline-steps .timeline-content .inner-circle:before {
-    content: "";
-    background-color: #3b82f6;
-    display: inline-block;
-    height: 3rem;
-    width: 3rem;
-    min-width: 3rem;
-    border-radius: 6.25rem;
-    opacity: .5
+  content: "";
+  background-color:var(--bodyBackgroundMed);
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 6.25rem;
+  opacity: 0.5;
 }
 
-
-
 .timeLine-card .img {
-    width: 100%;
-    height: 100%;
-   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0;
 }
 
 .timeLine-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the entire container */
-  
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .timeLine-card .visit-button {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    text-align: center;
-    display: none; /* Initially hide the button */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #9474e2;
+  color: #fff;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-.timeLine-card:hover .visit-button {
-    display: block; /* Show the button on hover */
+.timeLine-card .visit-button:hover {
+  background-color: var(--fontTextColor);
 }
 
 .timeLine-card .time {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 5px;
-    margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px;
+  margin: 0;
 }
 
 .timeLine-card .job-title-container:hover block {
-    display: block; 
+  display: block;
 }
 
+.row-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
 
+.timePicker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bodyBackgroundLite);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.timePicker-container h3 {
+  color: var(--fontTextColor);
+  margin-bottom: 5px;
+}
+
+.timePicker-container p {
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+#timePicker {
+  padding: 10px;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .city-container {
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .city-container {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .city-container {
+    margin-top: 50px;
+  }
+}
 
 
 /* 

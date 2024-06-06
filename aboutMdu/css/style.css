@@ -190,13 +190,14 @@ ol {
 
 .section-title h4,
 .section-title h5 {
-	color: #ffffff;
+	color: #ff69b4;
 	font-weight: 600;
 	line-height: 21px;
 	text-transform: uppercase;
 	padding-left: 20px;
 	position: relative;
 	font-family: "Oswald", sans-serif;
+	
 }
 
 .section-title h4:after,
@@ -206,7 +207,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #e53637;
+	background: #1e90ff;
 	content: "";
 }
 
@@ -439,7 +440,7 @@ ol {
 .product__item__pic .ep {
 	font-size: 13px;
 	color: #ffffff;
-	background: #e53637;
+	background: #685b87;
 	display: inline-block;
 	padding: 2px 12px;
 	border-radius: 4px;
@@ -471,7 +472,7 @@ ol {
 .product__item__text ul li {
 	list-style: none;
 	font-size: 12px;
-	color: #ffffff;
+	color: #685b87;
 	font-weight: 700;
 	padding: 1px 10px;
 	background: rgba(255, 255, 255, 0.2);
@@ -486,7 +487,7 @@ ol {
 }
 
 .product__sidebar .section-title h5 {
-	color: #ffffff;
+	color: #1e90ff;
 	font-weight: 600;
 	font-family: "Oswald", sans-serif;
 	line-height: 21px;
@@ -501,7 +502,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #e53637;
+	background: #ff69b4;
 	content: "";
 }
 
@@ -544,7 +545,7 @@ ol {
 .product__sidebar__view__item .ep {
 	font-size: 13px;
 	color: #ffffff;
-	background: #e53637;
+	background: #401174;
 	display: inline-block;
 	padding: 2px 12px;
 	border-radius: 4px;
@@ -2950,3 +2951,18 @@ ol {
 	margin-bottom: 15px;
 	font-family: "Oswald", sans-serif;
 } */
+
+.about-heading {
+	text-align: center;
+	color: #674ea7;
+	font-family: 'Dancing Script', cursive;
+	font-size: 3.5em;
+	font-weight: bolder;
+	
+}
+.about-heading p {
+	margin: 0;
+	font-size: 0.5em;
+	color: #75757566; 
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
