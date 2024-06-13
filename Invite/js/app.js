@@ -1483,20 +1483,20 @@ const renderComment = async (reload = false, filters = {}) => {
         cmtList.empty();
     }
 
-    if (cachedComments.length === 0 || reload) {
+    if (reload) {
         showLoader('#cmt-list');
     }
 
-    await fetchComments(reload ? 0 : cmtList.children('.mcomment').length);
+    $('#load-cmt').hide();
+    const { comments } = await getComments(cmtList.children('.mcomment').length);
+    $('#load-cmt').show();
     hideLoader('#cmt-list');
 
-    const filteredComments = filterData(cachedComments, filters);
-
-    if (filteredComments.length === 0) {
+    if (comments.length === 0) {
         cmtList.html('<div>No comments found</div>');
         $('#load-cmt').hide();
     } else {
-        const commentHtml = filteredComments.map(cmt => {
+        const commentHtml = comments.map(cmt => {
             const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(cmt.user.name)}&background=random&color=fff&size=40&font-size=0.6`;
             return `
                 <div class="mcomment">
