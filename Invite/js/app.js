@@ -1254,7 +1254,7 @@ async function getComments(offset = 0) {
     //     return;
     // }
     const queryParams = new URLSearchParams();
-    queryParams.append("limit", 5);
+    queryParams.append("limit", 30);
     queryParams.append("offset", offset);
     const resp = await fetch(`${apiUrl}/comments?${queryParams.toString()}`, {
         headers: getHeaders()
