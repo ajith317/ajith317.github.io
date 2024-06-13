@@ -713,7 +713,7 @@ ol {
 /*---------------------
   Anime Details
 -----------------------*/
-/* 
+
 .anime-details {
 	padding-top: 60px;
 }
@@ -787,7 +787,7 @@ ol {
 
 .anime__details__rating .rating i {
 	font-size: 24px;
-	color: #e89f12;
+	color: #ffffffdd; ;
 	display: inline-block;
 }
 
@@ -945,12 +945,12 @@ ol {
 	border: none;
 	padding: 10px 15px;
 	border-radius: 2px;
-} */
+} 
 
 /*---------------------
   Breadcrumb
 -----------------------*/
-/* 
+
 .breadcrumb-option {
 	padding-top: 35px;
 }
@@ -980,12 +980,12 @@ ol {
 	font-size: 15px;
 	color: #b7b7b7;
 	display: inline-block;
-} */
+} 
 
 /*---------------------
     Normal Breadcrumb
 -----------------------*/
-/* 
+
 .normal-breadcrumb {
 	filter: brightness(70%);
 	height: 300px;
@@ -1012,12 +1012,12 @@ ol {
 	color: #ffffff;
 	font-size: 24px;
 	margin-bottom: 0;
-} */
+} 
 
 /*---------------------
     Blog
 -----------------------*/
-/* 
+
 .blog {
 	padding-top: 70px;
 	padding-bottom: 90px;
@@ -1075,7 +1075,7 @@ ol {
 /*---------------------
   Blog Details
 -----------------------*/
-/* 
+ 
 .blog-details {
 	padding-top: 70px;
 }
@@ -1370,7 +1370,7 @@ ol {
 
 .blog__details__form form textarea::placeholder {
 	color: #a6a6a6;
-} */
+} 
 
 
 
@@ -2965,4 +2965,53 @@ ol {
 	font-size: 0.5em;
 	color: #75757566; 
 	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.anime__details__text {
+	background: #f9f9f9;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-family: 'Arial', sans-serif;
+	line-height: 1.6;
+	position: relative;
+	overflow: hidden;
+	color: #333;
+}
+
+.anime__details__title h3 {
+	font-size: 3em;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.anime__details__text p {
+	margin-bottom: 20px;
+	font-size: 1.2em;
+	color: #555;
+}
+
+.anime__details__text b {
+	color: #a364bc;
+	font-size: 1.3em;
+}
+
+.anime__details__text::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+	z-index: -1;
+}
+
+.anime__details__text p:first-letter {
+	font-size: 3em;
+	float: left;
+	margin-right: 10px;
+	line-height: 1;
+	font-weight: bold;
+	color: #7f3cc1;
 }
