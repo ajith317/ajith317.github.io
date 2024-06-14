@@ -1119,7 +1119,7 @@ function setVerticalLineHeight() {
 }
 
 const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
-// const apiUrl = "http://localhost:8080/api/v1";
+// const apiUrl = "http://localhost:8081/api/v1";
 
 async function showApiErr(resp) {
     const errTxt = await resp.text();
@@ -1207,7 +1207,7 @@ async function verifyOtp(mobileNumber, otp, callBack) {
 /**
  * 
  * @param {string} mobileNumber 
- * @param {string} idToken 
+ * @param {string} otp 
  * @param {string} name 
  * @param {boolean} isAttend 
  * @param {string} relationType 
@@ -1215,7 +1215,7 @@ async function verifyOtp(mobileNumber, otp, callBack) {
  * @param {string} message 
  * @returns 
  */
-async function initialize(mobileNumber, idToken, name, isAttend, relationType, colleagueRef = "", message = "") {
+async function initialize(mobileNumber, otp, name, isAttend, relationType, colleagueRef = "", message = "") {
     if (getAccessToken()) {
         alert('Already initialized');
         return;
@@ -1225,7 +1225,7 @@ async function initialize(mobileNumber, idToken, name, isAttend, relationType, c
         headers: getHeaders(),
         body: JSON.stringify({
             mobileNumber,
-            idToken,
+            otp,
             message,
             name,
             isAttend,
