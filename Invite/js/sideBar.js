@@ -2,7 +2,7 @@ $(document).ready(function () {
   // Function to validate phone number
   function validatePhoneNumber(phoneNumber) {
     // Check if phone number is exactly 10 digits
-    return /^\d{10}$/.test(phoneNumber);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(phoneNumber);
   }
 
   // Function to validate OTP
@@ -118,7 +118,8 @@ $(document).ready(function () {
       return;
     }
 
-    confirmationResult.confirm(otp).then(result => {
+    // confirmationResult.confirm(otp).then(result => {
+    verifyOtp(phoneNumber ,otp, () => {
       // Hide phone number input, label, and OTP group
       $('#phoneNumber, label[for="phoneNumber"]').hide();
       $('#otpGroup').hide();
