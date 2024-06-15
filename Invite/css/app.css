@@ -1327,3 +1327,13 @@ footer .widget ul {
 .modal-custom-width {
     max-width: 80%; /* Adjust this value as needed */
 }
+.btn.save-the-date-btn {
+    background-color: #674ea7 !important; 
+    border-color: #674ea7 !important; 
+    color: white !important; 
+}
+
+.btn.save-the-date-btn:hover {
+    background-color: #573b96 !important; 
+    border-color: #573b96 !important; 
+}

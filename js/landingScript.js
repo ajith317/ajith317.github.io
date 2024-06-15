@@ -345,8 +345,8 @@ window.addEventListener("click", function(event) {
 
 // ********************* download invitation strat  *********************
 function downloadFile(button) {
-    var fileName = 'WeedingOfAjithAnuInvitation.png';
-    var rawGitHubUrl = 'https://raw.githubusercontent.com/ajith317/ajith317.github.io/main/invitation/' + fileName;
+    var fileName = 'AjithAnuWeddingInvitation.png';
+    var rawGitHubUrl = 'https://raw.githubusercontent.com/ajith317/ajith317.github.io/main/invitation/' + fileName;    
 
     fetch(rawGitHubUrl)
         .then(response => {
