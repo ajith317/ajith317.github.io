@@ -170,28 +170,46 @@ function toggleArrows() {
 
 // onclick imageGallery
 const imageGallery = [
-    "./assets/img/backdrop7.jpg",
-    "./assets/img/backdrop3.jpg",
-    "./assets/img/om.jpg"
-    // Add more image URLs as needed
+    "./Invite/assets/images/landingPics/out1.jpg",
+    "./Invite/assets/images/landingPics/out2.jpg",
+    "./Invite/assets/images/landingPics/out3.jpg",
+    "./Invite/assets/images/landingPics/out4.jpg",
+    "./Invite/assets/images/landingPics/out5.jpg",
+    "./Invite/assets/images/landingPics/out6.jpg",
+    "./Invite/assets/images/landingPics/out7.jpg",
+    "./Invite/assets/images/landingPics/out8.jpg",
 ];
 
 let intervalId;
 
-// function showImage() {
-//     currentIndex = 0;
-//     displayImage();
-//     updateButtonsVisibility();
-//     updateIndicators();
-//     document.getElementById("onClickGalleryImages").style.display = "block";
-//     startSlideshow();
-// }
+let imagesPreloaded = [];
 
+// Preload images
+function preloadImages() {
+    imageGallery.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        imagesPreloaded.push(img);
+    });
+}
+
+// Show image
+function showImage() {
+    currentIndex = 0;
+    displayImage();
+    updateButtonsVisibility();
+    updateIndicators();
+    document.getElementById("onClickGalleryImages").style.display = "block";
+    startSlideshow();
+}
+
+// Hide image
 function hideImage() {
     document.getElementById("onClickGalleryImages").style.display = "none";
     clearInterval(intervalId);
 }
 
+// Navigate through images
 function navigate(direction) {
     currentIndex += direction;
     if (currentIndex < 0) {
@@ -204,9 +222,10 @@ function navigate(direction) {
     updateIndicators();
 }
 
+// Display the current image
 function displayImage() {
     const imgElement = document.getElementById("displayedImage");
-    imgElement.src = imageGallery[currentIndex];
+    imgElement.src = imagesPreloaded[currentIndex].src;
 
     // Remove previous click event listener
     imgElement.removeEventListener("click", imageClickHandler);
@@ -215,13 +234,16 @@ function displayImage() {
     imgElement.addEventListener("click", imageClickHandler);
 }
 
+// Handle image click
 function imageClickHandler() {
     navigate(1); // Navigate to the next image
 }
 
+// Event listener for show image button
 document.getElementById("showImageBtn").addEventListener("click", showImage);
 
-
+// Preload images on page load
+window.onload = preloadImages;
 
 function updateButtonsVisibility() {
     const prevBtn = document.getElementById("prevBtn");
