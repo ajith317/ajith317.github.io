@@ -1709,3 +1709,40 @@ function resetFilterSection() {
     $('#colleagueOptions').hide();
     $('#filter-section').hide();
 }
+
+$(document).ready(function(){
+   
+    $('#cowoSection').click(function(e){
+        e.preventDefault();
+      
+        var posX = e.pageX;
+        var posY = e.pageY;
+    
+        $('#contentBlockAjith').css({
+            'top': posY + 'px',
+            'left': posX + 'px',
+            'display': 'block'
+        });
+    });
+
+    
+    $('#ceweSection').click(function(e){
+        e.preventDefault();        
+        var posX = e.pageX;
+        var posY = e.pageY;    
+        $('#contentBlockAnu').css({
+            'top': posY + 'px',
+            'left': posX + 'px',
+            'display': 'block'
+        });
+    });
+
+    $('#contentBlockAjith .close-btn').click(function(){
+        $('#contentBlockAjith').hide();
+    });
+    $('#contentBlockAnu .close-btn').click(function(){
+        $('#contentBlockAnu').hide();
+    });
+});
+
+
