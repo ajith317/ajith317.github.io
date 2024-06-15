@@ -1024,29 +1024,3 @@ a {
 .designation {
     margin-bottom: 0.3rem; /* 5px equivalent */
 }
-
-
-/* Adjust the font size and style for the love story */
-.love-story {
-    font-family: 'Arvo', serif; /* Use the Arvo font */
-    font-size: 16px; /* Set the font size */
-    line-height: 1.5; /* Set the line height for better readability */
-}
-
-
-.love-story h6 {
-    font-size: 20px; 
-    font-weight:bold; 
-    margin-top: 10px;
-	font-family: cursive;
-	color: #a289b5;
-}
-.love-story p {
-    font-size: small;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	margin-top: 0px;
-	font-weight: lighter;
-	text-indent: 0%;
-	text-transform: none;
-}
-
