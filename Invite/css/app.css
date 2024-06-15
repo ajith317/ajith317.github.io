@@ -1324,3 +1324,6 @@ footer .widget ul {
     background-color: #df3ce7; /* Button background color on hover */
     color: #fffeff; /* Button color on hover */
 }
+.modal-custom-width {
+    max-width: 80%; /* Adjust this value as needed */
+}

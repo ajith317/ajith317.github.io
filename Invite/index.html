@@ -321,8 +321,8 @@
                                         <div class="profile_Memories">
                                             <img alt="Memory Image" src="./assets/images/landingPics/ajith4.jpg" />
                                             <div class="profile__details">
-                                                <h2 class="profile__name">SomeResort</h2>
-                                                <p>Chennai</p>
+                                                <h2 class="profile__name">Ooty</h2>
+                                                <p>Coimbatore</p>
                                             </div>
                                         </div>
                                     </div>
@@ -623,9 +623,9 @@
                 <div class="row justify-content-center">
                     <div class="col-md-5 col-sm-12 col-xs-12 leftcol" data-aos="fade-right" data-aos-duration="1000">
                         
-                        <div class="event-box" onclick="openPopup('Followed by Lunch', ['Pizza', 'Burger','Pizza', 'Burger'], ['idly','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger','Pizza', 'Burger'])">
+                        <div class="event-box" onclick="openPopup('Followed by Breakfast & Lunch', ['***Lunch***','WhiteRice + (VadhaKolambu, MoreKolambu, Rasam, ButterMilk)', 'ButterbeansCurry','Banana Stalk-Lentil Stew Curry','Payasam'], ['Semiya kichadi','Idly', 'WhiteRice + (Cauliflower Kuzhambu, Rasam, ButterMilk)', 'Butter Beans Curry', ' Banana Fry Recipe', 'Payasam'])">
                             <p class="event-date"><strong>06th July</strong></p>
-                            <h5 class="event-title">Devgas <span class="event-time">6AM - 9AM</span></h5>
+                            <h5 class="event-title">Devgas <span class="event-time">6AM - 10AM</span></h5>
                             <p class="event-description">
                                 Gather 'round, folks! We're kicking off the day with a pooja and Pongal bash fit for the gods themselves! After filling our hearts with blessings, it's time to fill our bellies with a breakfast spread that'll make your taste buds sing. And just when you thought it couldn't get any better, brace yourselves for a lunch feast that'll have you loosening those belt buckles!
                             </p> 
@@ -635,7 +635,7 @@
                             </div>                  
                         </div>
                         <div class="event-box"
-                            onclick="openPopup('Followed by Lunch', ['Parotta', 'Parotta'], ['idly'])">
+                            onclick="openPopup('Followed by Dinner', ['BreadHalwa', 'Mushroom Biryani', 'LemonRice','CurdRice','SukkuCoffee'], ['WelcomeDrink','IceCream','Panipuri','Mushroom Biryani','Dosa','Fried Chilli Parotta ','CurdRice','Carrot Halwa','Padam Milk'])">
                             <h5 class="event-title">Grand Reception<span class="event-time">5PM - 10PM</span></h5>
                             <p class="event-description">This event is not close to ethnic. The bride & groom would like
                                 to have some.
@@ -650,7 +650,7 @@
                     </div>
                     <div class="col-md-5 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1000">                        
                         <div class="event-box"
-                            onclick="openPopup('Followed by Breakfast', ['Parotta', 'Parotta'], ['idly'])">
+                            onclick="openPopup('Followed by Breakfast & Lunch', ['VennPongal', 'MaliBriyani', 'Sweet', 'Vada', '***AfterNoon***' , 'WhiteRice + (NudkalKolambu + Rasam + ButterMilk)','Dhal curry', 'Mixed fry', 'Payasam'], ['VennPongal','Idly','Poori','Bonda+sweet','***AfterNoon***', 'WhiteRice + (VadhaKolambu + MoreKolambu + Rasam + ButterMilk)', 'Dhal curry', 'Mixed fry', 'Alu curry', 'Gopi65','Vadai'])">
                             <p><strong>07th July</strong></p>
                             <h5 class="event-title">Wedding <span class="event-time">9AM-3PM</span></h5>
                             <p class="event-description">This is the main event in the entire wedding when the bride and
@@ -663,7 +663,7 @@
                             </div>  
                         </div>
                         <div class="event-box"
-                            onclick="openPopup('Followed by Dinner', ['Parotta', 'Parotta'], ['idly'])">                           
+                            onclick="openPopup('Followed by Dinner', ['Puliyadhorai', 'Idly'], ['Tomato Rice', 'Idly'])">                           
                             <h5 class="event-title">Blissful Farewell<span class="event-time">5PM-11PM</span></h5>
                             <p class="event-description">
                                 The bride's sendoff will take place at the Bride Mahal, where all the groom's families and relatives will gather. During this time, various rituals will be performed. Afterwards, everyone will return home, and the bride and groom will embark on their journey together, starting a happy life.</p>
@@ -685,7 +685,7 @@
 
             <!-- Bootstrap Popup -->
             <div id="popup" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-dialog modal-custom-width" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title popup-header"></h5>
@@ -710,6 +710,7 @@
                     </div>
                 </div>
             </div>
+            
 
             <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -1696,8 +1697,9 @@
                     </ul>
                 </div>
 
+                <h6 style="margin-top: 2%;">Please select the start time for your visits and you will receive an approximate return time.</h6>
+                <input type="text" id="timePicker" style="background-color: #674ea7;"  placeholder="Select Time">
                 
-                <input type="text" id="timePicker" placeholder="Select Time">
 
                 <div class="row">
                     <div class="col">
