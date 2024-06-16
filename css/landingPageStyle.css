@@ -1024,3 +1024,10 @@ a {
 .designation {
     margin-bottom: 0.3rem; /* 5px equivalent */
 }
+
+.tile__img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
