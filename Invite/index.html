@@ -172,25 +172,24 @@
                     <i class="fa-solid fa-images colored-icon"></i>
                     <span class="d-block colored-text">Gallery</span>
                 </a>
-            </li>           
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#ucapan">
-                    <i class="fa-solid fa-comments"></i>
-                    <span class="d-block" >Greetings</span>
+            </li>                      
+            <li class="nav-item">
+                <a class="nav-link" href="#cmnts">
+                <!-- <a class="nav-link" href="#popupComment" data-toggle="modal" data-target="#popupComment"> -->
+                    <i class="fa-solid fa-comments colored-icon"></i>
+                    <span class="d-block colored-text">Greetings & Presences</span>
                 </a>
-            </li> -->
-
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#gameSection">
                     <i class="fa-solid fa-gamepad colored-icon"></i>
-                    <span class="d-block colored-text">Games</span>
+                    <span class="d-block colored-text">QuizGame</span>
                 </a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link" href="#popupComment" data-toggle="modal" data-target="#popupComment">
-                    <i class="fa-solid fa-comments colored-icon"></i>
-                    <span class="d-block colored-text">Comments&Attendance</span>
+                <a class="nav-link" href="#sightseeing">
+                    <i class="fa-solid fa-binoculars colored-icon"></i>
+                    <span class="d-block colored-text">Exploring</span>
                 </a>
             </li>
 
@@ -505,7 +504,7 @@
                         
                         <h1 class="popup-trigger titleName"  id="profileContentAjith" data-target="#contentBlockAjith" style="font-size: 3rem;">AnuPriya</h1>                                               
                         <h1 class="titleName" style="font-size: 1rem;font-family: 'Arvo', serif;">D/O Mr.T S
-                            SathyaMoorthi</h1>
+                            SathiyaMoorthy</h1>
                         <p class="mb-0 event-title" style="margin-left: 15px;">Ladies and gentlemen ...</p>
                     </div>
                 </div>
@@ -518,41 +517,7 @@
             </div>
         </section>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const timers = document.querySelectorAll('.timer');
-
-                timers.forEach(timer => {
-                    const targetDate = new Date(timer.getAttribute('data-date')).getTime();
-
-                    const updateTimer = () => {
-                    const now = new Date().getTime();
-                    const distance = targetDate - now;
-
-                    if (distance < 0) {
-                    const completedDate = new Date(targetDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                    });
-                    timer.textContent = `Completed on ${completedDate}`;
-                    timer.classList.remove('timer');
-                    timer.classList.add('highlight-completed');
-                } else {
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                    timer.textContent = `Time remaining: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-                }
-            };
-
-            updateTimer();
-            setInterval(updateTimer, 1000);});
-            });
-        </script>
-
+        
         <!-- Mempelai -->
         <section class="events section-padding" id="mempelai">
             <div class="container">
@@ -1091,11 +1056,109 @@
                 <path fill="#e5dbd6" fill-opacity="1"
                     d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z">
                 </path>
+            </svg>  
+                              
+        </div>
+       
+
+        <section class="dark-section" id="cmnts">
+            <div class="section-title" style="margin-left: 20px;">
+                <h4>Greetings & Absentees</h4>
+            </div>
+            <div class="container-fluid">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input-comment" placeholder="Add your comments" aria-label="Add your comments" aria-describedby="add-comments-icon">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addCommentsBtn"><i
+                                class="fas fa-arrow-up"></i></button>
+                    </div>
+                    <div class="filter-icon">
+                        <span onclick="toggleFilter()">&#x1F50D;</span>
+                    </div>
+                </div>
+                <div class="main-container">
+                    <div class="right-section">
+                        
+                        <div class="modal-header filter-section" style="display: none;">
+                            <!-- Filter elements go here -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="nameFilter" placeholder="search by name">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="dropdownFilter">
+                                    <option value="">Search by RelationType</option>
+                                    <option value="Colleagues">Colleague</option>
+                                    <option value="Friends">Friend</option>
+                                    <option value="Relatives">Relative</option>
+                                </select>
+                            </div>
+        
+                            <!-- Additional dropdown for Colleagues -->
+                            <div class="form-group" id="colleagueOptions" style="display: none;">
+                                <select class="form-control" id="colleagueType">
+                                    <option value="">All</option>                                                         
+                                    <option value="EITS">EITS</option>
+                                    <option value="ATOS">ATOS</option>
+                                    <option value="Others">Others</option>                    
+                                </select>
+                            </div>
+                        
+                            <!-- Filter button -->
+                            <button class="btn btn-primary btn-sm btn-block" id="filterBtn">Filter</button>                   
+                        </div>
+                        <div class="tab-content-container">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#attendees-tab">Attendees</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#absentees-tab">Absentees</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" style="max-height: unset;">
+                                <div class="tab-pane fade show active" id="attendees-tab">
+                                    <div id="attendees-content">
+                                        <!-- Attendees content will be loaded here -->
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="absentees-tab">
+                                    <div id="absentees-content">
+                                        <!-- Absentees content will be loaded here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-section">
+                        <!-- Tab content -->
+                        <div class="tab-content" style="max-height: unset;">
+                            <div class="tab-pane fade show active" id="content1">
+                                <h4>Comments</h4>
+                                <div class="mcomments" id="cmt-list">
+                                    <!-- Comments will be loaded here -->
+                                </div>
+                                <button class="btn btn-default" id="load-cmt" style="float: right; display: none;">
+                                    Load More...
+                                </button>                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <!-- Wave Separator -->
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="margin-bottom: -1px;">
+                <path fill="#e5dbd6" fill-opacity="1"
+                    d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z">
+                </path>
             </svg>
 
             <h1 class="titleName" style="margin-top: -5%;">Quiz and Win!</h1>
         </div>
-
+      
         <!-- QuizGame -->
         <section class="dark-section" id="gameSection">
 
@@ -1220,9 +1283,9 @@
                     </div>
 
                     <div id="pagination" class="text-center">
-                        <button id="prevBtn" class="btn btn-primary mr-2" disabled>Previous</button>
+                        <button id="prevBtn" class="btn btn-primary mr-2" style="background-color: #674ea7;" disabled>Previous</button>
                         <span id="pageInfo" class="mr-2"></span>
-                        <button id="nextBtn" class="btn btn-primary">Next</button>
+                        <button id="nextBtn" class="btn btn-primary"style="background-color: #674ea7;">Next</button>
                     </div>
 
                 </div>
@@ -1320,14 +1383,13 @@
             </path>
         </svg>
 
-        <h1 class="text-center about-heading">
-            Iconic spots in Madurai
-            <p class="titleName">(Temple City)</p>
-        </h1>
+       
         <!--About Madurai Section -->
-        <section class="dark-section" id="gameSection">
-            <!-- <h1 class="text-center about-heading" style="font-size: 2.5rem; font-family: 'Arvo', serif; color: #674ea7;">Iconic Landscapes
-            </h1> -->
+        <section class="dark-section" id="sightseeing">
+            <h1 class="text-center about-heading">
+                Iconic spots in Madurai
+                <p class="titleName">(Temple City)</p>
+            </h1>
             
             <section class="product spad">
                 <div class="container">
@@ -1572,7 +1634,7 @@
             <path fill="#e5dbd6" fill-opacity="1"
                 d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
             </path>
-        </svg>
+        </svg>        
    
     </main>    
 
@@ -1881,10 +1943,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-block" id="getOTPBtn">Get OTP</button>
-                    <button type="button" class="btn btn-primary btn-block" id="submitBtn"
-                        style="display: none;">Verify</button>
-                </div>
+                    <button type="button" class="btn btn-primary btn-block quit" id="getOTPBtn" style="background-color: #674ea7;">Get OTP</button>
+                    <button type="button" class="btn btn-primary btn-block quit" id="submitBtn" style="background-color: #674ea7; display: none;">Verify</button>
+                </div>               
             </div>
         </div>
     </div>
@@ -1958,15 +2019,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Modal Footer -->
-
-                <!-- <div class="modal-footer">
-                    <div class="comment-input-container">
-                        <input type="text" class="comment-input" placeholder="Write a comment...">
-                        <button class="send-button">Send</button>
-                    </div>
-                </div> -->
-
+               
                 <div class="input-group">
                     <input type="text" class="form-control" id="input-comment" placeholder="Add your comments" aria-label="Add your comments" aria-describedby="add-comments-icon">
                     <div class="input-group-append">

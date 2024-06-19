@@ -25,11 +25,11 @@ let questions = [
     {
     numb: 3,
     question: "A thing which helped for their first conversation",
-    answer: "MoneyPurse",
+    answer: "HandPurse",
     options: [
       "Notebook",
       "Gifts",      
-      "MoneyPurse",
+      "HandPurse",
       "Nothing"
     ]
   },

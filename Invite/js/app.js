@@ -1567,18 +1567,18 @@ window.attendeesContent = `
 <ul class="attendeesList mcomments">
     <div class="no-records">No records found</div>
 </ul>
+`;
 
-<br />
-
-<h5>Regretfully declined but sent best wishes.
-</h5>
+window.absenteesContent = `
 <ul class="nattendeesList mcomments">
     <div class="no-records">No records found</div>
 </ul>
 `;
 
+
 const renderAttendeesContent = async (reload = false, filters = {}) => {
     $('#attendees-content').html(window.attendeesContent);
+    $('#absentees-content').html(window.absenteesContent);
    
     if (cachedAttendees.length === 0 || reload) {
         showLoader('.attendeesList');
