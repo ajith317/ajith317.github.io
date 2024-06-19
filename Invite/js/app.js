@@ -1197,8 +1197,12 @@ async function verifyOtp(mobileNumber, otp, callBack) {
             otp
         })
     });
-    if (resp.ok && typeof callBack === 'function') {
-        callBack();
+    if (resp.ok) {
+        const { accessToken } = await resp.json();
+        if (accessToken) setAccessToken(accessToken);
+        if (typeof callBack === 'function') {
+            callBack();
+        }
     } else {
         await showApiErr(resp);
     }
@@ -1313,18 +1317,29 @@ async function addComment(message, parentCommentId = "") {
  * @param {string} message 
  * @param {string} commentId 
  */
-async function editComment(message, commentId) {
-    const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
-        method: "PUT",
-        headers: getHeaders(),
-        body: JSON.stringify({
-            message
-        })
-    })
-    if (resp.ok) {
-        alert('Done');
-    } else {
-        alert(await resp.text());
+
+async function editComment(commentId, message) {
+    const newMessage = prompt('Edit your comment:', message);
+    if (newMessage) {
+        try {
+            const resp =  await fetch(`${apiUrl}/comments/${commentId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getAccessToken()}`
+                },
+                body: JSON.stringify({ message: newMessage })
+            });
+            if (resp.ok) {
+                alert('Comment edited successfully');
+                renderComment(true);
+            } else {
+                alert(await resp.text());
+            }
+        } catch (error) {
+            console.error('Error editing comment:', error);
+            alert('An error occurred while editing the comment.');
+        }
     }
 }
 
@@ -1333,17 +1348,26 @@ async function editComment(message, commentId) {
  * @param {string} commentId 
  */
 async function deleteComment(commentId) {
-    const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
-        method: "DELETE",
-        headers: getHeaders()
-    })
-    if (resp.ok) {
-        alert('Done');
-    } else {
-        alert(await resp.text());
+    if (confirm('Are you sure you want to delete this comment?')) {
+        try {
+            const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${getAccessToken()}`
+                }
+            });
+            if (resp.ok) {
+                alert('Comment deleted successfully');
+                renderComment(true);
+            } else {
+                alert("Cannot delete other messages");
+            }
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+            alert('An error occurred while deleting the comment.');
+        }
     }
 }
-
 /**
  * 
  * @param {number} score 
@@ -1498,22 +1522,31 @@ const renderComment = async (reload = false, filters = {}) => {
     } else {
         const commentHtml = comments.map(cmt => {
             const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(cmt.user.name)}&background=random&color=fff&size=40&font-size=0.6`;
+            const isOwner = cmt.user.id === getAccessToken();         
             return `
-                <div class="mcomment">
-                    <div class="mcomment-header">
-                        <img src="${avatarUrl}" alt="Avatar" class="mavatar">
-                        <div class="mcomment-header-text">
-                            <div class="muser-info">
-                                <span class="musername">${cmt.user.name}</span>
-                                <span class="mdate">${moment(cmt.updatedAt).fromNow()}</span>
-                            </div>
-                            <span class="mrelationType">${cmt.user.relationType}</span>
+            <div class="mcomment">
+                <div class="mcomment-header">
+                    <img src="${avatarUrl}" alt="Avatar" class="mavatar">
+                    <div class="mcomment-header-text">
+                        <div class="muser-info">
+                            <span class="musername">${cmt.user.name}</span>
+                            <span class="mdate">${moment(cmt.updatedAt).fromNow()}</span>
                         </div>
+                        <span class="mrelationType">${cmt.user.relationType}</span>
                     </div>
-                    <div class="mcomment-body">
-                        ${cmt.message}
+                    <div class="mcomment-actions">
+                        <button class="edit-btn" style="background-color: #674ea7;" onclick="editComment('${cmt.id}', '${cmt.message}')">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="delete-btn" style="background-color: #f44336;" onclick="deleteComment('${cmt.id}')">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
                     </div>
                 </div>
+                <div class="mcomment-body">
+                    ${cmt.message}
+                </div>
+            </div>
             `;
         }).join('');
 
@@ -1563,13 +1596,14 @@ const applyFilters = debounce(() => {
 }, 300);
 
 window.attendeesContent = `
-<h4>Attendees</h4>
+ <h4 style="visibility: hidden;">Attendees</h4>
 <ul class="attendeesList mcomments">
     <div class="no-records">No records found</div>
 </ul>
 `;
 
 window.absenteesContent = `
+ <h4 style="visibility: hidden;">Attendees</h4>
 <ul class="nattendeesList mcomments">
     <div class="no-records">No records found</div>
 </ul>
@@ -1579,7 +1613,7 @@ window.absenteesContent = `
 const renderAttendeesContent = async (reload = false, filters = {}) => {
     $('#attendees-content').html(window.attendeesContent);
     $('#absentees-content').html(window.absenteesContent);
-   
+
     if (cachedAttendees.length === 0 || reload) {
         showLoader('.attendeesList');
         showLoader('.nattendeesList');
@@ -1632,6 +1666,25 @@ const renderAttendeesContent = async (reload = false, filters = {}) => {
         }
     });
 };
+
+function editAttendee(attendeeId, name, relationType, colleagueRef) {
+    const newName = prompt('Edit name:', name);
+    const newRelationType = prompt('Edit relation type:', relationType);
+    const newColleagueRef = prompt('Edit colleague reference:', colleagueRef);
+    if (newName && newRelationType && newColleagueRef) {
+       
+        window.alert("asd");
+        renderAttendeesContent(true);
+    }
+}
+
+function deleteAttendee(attendeeId) {
+    if (confirm('Are you sure you want to delete this attendee?')) {
+        
+        window.alert("ajith");
+        renderAttendeesContent(true);
+    }
+}
 
 function debounce(func, wait) {
     let timeout;
@@ -1746,3 +1799,32 @@ $(document).ready(function(){
 });
 
 
+$(document).on('click', '.edit-comment', function() {
+    const commentId = $(this).data('id');
+    const newMessage = prompt('Edit your comment:');
+    if (newMessage) {
+        editComment(newMessage, commentId);
+    }
+});
+
+$(document).on('click', '.delete-comment', function() {
+    const commentId = $(this).data('id');
+    if (confirm('Are you sure you want to delete this comment?')) {
+        deleteComment(commentId);
+    }
+});
+
+$(document).on('click', '.edit-attendee', function() {
+    const commentId = $(this).data('id');
+    const newMessage = prompt('Edit your visiting:');
+    if (newMessage) {
+        editAttendee(newMessage, commentId);
+    }
+});
+
+$(document).on('click', '.delete-attendee', function() {
+    const attendeeId = $(this).data('id');
+    if (confirm('Are you sure you want to delete this attendee?')) {
+        deleteAttendee(attendeeId);
+    }
+});

@@ -1072,6 +1072,13 @@ footer .widget ul {
     padding: 0;
     list-style: none;
 }
+.mavatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
 
 .mcomment {
     background-color: #fff;
@@ -1082,24 +1089,13 @@ footer .widget ul {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.mcomment-header {
-    margin-bottom: 10px;
-    font-size: 0.9em;
-    color: #555;
-    display: flex;
-    align-items: flex-start; 
-}
 
 .mcomment-header-text {
     display: flex;
     flex-direction: column;
     margin-left: 5px;
     font-size: 0.8em;
-}
-
-.mavatar {
-    border-radius: 50%;
-    width: 30px;
+    flex-grow: 1;
 }
 
 .musername {
@@ -1377,10 +1373,6 @@ footer .widget ul {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
-.mcomments {
-    max-height: 400px;
-    overflow-y: auto;
-}
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
@@ -1390,4 +1382,47 @@ footer .widget ul {
         flex: 0 0 100%;
         height: auto;
     }
+}
+
+.mcomment {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: #333146;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: opacity 0.5s ease-out; /* Transition for the fade-out */
+}
+
+.mcomment-header {
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.mcomment-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    margin-left: 4px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.edit-btn {
+    background-color: #674ea7;
+}
+
+.delete-btn {
+    background-color: #c6372d;
 }
