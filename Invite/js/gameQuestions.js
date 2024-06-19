@@ -2,126 +2,57 @@
 let questions = [
     {
     numb: 1,
-    question: "Where Ajith meet anu?",
+    question: "Where Ajith meet Anu?",
     answer: "In Collage",
     options: [
       "In Collage",
-      "Area",
-      "Other question",
-      "Dont know"
+      "Scholl",
+      "Office",
+      "Park/Beach"
     ]
   },
-    {
+  {
     numb: 2,
-    question: "What food will provide on devgas?",
-    answer: "Not giving anything",
+    question: "When did they got engaged?",
+    answer: "25th Jan 2024",
     options: [
-      "Parotta",
-      "Chapptathi",
-      "Rice",
-      "Not giving anything"
+      "16th Nov 2023",
+      "02th June 2024",
+      "07th July 2024",
+      "25th Jan 2024"
     ]
   },
     {
     numb: 3,
-    question: "What food will provide on devgas?",
-    answer: "No giving anything",
+    question: "A thing which helped for their first conversation",
+    answer: "MoneyPurse",
     options: [
-      "Parotta",
-      "Chapptathi",
-      "Rice",
-      "No giving anything"
+      "Notebook",
+      "Gifts",      
+      "MoneyPurse",
+      "Nothing"
     ]
   },
-    {
+  {
     numb: 4,
-    question: "What food will provide on devgas?",
-    answer: "No giving anything",
+    question: "When did Anu accepted Ajith's proposal?",
+    answer: "17 June 2020",
     options: [
-      "Parotta",
-      "Chapptathi",
-      "Rice",
-      "No giving anything"
+      "02 June 2024",
+      "02 Jan 2020",
+      "03 Nov 2018",
+      "17 June 2016"
     ]
   },
-    {
+  {
     numb: 5,
-    question: "What food will provide on devgas?",
-    answer: "No giving anything",
+    question: "When did Ajith's and Anu's family met?",
+    answer: "16 Nov 2023",
     options: [
-      "Parotta",
-      "Chapptathi",
-      "Rice",
-      "Not giving anything"
+      "22 Jan 2024",
+      "25 Jan 2024",
+      "16 Nov 2023",
+      "02 June 2024"
     ]
-  },
-    {
-      numb: 6,
-      question: "What food will provide on devgas?",
-      answer: "Not giving anything",
-      options: [
-        "Parotta",
-        "Chapptathi",
-        "Rice",
-        "Not giving anything"
-      ]
-    },
-      {
-      numb: 7,
-      question: "What food will provide on devgas?",
-      answer: "Not giving anything",
-      options: [
-        "Parotta",
-        "Chapptathi",
-        "Rice",
-        "Not giving anything"
-      ]
-    },
-      {
-      numb: 8,
-      question: "What food will provide on devgas?",
-      answer: "Not giving anything",
-      options: [
-        "Parotta",
-        "Chapptathi",
-        "Rice",
-        "Not giving anything"
-      ]
-    },
-      {
-      numb: 9,
-      question: "What food will provide on devgas?",
-      answer: "Not giving anything",
-      options: [
-        "Parotta",
-        "Chapptathi",
-        "Rice",
-        "Not giving anything"
-      ]
-    },
-      {
-      numb: 10,
-      question: "What food will provide on devgas?",
-      answer: "Not giving anything",
-      options: [
-        "Parotta",
-        "Chapptathi",
-        "Rice",
-        "Not giving anything"
-    ]
-    },
-  // you can uncomment the below codes and make duplicate as more as you want to add question
-  // but remember you need to give the numb value serialize like 1,2,3,5,6,7,8,9.....
-
-  //   {
-  //   numb: 6,
-  //   question: "Your Question is Here",
-  //   answer: "Correct answer of the question is here",
-  //   options: [
-  //     "Option 1",
-  //     "option 2",
-  //     "option 3",
-  //     "option 4"
-  //   ]
-  // },
+  }  
 ];
