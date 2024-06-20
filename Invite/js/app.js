@@ -1245,6 +1245,7 @@ async function initialize(mobileNumber, otp, name, isAttend, relationType, colle
 }
 
 window.totalComments = 0;
+window.amIAttend = false;
 /**
  * 
  * @param {number} offset 
@@ -1401,7 +1402,12 @@ async function getAttendees() {
         headers: getHeaders()
     });
     if (resp.ok) {
-        return await resp.json();
+        const result = await resp.json();
+        const { users } = result;
+        const currentUser = users.find(u => u.isMe);
+        window.amIAttend = !!currentUser && currentUser.isAttend;
+        checkAvailability();
+        return result;
     } else {
         return [];
     }
@@ -1752,6 +1758,7 @@ $(document).ready(async function () {
         `;
         tableBody.append(row);
     });
+    checkAvailability();
 });
 
 function resetFilterSection() {
@@ -1796,3 +1803,34 @@ $(document).ready(function(){
         $('#contentBlockAnu').hide();
     });
 });
+
+async function changeToNotAttend(){
+    const conf = confirm("Are you sure can't you attend?")
+    if (conf) {
+        await makeMyAvailability(false);
+        renderAttendeesContent();
+    }
+}
+
+async function changeToAttend(){
+    const conf = confirm("Are you sure will you attend?")
+    if (conf) {
+        await makeMyAvailability(true);
+        renderAttendeesContent();
+    }
+}
+
+function checkAvailability(){
+    const hasAccessToken = !!getAccessToken();
+    if (!hasAccessToken) {
+        $(".action-availability").hide();
+    } else {
+        if (window.amIAttend) {
+            $("#action-not-attend").show();
+            $("#action-attend").hide();
+        } else {
+            $("#action-not-attend").hide();
+            $("#action-attend").show();
+        }
+    }
+}
