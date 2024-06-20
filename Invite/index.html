@@ -1115,18 +1115,18 @@
                                     <a class="nav-link" data-toggle="tab" href="#absentees-tab">Absentees</a>
                                 </li>
                             </ul>
-                            <div class="tab-content" style="max-height: unset;">
+                            <div class="tab-content" style="max-height: unset;">                                
                                 <div class="tab-pane fade show active" id="attendees-tab">
+                                    <a href="javascript:void(0)" style="display: none; color: #674ea7; font-weight: 500;" id="action-not-attend" class="action-availability" onclick="changeToNotAttend();">Click here to reconsider your decision! </a>
                                     <div id="attendees-content">
                                         <!-- Attendees content will be loaded here -->
-                                    </div>
-                                    <a href="javascript:void(0)" style="display: none;" id="action-not-attend" class="action-availability" onclick="changeToNotAttend();">Can't you attend?</a>
+                                    </div>                                   
                                 </div>
                                 <div class="tab-pane fade" id="absentees-tab">
+                                    <a href="javascript:void(0)" style="display: none; color: #674ea7; font-weight: 500;" id="action-attend" class="action-availability" onclick="changeToAttend();">Decide to join us? Click here!</a>
                                     <div id="absentees-content">
                                         <!-- Absentees content will be loaded here -->
-                                    </div>
-                                    <a href="javascript:void(0)" style="display: none;" id="action-attend" class="action-availability" onclick="changeToAttend();">Will you attend?</a>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -1939,7 +1939,7 @@
                     <!-- Submit button and dropdown -->
                     <div class="form-group" id="submitAndDropdownRow" style="display: none;">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="background-color: #674ea7;">
                                 <button class="btn btn-primary btn-block" id="submitCmnds">Submit</button>
                             </div>
                         </div>

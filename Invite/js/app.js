@@ -1519,7 +1519,7 @@ const renderComment = async (reload = false, filters = {}) => {
     const { comments } = await getComments(cmtList.children('.mcomment').length);
     $('#load-cmt').show();
     hideLoader('#cmt-list');
-
+    
     if (comments.length === 0) {
         cmtList.html('<div>No comments found</div>');
         $('#load-cmt').hide();
@@ -1601,15 +1601,13 @@ const applyFilters = debounce(() => {
 }, 300);
 
 window.attendeesContent = `
- <h4 style="visibility: hidden;">Attendees</h4>
-<ul class="attendeesList mcomments">
+<ul class="attendeesList mcomments" style="margin-top: 10px;">
     <div class="no-records">No records found</div>
 </ul>
 `;
 
 window.absenteesContent = `
- <h4 style="visibility: hidden;">Attendees</h4>
-<ul class="nattendeesList mcomments">
+<ul class="nattendeesList mcomments"style="margin-top: 10px;">
     <div class="no-records">No records found</div>
 </ul>
 `;
@@ -1672,24 +1670,8 @@ const renderAttendeesContent = async (reload = false, filters = {}) => {
     });
 };
 
-function editAttendee(attendeeId, name, relationType, colleagueRef) {
-    const newName = prompt('Edit name:', name);
-    const newRelationType = prompt('Edit relation type:', relationType);
-    const newColleagueRef = prompt('Edit colleague reference:', colleagueRef);
-    if (newName && newRelationType && newColleagueRef) {
-       
-        window.alert("asd");
-        renderAttendeesContent(true);
-    }
-}
 
-function deleteAttendee(attendeeId) {
-    if (confirm('Are you sure you want to delete this attendee?')) {
-        
-        window.alert("ajith");
-        renderAttendeesContent(true);
-    }
-}
+
 
 function debounce(func, wait) {
     let timeout;
