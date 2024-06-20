@@ -1808,7 +1808,8 @@ async function changeToNotAttend(){
     const conf = confirm("Are you sure can't you attend?")
     if (conf) {
         await makeMyAvailability(false);
-        renderAttendeesContent();
+        // renderAttendeesContent();
+        location.reload();
     }
 }
 
@@ -1816,7 +1817,8 @@ async function changeToAttend(){
     const conf = confirm("Are you sure will you attend?")
     if (conf) {
         await makeMyAvailability(true);
-        renderAttendeesContent();
+        // renderAttendeesContent();
+        location.reload();
     }
 }
 
