@@ -1198,8 +1198,6 @@ async function verifyOtp(mobileNumber, otp, callBack) {
         })
     });
     if (resp.ok) {
-        const { accessToken } = await resp.json();
-        if (accessToken) setAccessToken(accessToken);
         if (typeof callBack === 'function') {
             callBack();
         }
@@ -1521,8 +1519,7 @@ const renderComment = async (reload = false, filters = {}) => {
         $('#load-cmt').hide();
     } else {
         const commentHtml = comments.map(cmt => {
-            const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(cmt.user.name)}&background=random&color=fff&size=40&font-size=0.6`;
-            const isOwner = cmt.user.id === getAccessToken();         
+            const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(cmt.user.name)}&background=random&color=fff&size=40&font-size=0.6`; 
             return `
             <div class="mcomment">
                 <div class="mcomment-header">
@@ -1534,14 +1531,16 @@ const renderComment = async (reload = false, filters = {}) => {
                         </div>
                         <span class="mrelationType">${cmt.user.relationType}</span>
                     </div>
-                    <div class="mcomment-actions">
+                    ${
+                        cmt.canModify ? `<div class="mcomment-actions">
                         <button class="edit-btn" style="background-color: #674ea7;" onclick="editComment('${cmt.id}', '${cmt.message}')">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button class="delete-btn" style="background-color: #f44336;" onclick="deleteComment('${cmt.id}')">
                             <i class="fa-solid fa-trash"></i>
                         </button>
-                    </div>
+                    </div>` : ''
+                    }
                 </div>
                 <div class="mcomment-body">
                     ${cmt.message}
@@ -1796,35 +1795,4 @@ $(document).ready(function(){
     $('#contentBlockAnu .close-btn').click(function(){
         $('#contentBlockAnu').hide();
     });
-});
-
-
-$(document).on('click', '.edit-comment', function() {
-    const commentId = $(this).data('id');
-    const newMessage = prompt('Edit your comment:');
-    if (newMessage) {
-        editComment(newMessage, commentId);
-    }
-});
-
-$(document).on('click', '.delete-comment', function() {
-    const commentId = $(this).data('id');
-    if (confirm('Are you sure you want to delete this comment?')) {
-        deleteComment(commentId);
-    }
-});
-
-$(document).on('click', '.edit-attendee', function() {
-    const commentId = $(this).data('id');
-    const newMessage = prompt('Edit your visiting:');
-    if (newMessage) {
-        editAttendee(newMessage, commentId);
-    }
-});
-
-$(document).on('click', '.delete-attendee', function() {
-    const attendeeId = $(this).data('id');
-    if (confirm('Are you sure you want to delete this attendee?')) {
-        deleteAttendee(attendeeId);
-    }
 });
