@@ -6,7 +6,7 @@ let questions = [
     answer: "In Collage",
     options: [
       "In Collage",
-      "Scholl",
+      "School",
       "Office",
       "Park/Beach"
     ]
