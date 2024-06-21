@@ -1119,7 +1119,7 @@ function setVerticalLineHeight() {
 }
 
 const apiUrl = "https://ajith-marriage-api.azurewebsites.net/api/v1";
-// const apiUrl = "http://localhost:8081/api/v1";
+// const apiUrl = "http://localhost:8080/api/v1";
 
 async function showApiErr(resp) {
     const errTxt = await resp.text();
@@ -1271,6 +1271,23 @@ async function getComments(offset = 0) {
     }
 }
 
+/**
+ * 
+ * @param {string} commentId 
+ * @returns {object | null}
+ */
+async function getCommentById(commentId) {
+    const resp = await fetch(`${apiUrl}/comments/${commentId}`, {
+        headers: getHeaders()
+    });
+    if (resp.ok) {
+        const respData = await resp.json();
+        return respData ? respData.comment : null;
+    } else {
+        return null;
+    }
+}
+
 
 /**
  * 
@@ -1313,11 +1330,11 @@ async function addComment(message, parentCommentId = "") {
 
 /**
  * 
- * @param {string} message 
  * @param {string} commentId 
  */
 
-async function editComment(commentId, message) {
+async function editComment(commentId) {
+    const { message } = await getCommentById(commentId);
     const newMessage = prompt('Edit your comment:', message);
     if (newMessage) {
         try {
@@ -1539,7 +1556,7 @@ const renderComment = async (reload = false, filters = {}) => {
                     </div>
                     ${
                         cmt.canModify ? `<div class="mcomment-actions">
-                        <button class="edit-btn" style="background-color: #674ea7;" onclick="editComment('${cmt.id}', '${cmt.message}')">
+                        <button class="edit-btn" style="background-color: #674ea7;" onclick="editComment('${cmt.id}')">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button class="delete-btn" style="background-color: #f44336;" onclick="deleteComment('${cmt.id}')">
