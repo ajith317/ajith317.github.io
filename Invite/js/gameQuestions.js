@@ -28,8 +28,8 @@ let questions = [
     answer: "HandPurse",
     options: [
       "Notebook",
-      "Gifts",      
       "HandPurse",
+      "Gifts",            
       "Nothing"
     ]
   },
@@ -38,10 +38,11 @@ let questions = [
     question: "When did Anu accepted Ajith's proposal?",
     answer: "17 June 2020",
     options: [
+      "17 June 2020",
       "02 June 2024",
       "02 Jan 2020",
-      "03 Nov 2018",
-      "17 June 2020"
+      "03 Nov 2018"
+      
     ]
   },
   {
@@ -50,8 +51,8 @@ let questions = [
     answer: "16 Nov 2023",
     options: [
       "22 Jan 2024",
-      "25 Jan 2024",
       "16 Nov 2023",
+      "25 Jan 2024",      
       "02 June 2024"
     ]
   }  
