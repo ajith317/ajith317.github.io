@@ -972,7 +972,7 @@
             </section>
         
              <!-- Modal structure -->
-            <div class="modal fade" id="photoGalleryModal" tabindex="-1" role="dialog" aria-labelledby="photoGalleryModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="photoGalleryModal" tabindex="-1" role="dialog" aria-labelledby="photoGalleryModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -982,7 +982,6 @@
                             </button>
                         </div>
                         <div class="modal-body" style="height: 70vh; overflow-y: auto;">
-                            <!-- Gallery content -->
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="row">
@@ -1030,11 +1029,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End of gallery content -->
+                           
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <script>
                 document.getElementById('viewAllBtn').addEventListener('click', function() {
@@ -1269,15 +1268,14 @@
                                         <th>User Name <span id="usernameSortIcon" class="sort-icon up"></span></th>
                                         <th>Score <span id="scoreSortIcon" class="sort-icon up"></span></th>
                                         <th>No of tries</th>
-                                        <th>Relation Status <a href="#" id="relationStatusFilterIcon"
-                                                data-toggle="dropdown"><i class="fas fa-filter"></i></a>
-                                            <div class="dropdown-menu" aria-labelledby="relationStatusFilterIcon">
+                                        <th>Relation Status </th>
+                                            <!-- <div class="dropdown-menu" aria-labelledby="relationStatusFilterIcon">
                                                 <a class="dropdown-item" href="#" data-filter="All">All</a>
                                                 <a class="dropdown-item" href="#" data-filter="Friends">Friends</a>
                                                 <a class="dropdown-item" href="#" data-filter="Relatives">Relatives</a>
                                                 <a class="dropdown-item" href="#"
                                                     data-filter="Colleagues">Colleagues</a>
-                                            </div>
+                                            </div> -->
                                         </th>
                                     </tr>
                                 </thead>
@@ -1922,7 +1920,7 @@
                     </div>
 
                     <div class="form-group" id="colleagueRef-group" style="display: none;">
-                        <label for="colleagueRef">Emp Ref:</label>
+                        <label for="colleagueRef">Emp Code:</label>
                         <input type="text" class="form-control" id="colleagueRef" placeholder="Enter Ref" />
                     </div>
 
